@@ -39,33 +39,34 @@ class UserRepository extends ServiceEntityRepository
     }
     */
 
-    public function findRelatedNurse(User $user)
+    /**
+     * @param Child $child
+     * @param User  $nurse
+     *
+     * @return User
+     */
+    public function assignChildToNurse(Child $child, User $nurse): User
     {
-        $nurse = $this->getEntityManager()->createQueryBuilder()
-                      ->select('n')
-                      ->from(Nurse::class, 'n')
-                      ->where('n.user = :user');
-        $nurse->setParameter(':user', $user);
+        $nurse->addChild($child);
+        $this->getEntityManager()->persist($nurse);
+        $this->getEntityManager()->flush();
 
-        return $nurse->getQuery()->getOneOrNullResult();
+        return $nurse;
     }
 
-    public function findRelatedGuardian(User $user)
+    /**
+     * @param Child $child
+     * @param User  $user
+     *
+     * @return User
+     */
+    public function unAssignChildToNurse(Child $child, User $user): User
     {
-        $guardian = $this->getEntityManager()->createQueryBuilder()
-            ->select('g')
-            ->from(Guardian::class, 'g')
-            ->where('g.user = :user')
-        ;
-        $guardian->setParameter(':user', $user);
+        $user->removeChild($child);
+        $this->getEntityManager()->persist($user);
+        $this->getEntityManager()->flush();
 
-        return $guardian->getQuery()->getOneOrNullResult();
-    }
-
-    public function assignChildToNurse(Child $child, Nurse $nurse)
-    {
-        //TODO
-
+        return $user;
     }
 
     /*

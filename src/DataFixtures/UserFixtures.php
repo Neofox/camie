@@ -33,20 +33,26 @@ class UserFixtures extends Fixture
         $nursery = $manager->getRepository(Nursery::class)->findOneBy(['name' => 'Fake Nursery']);
 
         $user = new User();
-        $user->setEmail('toto@camie.lu');
-        $user->setPassword($this->passwordEncoder->encodePassword($user, 'toto'));
+        $user->setEmail('nurse@camie.lu');
+        $user->setPassword($this->passwordEncoder->encodePassword($user, 'nurse'));
         $user->setNursery($nursery);
+        $user->setFirstname($faker->firstName());
+        $user->setLastname($faker->lastName);
+        $user->setPhone($faker->phoneNumber);
+        $user->setRoles(['ROLE_NURSE']);
+
         $manager->persist($user);
 
-        $nurse = new Nurse();
-        $nurse->setFirstname($faker->firstName());
-        $nurse->setLastname($faker->lastName);
-        $nurse->setPhone($faker->phoneNumber);
-        $nurse->setUser($user);
+        $user = new User();
+        $user->setEmail('guardian@camie.lu');
+        $user->setPassword($this->passwordEncoder->encodePassword($user, 'guardian'));
+        $user->setNursery($nursery);
+        $user->setFirstname($faker->firstName());
+        $user->setLastname($faker->lastName);
+        $user->setPhone($faker->phoneNumber);
+        $user->setRoles(['ROLE_GUARDIAN']);
 
-        $manager->persist($nurse);
-
-        $user->setRoles(['ROLE_NURSE']);
+        $manager->persist($user);
 
         $manager->flush();
     }

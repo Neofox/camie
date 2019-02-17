@@ -33,36 +33,44 @@ class UserManager
     }
 
     /**
-     * @param User $user
-     *
-     * @return Nurse|Guardian
-     */
-    public function getGuardianOrNurse(User $user)
-    {
-        // try to find the nurse
-        $entity = $this->userRepository->findRelatedNurse($user);
-
-        // If no nurse, get the guardian
-        $res =  $entity ? $entity : $this->userRepository->findRelatedGuardian($user);
-
-        if (!$res) {
-            throw new \LogicException(sprintf('No guardian or nurse assocciated to the user %s', $user->getId()));
-        }
-
-        return $res;
-    }
-
-    /**
      * @param string|Child $child
-     * @param Nurse $nurse
+     * @param User         $user
      */
-    public function assignChildToNurse($child, Nurse $nurse)
+    public function assignChildToNurse($child, User $user)
     {
         if (!$child instanceof Child){
             $child = $this->childManager->getChildById($child);
         }
+        if (!in_array('ROLE_NURSE', $user->getRoles())) {
+            throw new \RuntimeException(
+                sprintf(
+                    'User with ID "%s" does not have the role ROLE_NURSE. Child can only be assign to nurses.',
+                    $user->getId()
+                )
+            );
+        }
 
-        $this->userRepository->assignChildToNurse($child, $nurse);
+        $this->userRepository->assignChildToNurse($child, $user);
+    }
 
+    /**
+     * @param string|Child $child
+     * @param User         $user
+     */
+    public function unAssignChildToNurse($child, User $user)
+    {
+        if (!$child instanceof Child){
+            $child = $this->childManager->getChildById($child);
+        }
+        if (!in_array('ROLE_NURSE', $user->getRoles())) {
+            throw new \RuntimeException(
+                sprintf(
+                    'User with ID "%s" does not have the role ROLE_NURSE. Child can only be assign to nurses.',
+                    $user->getId()
+                )
+            );
+        }
+
+        $this->userRepository->unAssignChildToNurse($child, $user);
     }
 }

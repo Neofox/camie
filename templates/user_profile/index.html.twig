@@ -22,7 +22,7 @@
                         </div>
                         <div class="input-animation active">
                             <label for="email">{% trans %}user.profile.email{% endtrans %}</label>
-                            <input type="email" id="email" name="email" value="{{user.user.email}}">
+                            <input type="email" id="email" name="email" value="{{user.email}}">
                         </div>
                     </form>
                 </div>
@@ -39,7 +39,7 @@
                     </div>
                     <div class="box-user-2__right">
                         <div class="custom-input-checkbox">
-                            <input type="checkbox" data-child="{{ child.id }}" />
+                            <input type="checkbox" {% if child in user.children %}checked="checked"{% endif %} data-child="{{ child.id }}" />
                             <div class="custom-check"></div>
                         </div>
                     </div>
@@ -56,11 +56,12 @@
     <script>
         $('input').on('click', function() {
            $.ajax({
-               url: '{{ path('user_profile') }}',
+               url: '{{ path('user_profile_ajax') }}',
                type: 'POST',
                dataType: 'json',
                data: {
-                   'childId': $(this).attr('data-child')
+                   'childId': $(this).attr('data-child'),
+                   'action': $(this).is(':checked') ? 'assign' : 'unassign'
                },
                success: function (data) {
                    console.log(data);

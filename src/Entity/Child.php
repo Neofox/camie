@@ -39,9 +39,9 @@ class Child
     private $birthdate;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Guardian", mappedBy="children")
+     * @ORM\ManyToMany(targetEntity="App\Entity\User", mappedBy="children")
      */
-    private $guardians;
+    private $users;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Sheet", mappedBy="child")
@@ -56,7 +56,7 @@ class Child
 
     public function __construct()
     {
-        $this->guardians = new ArrayCollection();
+        $this->users = new ArrayCollection();
         $this->sheets = new ArrayCollection();
     }
 
@@ -114,28 +114,28 @@ class Child
     }
 
     /**
-     * @return Collection|Guardian[]
+     * @return Collection|User[]
      */
-    public function getGuardians(): Collection
+    public function getUsers(): Collection
     {
-        return $this->guardians;
+        return $this->users;
     }
 
-    public function addGuardian(Guardian $guardian): self
+    public function addUser(User $user): self
     {
-        if (!$this->guardians->contains($guardian)) {
-            $this->guardians[] = $guardian;
-            $guardian->addChild($this);
+        if (!$this->users->contains($user)) {
+            $this->users[] = $user;
+            $user->addChild($this);
         }
 
         return $this;
     }
 
-    public function removeGuardian(Guardian $guardian): self
+    public function removeGuardian(User $user): self
     {
-        if ($this->guardians->contains($guardian)) {
-            $this->guardians->removeElement($guardian);
-            $guardian->removeChild($this);
+        if ($this->users->contains($user)) {
+            $this->users->removeElement($user);
+            $user->removeChild($this);
         }
 
         return $this;
