@@ -2,6 +2,9 @@
 
 namespace App\Repository;
 
+use App\Entity\Child;
+use App\Entity\Guardian;
+use App\Entity\Nurse;
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
@@ -35,6 +38,35 @@ class UserRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findRelatedNurse(User $user)
+    {
+        $nurse = $this->getEntityManager()->createQueryBuilder()
+                      ->select('n')
+                      ->from(Nurse::class, 'n')
+                      ->where('n.user = :user');
+        $nurse->setParameter(':user', $user);
+
+        return $nurse->getQuery()->getOneOrNullResult();
+    }
+
+    public function findRelatedGuardian(User $user)
+    {
+        $guardian = $this->getEntityManager()->createQueryBuilder()
+            ->select('g')
+            ->from(Guardian::class, 'g')
+            ->where('g.user = :user')
+        ;
+        $guardian->setParameter(':user', $user);
+
+        return $guardian->getQuery()->getOneOrNullResult();
+    }
+
+    public function assignChildToNurse(Child $child, Nurse $nurse)
+    {
+        //TODO
+
+    }
 
     /*
     public function findOneBySomeField($value): ?User

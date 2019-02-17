@@ -2,11 +2,41 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>{% block title %}Camie Project{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+            <link href='//fonts.googleapis.com/css?family=Raleway:400,300,600,700,800,900,300italic,600italic' rel='stylesheet' type='text/css'>
+            <link href="{{ asset('css/buddy.plugins.min.css') }}" rel="stylesheet" />
+            <link href="{{ asset('css/buddy.css') }}" rel="stylesheet" />
+        {% endblock %}
     </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+    <body class="overlay--open">
+        {% block header %}
+            <div class="page-header">
+                <div class="page-wrapper">
+                    <a href="{{ path('user_profile', {'user': 'user'}) }}"><button type="button" data-modal="modalProfil" class="btn-icon"><i class="fas fa-user" aria-label="hidden"></i></button></a>
+                    <span>Petit Soleil</span>
+                    <button type="button" data-modal="modalNav" class="btn-icon"><i class="fas fa-bars" aria-label="hidden"></i></button>
+                </div>
+            </div>
+
+            <section class="overlay overlay--nav overlay--scale" data-modal="modalNav">
+                <button type="button" data-modal="modalNav" class="btn-icon"><i class="fas fa-times" aria-label="hidden"></i></button>
+                <nav class="nav-primary">
+                    <ul>
+                        <li><a href="{{ path('home') }}">{% trans %}page.home{% endtrans %}</a></li>
+                        <li><a href="{{ path('child_list') }}">{% trans %}page.child_list{% endtrans %}</a></li>
+                        <li><a href="{{ path('user_profile') }}">{% trans %}page.profil{% endtrans %}</a></li>
+                    </ul>
+                </nav>
+                <a href="{{ path('app_logout') }}" class="link-nav-primary">{% trans %}login.logout{% endtrans %}</a>
+            </section>
+        {% endblock %}
+        {% block main %}{% endblock %}
+        {% block javascripts %}
+            <script src="{{ asset('js/buddy.min.js') }}"></script>
+            <script src="{{ asset('js/jquery-3.3.1.js') }}"></script>
+        {% endblock %}
     </body>
 </html>

@@ -29,11 +29,6 @@ class Guardian
     private $lastname;
 
     /**
-     * @ORM\Column(type="string", length=100)
-     */
-    private $email;
-
-    /**
      * @ORM\Column(type="string", length=20)
      */
     private $phone;
@@ -47,11 +42,11 @@ class Guardian
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Child", inversedBy="guardians")
      */
-    private $childs;
+    private $children;
 
     public function __construct()
     {
-        $this->childs = new ArrayCollection();
+        $this->children = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -83,18 +78,6 @@ class Guardian
         return $this;
     }
 
-    public function getEmail(): ?string
-    {
-        return $this->email;
-    }
-
-    public function setEmail(string $email): self
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
     public function getPhone(): ?string
     {
         return $this->phone;
@@ -122,15 +105,15 @@ class Guardian
     /**
      * @return Collection|Child[]
      */
-    public function getChilds(): Collection
+    public function getChildren(): Collection
     {
-        return $this->childs;
+        return $this->children;
     }
 
     public function addChild(Child $child): self
     {
-        if (!$this->childs->contains($child)) {
-            $this->childs[] = $child;
+        if (!$this->children->contains($child)) {
+            $this->children[] = $child;
         }
 
         return $this;
@@ -138,8 +121,8 @@ class Guardian
 
     public function removeChild(Child $child): self
     {
-        if ($this->childs->contains($child)) {
-            $this->childs->removeElement($child);
+        if ($this->children->contains($child)) {
+            $this->children->removeElement($child);
         }
 
         return $this;

@@ -28,9 +28,15 @@ class Nursery
      */
     private $users;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Child", mappedBy="nursery")
+     */
+    private $children;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
+        $this->children = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -51,7 +57,7 @@ class Nursery
     }
 
     /**
-     * @return Collection|Userbak[]
+     * @return Collection|User[]
      */
     public function getUsers(): Collection
     {
@@ -75,6 +81,37 @@ class Nursery
             // set the owning side to null (unless already changed)
             if ($user->getNursery() === $this) {
                 $user->setNursery(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Child[]
+     */
+    public function getChildren(): Collection
+    {
+        return $this->children;
+    }
+
+    public function addChild(Child $child): self
+    {
+        if (!$this->children->contains($child)) {
+            $this->children[] = $child;
+            $child->setNursery($this);
+        }
+
+        return $this;
+    }
+
+    public function removeChild(Child $child): self
+    {
+        if ($this->children->contains($child)) {
+            $this->children->removeElement($child);
+            // set the owning side to null (unless already changed)
+            if ($child->getNursery() === $this) {
+                $child->setNursery(null);
             }
         }
 

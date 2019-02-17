@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans %}title.user-profile{% endtrans %}{% endblock %}
+
+{% block main %}
+
+<main>
+    <section class="pb-5">
+        <div class="page-wrapper">
+            <div class="box-user">
+                <div class="box-letters">{{user.firstname|first|upper}}{{user.lastname|first|upper}}</div>
+
+                <div class="box-user__content">
+                    <form>
+                        <div class="input-animation active">
+                            <label for="firstname">{% trans %}user.profile.firstname{% endtrans %}</label>
+                            <input type="text" id="firstname" name="firstname" value="{{user.firstname}}">
+                        </div>
+                        <div class="input-animation active">
+                            <label for="lastname">{% trans %}user.profile.lastname{% endtrans %}</label>
+                            <input type="text" id="lastname" name="lastname" value="{{user.lastname}}">
+                        </div>
+                        <div class="input-animation active">
+                            <label for="email">{% trans %}user.profile.email{% endtrans %}</label>
+                            <input type="email" id="email" name="email" value="{{user.user.email}}">
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <p class="title-2">{% trans %}user.profile.followup{% endtrans %}</p>
+            <p>{% trans %}user.profile.select-children{% endtrans %}</p>
+
+            {% for child in children %}
+                <div class="box-user-2 {% if child.sexe == 'F' %}box-user-2--girl{% endif %}">
+                    <div class="box-user-2__left">
+                        <div class="box-letters">{{child.firstname|first|upper}}{{child.lastname|first|upper}}</div>
+                        <div class="left__name">{{child.firstname}} <br> {{child.lastname}}</div>
+                    </div>
+                    <div class="box-user-2__right">
+                        <div class="custom-input-checkbox">
+                            <input type="checkbox" data-child="{{ child.id }}" />
+                            <div class="custom-check"></div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+</main>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $('input').on('click', function() {
+           $.ajax({
+               url: '{{ path('user_profile') }}',
+               type: 'POST',
+               dataType: 'json',
+               data: {
+                   'childId': $(this).attr('data-child')
+               },
+               success: function (data) {
+                   console.log(data);
+               }
+           });
+        });
+    </script>
+{% endblock %}

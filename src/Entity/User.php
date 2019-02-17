@@ -18,11 +18,6 @@ class User implements UserInterface
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=180, unique=true)
-     */
-    private $login;
-
-    /**
      * @ORM\Column(type="json")
      */
     private $roles = [];
@@ -39,21 +34,14 @@ class User implements UserInterface
      */
     private $nursery;
 
+    /**
+     * @ORM\Column(type="string", length=255, unique=true)
+     */
+    private $email;
+
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getLogin(): ?string
-    {
-        return $this->login;
-    }
-
-    public function setLogin(string $login): self
-    {
-        $this->login = $login;
-
-        return $this;
     }
 
     /**
@@ -63,7 +51,7 @@ class User implements UserInterface
      */
     public function getUsername(): string
     {
-        return (string) $this->login;
+        return (string) $this->email;
     }
 
     /**
@@ -81,6 +69,18 @@ class User implements UserInterface
     public function setRoles(array $roles): self
     {
         $this->roles = $roles;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
 
         return $this;
     }

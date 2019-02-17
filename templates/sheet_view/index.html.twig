@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans %}title.sheet-view{% endtrans %}{% endblock %}
+
+{% block main %}
+<main>
+    <section class="pb-5">
+        <div class="page-wrapper">
+            <div class="box-user box-user--girl">
+                <div class="box-letters">JK</div>
+
+                <div class="box-user__content">
+                    <form>
+                        <div class="input-animation">
+                            <label for="heureArrivee">Heure d'arrivée</label>
+                            <input type="text" id="heureArrivee" name="heureArrivee" placeholder="hh:mm" />
+                            <link href="{{ asset('images/icon-clock-green.svg') }}" rel="stylesheet" />
+                        </div>
+                        <div class="input-animation">
+                            <label for="heureDepart">Heure de départ</label>
+                            <input type="text" id="heureDepart" name="heureDepart" placeholder="hh:mm" />
+                            <link href="{{ asset('images/icon-clock-red.svg') }}" rel="stylesheet" />
+                        </div>
+                        <div class="input-animation">
+                            <label for="activites">Activitées réalisées</label>
+                            <input type="text" id="activites" name="activites" placeholder="Activités du jour"/>
+                        </div>
+                        <div class="input-animation">
+                            <label for="communication">Communication reçue</label>
+                            <input type="text" id="communication" name="communication" placeholder="Médicaments à prendre, ..."/>
+                        </div>
+                        <div class="input-animation">
+                            <label for="commentaire">Commentaire purécultrice</label>
+                            <textarea id="commentaire" name="commentaire" placeholder="Commentaire supplémentaire"></textarea>
+                        </div>
+                    </form>
+
+                    <a href="#"class="btn bg-blue fa-utensils left d-block mb-2">Ajouter un repas</a>
+                    <a href="#"class="btn bg-blue fa-bed left d-block mb-2">Ajouter une sieste</a>
+                    <a href="#"class="btn bg-blue fa-toilet-paper left d-block">Ajouter une selle</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

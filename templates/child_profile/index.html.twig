@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans %}title.child-profile{% endtrans %}{% endblock %}
+
+{% block main %}
+<main>
+    <section class="pb-5">
+        <div class="page-wrapper">
+            <div class="box-user box-user--girl">
+                <div class="box-letters">JK</div>
+
+                <div class="box-user__content">
+                    <form class="mb-3">
+                        <div class="input-animation">
+                            <label for="prenom">Prénom</label>
+                            <input type="text" id="prenom" name="prenom" value="Juliette">
+                        </div>
+                        <div class="input-animation">
+                            <label for="nom">Nom</label>
+                            <input type="text" id="nom" name="nom" value="Kindermans">
+                        </div>
+                        <div class="input-animation">
+                            <label for="dateNaissance">Date de naissance</label>
+                            <input type="date" id="dateNaissance" name="dateNaissance" value="08/11/2018">
+                        </div>
+                        <div class="input-group-radio mb-6" id="radioSexe">
+                            <div class="input-radio">
+                                <input type="radio" id="fille" name="radio2" class="input-radio--selected"/>
+                                <label for="fille"><i class="fas fa-venus"></i> Fille</label>
+                            </div>
+                            <div class="input-radio">
+                                <input type="radio" id="garcon" name="radio2" disabled/>
+                                <label for="garcon"><i class="fas fa-mars"></i> Garçon</label>
+                            </div>
+                        </div>
+
+                        <div class="input-animation">
+                            <label for="tuteur">Prénom du tuteur</label>
+                            <input type="text" id="tuteur" name="tuteur" value="Damoiseaux Manon">
+                        </div>
+
+                        <div class="input-animation">
+                            <label for="phone">Téléphone du tuteur</label>
+                            <input type="text" id="phone" name="phone" value="+32 (00) 499 618 944">
+                        </div>
+
+                        <div class="input-animation">
+                            <label for="email">Email du tuteur</label>
+                            <input type="email" id="email" name="email" value="jnk089@gmail.com">
+                        </div>
+
+                        <div class="input-animation textarea">
+                            <label for="commentaire">Informations complémentaires</label>
+                            <textarea id="commentaire" name="commentaire" placeholder="Votre commentaire"></textarea>
+                        </div>
+                    </form>
+
+                    <a href="{{ path('sheets_history', {'id': 'toto'}) }}" class="btn bg-blue fa-history left d-block">Afficher l'historique</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

@@ -39,7 +39,7 @@ class Child
     private $birthdate;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Guardian", mappedBy="childs")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Guardian", mappedBy="children")
      */
     private $guardians;
 
@@ -47,6 +47,12 @@ class Child
      * @ORM\ManyToMany(targetEntity="App\Entity\Sheet", mappedBy="child")
      */
     private $sheets;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Nursery", inversedBy="children")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $nursery;
 
     public function __construct()
     {
@@ -159,6 +165,18 @@ class Child
             $this->sheets->removeElement($sheet);
             $sheet->removeChild($this);
         }
+
+        return $this;
+    }
+
+    public function getNursery(): ?Nursery
+    {
+        return $this->nursery;
+    }
+
+    public function setNursery(?Nursery $nursery): self
+    {
+        $this->nursery = $nursery;
 
         return $this;
     }

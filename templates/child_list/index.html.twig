@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans %}title.child-list{% endtrans %}{% endblock %}
+
+{% block main %}
+<main>
+    <section class="pb-5">
+        <div class="page-wrapper">
+            <p class="title-1 text-center">Liste d'enfants</p>
+
+            <div class="box-user-2">
+                <div class="box-user-2__left" onclick="location.href='{{ path('sheet_view', {'id': 'toto'}) }}';">
+                    <div class="box-letters">JK</div>
+                    <div class="left__name">Jonathan <br> Kindermans</div>
+                </div>
+                <div class="box-user-2__right">
+                    <a href="{{ path('child_profile') }}"><button type="button" class="btn-icon"><i class="fas fa-user-circle" aria-label="hidden"></i></button></a>
+                </div>
+            </div>
+
+            <div class="box-user-2">
+                <div class="box-user-2__left" onclick="location.href='{{ path('sheet_view', {'id': 'toto'}) }}';">
+                    <div class="box-letters">JK</div>
+                    <div class="left__name">Jonathan <br> Kindermans</div>
+                </div>
+                <div class="box-user-2__right">
+                    <a href="{{ path('child_profile') }}"><button type="button" class="btn-icon"><i class="fas fa-user-circle" aria-label="hidden"></i></button></a>
+                </div>
+            </div>
+
+            <div class="box-user-2 box-user-2--girl">
+                <div class="box-user-2__left" onclick="location.href='{{ path('sheet_view', {'id': 'toto'}) }}';">
+                    <div class="box-letters">JK</div>
+                    <div class="left__name">Juliette <br> Kindermans</div>
+                </div>
+                <div class="box-user-2__right">
+                    <a href="{{ path('child_profile') }}"><button type="button" class="btn-icon"><i class="fas fa-user-circle" aria-label="hidden"></i></button></a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</main>
+{% endblock %}

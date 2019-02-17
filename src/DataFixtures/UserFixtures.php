@@ -7,6 +7,7 @@ use App\Entity\Nursery;
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
+use Faker\Factory;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class UserFixtures extends Fixture
@@ -26,22 +27,23 @@ class UserFixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
-        $nusery = new Nursery();
-        $nusery->setName("Toto's Nursery");
-        $manager->persist($nusery);
+        $faker = Factory::create('fr_FR');
+
+        /** @var Nursery $nursery */
+        $nursery = $manager->getRepository(Nursery::class)->findOneBy(['name' => 'Fake Nursery']);
 
         $user = new User();
-        $user->setLogin('toto');
+        $user->setEmail('toto@camie.lu');
         $user->setPassword($this->passwordEncoder->encodePassword($user, 'toto'));
-        $user->setNursery($nusery);
+        $user->setNursery($nursery);
         $manager->persist($user);
 
         $nurse = new Nurse();
-        $nurse->setFirstname('firstname');
-        $nurse->setLastname('lastname');
-        $nurse->setEmail('toto@camie.lu');
-        $nurse->setPhone('03.88.85.88.85');
+        $nurse->setFirstname($faker->firstName());
+        $nurse->setLastname($faker->lastName);
+        $nurse->setPhone($faker->phoneNumber);
         $nurse->setUser($user);
+
         $manager->persist($nurse);
 
         $user->setRoles(['ROLE_NURSE']);
