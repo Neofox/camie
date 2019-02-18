@@ -21,6 +21,140 @@
         <source>login.password</source>
         <target>Mot de passe</target>
       </trans-unit>
+      <trans-unit id="DRMZYH6" resname="title.home">
+        <source>title.home</source>
+        <target>Accueil</target>
+      </trans-unit>
+      <trans-unit id="_bbVkKl" resname="home.welcome">
+        <source>home.welcome</source>
+        <target>Bienvenue</target>
+      </trans-unit>
+      <trans-unit id="29XaMUi" resname="home.introduction">
+        <source>home.introduction</source>
+        <target>Les parents vous confient leurs trésor et sont donc très exigeants.
+                Camie vous simplifie la tâche pour pouvoir passer plus de temps sur les tâches vraiment importantes: veiller au bonheur et à la sécurité des enfants.
+         </target>
+      </trans-unit>
+      <trans-unit id="Cw_CNHA" resname="home.contact.phone">
+        <source>home.contact.phone</source>
+        <target>Téléphone</target>
+      </trans-unit>
+      <trans-unit id="Mkt7e3B" resname="page.home">
+        <source>page.home</source>
+        <target>Acceuil</target>
+      </trans-unit>
+      <trans-unit id="SX.mZ9j" resname="page.child_list">
+        <source>page.child_list</source>
+        <target>Liste d'enfants</target>
+      </trans-unit>
+      <trans-unit id="dhoidNo" resname="page.profile">
+        <source>page.profile</source>
+        <target>Profil</target>
+      </trans-unit>
+      <trans-unit id="slP6BBh" resname="login.logout">
+        <source>login.logout</source>
+        <target>Se déconnecter</target>
+      </trans-unit>
+      <trans-unit id="80JoLd0" resname="title.login">
+        <source>title.login</source>
+        <target>Se connecter</target>
+      </trans-unit>
+      <trans-unit id="zx0NEk4" resname="title.sheet-view">
+        <source>title.sheet-view</source>
+        <target>Fiche</target>
+      </trans-unit>
+      <trans-unit id="RSmrVjh" resname="title.sheet-history">
+        <source>title.sheet-history</source>
+        <target>Historique des fiches</target>
+      </trans-unit>
+      <trans-unit id="bUOAima" resname="sheet.history.age-month">
+        <source>sheet.history.age-month</source>
+        <target>mois</target>
+      </trans-unit>
+      <trans-unit id="v2RjERl" resname="sheet.history.age-year">
+        <source>sheet.history.age-year</source>
+        <target>an(s)</target>
+      </trans-unit>
+      <trans-unit id="hQgO8Mi" resname="title.child-list">
+        <source>title.child-list</source>
+        <target>Liste des enfants</target>
+      </trans-unit>
+      <trans-unit id="R.6_5qE" resname="child.list.list-children">
+        <source>child.list.list-children</source>
+        <target>Liste d'enfants</target>
+      </trans-unit>
+      <trans-unit id="eI9LZ5D" resname="title.child-profile">
+        <source>title.child-profile</source>
+        <target>Profil de l'enfant</target>
+      </trans-unit>
+      <trans-unit id="gKna6Vr" resname="child.profile.firstname">
+        <source>child.profile.firstname</source>
+        <target>Prénom</target>
+      </trans-unit>
+      <trans-unit id="ctR.rYX" resname="child.profile.lastname">
+        <source>child.profile.lastname</source>
+        <target>Nom</target>
+      </trans-unit>
+      <trans-unit id="sBzkg4y" resname="child.profile.birthdate">
+        <source>child.profile.birthdate</source>
+        <target>Date de naissance</target>
+      </trans-unit>
+      <trans-unit id="0hRmDLi" resname="child.profile.girl">
+        <source>child.profile.girl</source>
+        <target>Fille</target>
+      </trans-unit>
+      <trans-unit id="Gwxn4MB" resname="child.profile.boy">
+        <source>child.profile.boy</source>
+        <target>Garçon</target>
+      </trans-unit>
+      <trans-unit id="MRKl1p3" resname="child.profile.guardian-name">
+        <source>child.profile.guardian-name</source>
+        <target>Nom du tuteur</target>
+      </trans-unit>
+      <trans-unit id="Pi3h2Nq" resname="child.profile.guardian-phone">
+        <source>child.profile.guardian-phone</source>
+        <target>Téléphone du tuteur</target>
+      </trans-unit>
+      <trans-unit id="B4GWgqH" resname="child.profile.guardian-email">
+        <source>child.profile.guardian-email</source>
+        <target>Email du tuteur</target>
+      </trans-unit>
+      <trans-unit id="uxkIDgG" resname="child.profile.comment">
+        <source>child.profile.comment</source>
+        <target>Informations complémentaires</target>
+      </trans-unit>
+      <trans-unit id="6mwAWBr" resname="child.profile.comment-placeholder">
+        <source>child.profile.comment-placeholder</source>
+        <target>Votre commentaire</target>
+      </trans-unit>
+      <trans-unit id="P4L7eOq" resname="child.profile.show-history">
+        <source>child.profile.show-history</source>
+        <target>Afficher l'historique</target>
+      </trans-unit>
+      <trans-unit id="hZgVdZx" resname="title.user-profile">
+        <source>title.user-profile</source>
+        <target>Profil utilisateur</target>
+      </trans-unit>
+      <trans-unit id="Yqf_I1j" resname="user.profile.firstname">
+        <source>user.profile.firstname</source>
+        <target>Prénom</target>
+      </trans-unit>
+      <trans-unit id="dfVt9lu" resname="user.profile.lastname">
+        <source>user.profile.lastname</source>
+        <target>Nom</target>
+      </trans-unit>
+      <trans-unit id="d.V.T6Z" resname="user.profile.email">
+        <source>user.profile.email</source>
+        <target>Email</target>
+      </trans-unit>
+      <trans-unit id="BSneaeJ" resname="user.profile.followup">
+        <source>user.profile.followup</source>
+        <target>Suivis</target>
+      </trans-unit>
+      <trans-unit id=".lYAthD" resname="user.profile.select-children">
+        <source>user.profile.select-children</source>
+        <target>Selectionnez les enfants sous votre responsabilité.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

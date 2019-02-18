@@ -21,6 +21,138 @@
         <source>login.password</source>
         <target>Password</target>
       </trans-unit>
+      <trans-unit id="DRMZYH6" resname="title.home">
+        <source>title.home</source>
+        <target>__title.home</target>
+      </trans-unit>
+      <trans-unit id="_bbVkKl" resname="home.welcome">
+        <source>home.welcome</source>
+        <target>__home.welcome</target>
+      </trans-unit>
+      <trans-unit id="29XaMUi" resname="home.introduction">
+        <source>home.introduction</source>
+        <target>__home.introduction</target>
+      </trans-unit>
+      <trans-unit id="Cw_CNHA" resname="home.contact.phone">
+        <source>home.contact.phone</source>
+        <target>__home.contact.phone</target>
+      </trans-unit>
+      <trans-unit id="Mkt7e3B" resname="page.home">
+        <source>page.home</source>
+        <target>__page.home</target>
+      </trans-unit>
+      <trans-unit id="SX.mZ9j" resname="page.child_list">
+        <source>page.child_list</source>
+        <target>__page.child_list</target>
+      </trans-unit>
+      <trans-unit id="dhoidNo" resname="page.profil">
+        <source>page.profil</source>
+        <target>__page.profil</target>
+      </trans-unit>
+      <trans-unit id="slP6BBh" resname="login.logout">
+        <source>login.logout</source>
+        <target>__login.logout</target>
+      </trans-unit>
+      <trans-unit id="80JoLd0" resname="title.login">
+        <source>title.login</source>
+        <target>__title.login</target>
+      </trans-unit>
+      <trans-unit id="zx0NEk4" resname="title.sheet-view">
+        <source>title.sheet-view</source>
+        <target>__title.sheet-view</target>
+      </trans-unit>
+      <trans-unit id="RSmrVjh" resname="title.sheet-history">
+        <source>title.sheet-history</source>
+        <target>__title.sheet-history</target>
+      </trans-unit>
+      <trans-unit id="bUOAima" resname="sheet.history.age-month">
+        <source>sheet.history.age-month</source>
+        <target>__sheet.history.age-month</target>
+      </trans-unit>
+      <trans-unit id="v2RjERl" resname="sheet.history.age-year">
+        <source>sheet.history.age-year</source>
+        <target>__sheet.history.age-year</target>
+      </trans-unit>
+      <trans-unit id="hQgO8Mi" resname="title.child-list">
+        <source>title.child-list</source>
+        <target>__title.child-list</target>
+      </trans-unit>
+      <trans-unit id="R.6_5qE" resname="child.list.list-children">
+        <source>child.list.list-children</source>
+        <target>__child.list.list-children</target>
+      </trans-unit>
+      <trans-unit id="eI9LZ5D" resname="title.child-profile">
+        <source>title.child-profile</source>
+        <target>__title.child-profile</target>
+      </trans-unit>
+      <trans-unit id="gKna6Vr" resname="child.profile.firstname">
+        <source>child.profile.firstname</source>
+        <target>__child.profile.firstname</target>
+      </trans-unit>
+      <trans-unit id="ctR.rYX" resname="child.profile.lastname">
+        <source>child.profile.lastname</source>
+        <target>__child.profile.lastname</target>
+      </trans-unit>
+      <trans-unit id="sBzkg4y" resname="child.profile.birthdate">
+        <source>child.profile.birthdate</source>
+        <target>__child.profile.birthdate</target>
+      </trans-unit>
+      <trans-unit id="0hRmDLi" resname="child.profile.girl">
+        <source>child.profile.girl</source>
+        <target>__child.profile.girl</target>
+      </trans-unit>
+      <trans-unit id="Gwxn4MB" resname="child.profile.boy">
+        <source>child.profile.boy</source>
+        <target>__child.profile.boy</target>
+      </trans-unit>
+      <trans-unit id="MRKl1p3" resname="child.profile.guardian-name">
+        <source>child.profile.guardian-name</source>
+        <target>__child.profile.guardian-name</target>
+      </trans-unit>
+      <trans-unit id="Pi3h2Nq" resname="child.profile.guardian-phone">
+        <source>child.profile.guardian-phone</source>
+        <target>__child.profile.guardian-phone</target>
+      </trans-unit>
+      <trans-unit id="B4GWgqH" resname="child.profile.guardian-email">
+        <source>child.profile.guardian-email</source>
+        <target>__child.profile.guardian-email</target>
+      </trans-unit>
+      <trans-unit id="uxkIDgG" resname="child.profile.comment">
+        <source>child.profile.comment</source>
+        <target>__child.profile.comment</target>
+      </trans-unit>
+      <trans-unit id="6mwAWBr" resname="child.profile.comment-placeholder">
+        <source>child.profile.comment-placeholder</source>
+        <target>__child.profile.comment-placeholder</target>
+      </trans-unit>
+      <trans-unit id="P4L7eOq" resname="child.profile.show-history">
+        <source>child.profile.show-history</source>
+        <target>__child.profile.show-history</target>
+      </trans-unit>
+      <trans-unit id="hZgVdZx" resname="title.user-profile">
+        <source>title.user-profile</source>
+        <target>__title.user-profile</target>
+      </trans-unit>
+      <trans-unit id="Yqf_I1j" resname="user.profile.firstname">
+        <source>user.profile.firstname</source>
+        <target>__user.profile.firstname</target>
+      </trans-unit>
+      <trans-unit id="dfVt9lu" resname="user.profile.lastname">
+        <source>user.profile.lastname</source>
+        <target>__user.profile.lastname</target>
+      </trans-unit>
+      <trans-unit id="d.V.T6Z" resname="user.profile.email">
+        <source>user.profile.email</source>
+        <target>__user.profile.email</target>
+      </trans-unit>
+      <trans-unit id="BSneaeJ" resname="user.profile.followup">
+        <source>user.profile.followup</source>
+        <target>__user.profile.followup</target>
+      </trans-unit>
+      <trans-unit id=".lYAthD" resname="user.profile.select-children">
+        <source>user.profile.select-children</source>
+        <target>__user.profile.select-children</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

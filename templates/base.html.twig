@@ -15,7 +15,7 @@
         {% block header %}
             <div class="page-header">
                 <div class="page-wrapper">
-                    <a href="{{ path('user_profile', {'user': 'user'}) }}"><button type="button" data-modal="modalProfil" class="btn-icon"><i class="fas fa-user" aria-label="hidden"></i></button></a>
+                    <a href="{{ path('user_profile') }}"><button type="button" data-modal="modalProfil" class="btn-icon"><i class="fas fa-user" aria-label="hidden"></i></button></a>
                     <span>Petit Soleil</span>
                     <button type="button" data-modal="modalNav" class="btn-icon"><i class="fas fa-bars" aria-label="hidden"></i></button>
                 </div>
@@ -27,7 +27,7 @@
                     <ul>
                         <li><a href="{{ path('home') }}">{% trans %}page.home{% endtrans %}</a></li>
                         <li><a href="{{ path('child_list') }}">{% trans %}page.child_list{% endtrans %}</a></li>
-                        <li><a href="{{ path('user_profile') }}">{% trans %}page.profil{% endtrans %}</a></li>
+                        <li><a href="{{ path('user_profile') }}">{% trans %}page.profile{% endtrans %}</a></li>
                     </ul>
                 </nav>
                 <a href="{{ path('app_logout') }}" class="link-nav-primary">{% trans %}login.logout{% endtrans %}</a>
