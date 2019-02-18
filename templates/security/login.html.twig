@@ -1,39 +1,78 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}{% trans %}title.login{% endtrans %}{% endblock %}
-
-{% block main %}
-<main>
-    <section>
+{% block header %}
+    <div class="page-header-login">
         <div class="page-wrapper">
-            <form method="post">
+            <h1>Camie</h1>
+        </div>
+    </div>
+{% endblock %}
+{% block main %}
+
+<main>
+    <section class="pb-5">
+        <div class="page-wrapper">
+            <div class="box-user">
+                <div class="box-user__login"><img src="{{ asset('images/dog.svg') }}" alt="" /></div>
                 {% if error %}
-                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                    <div style="text-align: center;color: red">/!\ {{ error.messageKey|trans(error.messageData, 'security') }} /!\</div>
                 {% endif %}
 
-                <h1 class="h3 mb-3 font-weight-normal">{% trans %}login.sign_in{% endtrans %}</h1>
-                <label for="inputEmail" class="sr-only">{% trans %}login.login{% endtrans %}</label>
-                <input type="text" value="{{ last_email }}" name="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
-                <label for="inputPassword" class="sr-only">{% trans %}login.password{% endtrans %}</label>
-                <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                <div class="box-user__content">
+                    <form class="grid-flex" method="post">
+                        <div class="column w-100">
+                            <div class="input-animation">
+                                <label for="email">{% trans %}login.username{% endtrans %}</label>
+                                <input type="text" id="email" name="email" autocomplete="username" placeholder="user@gmail.com">
+                            </div>
+                        </div>
 
-                <input type="hidden" name="_csrf_token"
-                       value="{{ csrf_token('authenticate') }}"
-                >
+                        <div class="column w-100">
+                            <div class="input-animation active">
+                                <label for="password">{% trans %}login.password{% endtrans %}</label>
+                                <input type="password" id="password" autocomplete="current-password" name="password" placeholder="{% trans %}login.pasword-placeholder{% endtrans %}">
+                            </div>
+                        </div>
 
-                <div class="checkbox mb-3">
-                    <label for="_remember_me"> {% trans %}login.remember_me{% endtrans %}</label>
-                    <div class="custom-input-checkbox">
-                        <input type="checkbox" id="_remember_me" name="_remember_me" />
-                        <div class="custom-check"></div>
-                    </div>
+                        <div class="column w-100">
+                            <div class="custom-input-checkbox-2">
+                                <input type="checkbox" name="_remember_me" id="_remember_me" />
+                                <label for="_remember_me">{% trans %}login.remember_me{% endtrans %}</label>
+                            </div>
+                        </div>
+
+                        <input type="hidden" name="_csrf_token"
+                               value="{{ csrf_token('authenticate') }}"
+                        >
+
+                        <button id="submitBtn" type="submit" name="button" disabled class="btn disabled">Se connecter</button>
+                    </form>
                 </div>
-
-                <button type="submit" class="btn btn-action">
-                    <i style="color: #505dff" class="fas fa-user-circle" aria-label="hidden">{% trans %}login.sign_in{% endtrans %}</i>
-                </button>
-            </form>
+            </div>
         </div>
+
     </section>
 </main>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script>
+        $('input').on('input', function() {
+            if ($('#user').val() !== '' && $('#password').val() !== '') {
+                $('.box-user').removeClass('box-user--activated').addClass('box-user--activated');
+                $('#submitBtn').prop('disabled', false);
+                $('#submitBtn').removeClass('disabled')
+            } else {
+                $('.box-user').removeClass('box-user--activated');
+
+                $('#submitBtn').prop('disabled', true);
+                $('#submitBtn').removeClass('disabled').addClass('disabled')
+            }
+        });
+    </script>
+
 {% endblock %}

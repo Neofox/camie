@@ -54,7 +54,7 @@
 {% block javascripts %}
     {{ parent() }}
     <script>
-        $('input').on('click', function() {
+        $('input[type=checkbox]').on('click', function() {
            $.ajax({
                url: '{{ path('user_profile_ajax') }}',
                type: 'POST',
