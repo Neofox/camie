@@ -18,24 +18,19 @@ class SheetFixtures extends Fixture
         $faker = Factory::create('fr_FR');
         $childs = $manager->getRepository(Child::class)->findAll();
 
-        $dailySheet = new SheetType();
-        $dailySheet->setName('Daily');
-
-        $manager->persist($dailySheet);
-
         $date = new \DateTime();
         for($i = 0;$i<self::NB_SHEETS;$i++) {
             $sheetDate = clone $date;
             $sheetDate->sub(new \DateInterval("P{$i}D"));
             $sheet = new Sheet();
-            $sheet->setType($dailySheet)
+            $sheet->setType(Sheet::TYPE_DAILY)
                 ->setDate($sheetDate)
                 ->setData(
                     [
                         'arrival_time' => '09:10',
                         'departure_time' => '16:30',
                         'activity' => 'Sleeping',
-                        'communication_given' => '/',
+                        'communication' => '/',
                         'nurse_comment' => 'No comment.',
                     ]
                 )

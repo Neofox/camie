@@ -10,7 +10,7 @@ return new class extends DefaultDeployer
             // SSH connection string to connect to the remote server (format: user@host-or-IP:port-number)
             ->server('camie@hostname')
             ->deployDir('/var/www/vhosts/camie')
-            ->repositoryUrl('https://github.com/Neofox/camie')
+            ->repositoryUrl('git@github.com:Neofox/camie.git')
             ->repositoryBranch('master')
         ;
     }
@@ -25,7 +25,6 @@ return new class extends DefaultDeployer
     public function beforeFinishingDeploy()
     {
         // $this->runRemote('{{ console_bin }} app:my-task-name');
-        $this->runRemote('composer install');
-        $this->runLocal('say "The deployment has finished."');
+        // $this->runLocal('say "The deployment has finished."');
     }
 };

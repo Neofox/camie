@@ -5,12 +5,15 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use phpDocumentor\Reflection\Types\Integer;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\SheetRepository")
  */
 class Sheet
 {
+    public const TYPE_DAILY = 1;
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -29,8 +32,7 @@ class Sheet
     private $child;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\SheetType", inversedBy="sheets")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\Column(type="integer", nullable=false)
      */
     private $type;
 
@@ -88,12 +90,12 @@ class Sheet
         return $this;
     }
 
-    public function getType(): ?SheetType
+    public function getType(): ?int
     {
         return $this->type;
     }
 
-    public function setType(?SheetType $type): self
+    public function setType(?int $type): self
     {
         $this->type = $type;
 

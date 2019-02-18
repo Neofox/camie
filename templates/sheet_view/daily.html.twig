@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans %}title.sheet-view{% endtrans %}{% endblock %}
+
+{% block main %}
+<main>
+    <section class="pb-5">
+        <div class="page-wrapper">
+            <div class="box-user {% if child.sexe == 'F' %}box-user--girl{% endif %}">
+                <div class="box-letters">{{ child.firstname|first|upper}}{{child.lastname|first|upper }}</div>
+
+                <div class="box-user__content">
+                    <form id="dailySheetForm">
+                        <div class="input-animation">
+                            <label for="arrival_time">{% trans %}sheet.daily.arrival-time{% endtrans %}</label>
+                            <input type="text" id="arrival_time" name="arrival_time" placeholder="hh:mm" />
+                            <link href="{{ asset('images/icon-clock-green.svg') }}" rel="stylesheet" />
+                        </div>
+                        <div class="input-animation">
+                            <label for="departure_time">{% trans %}sheet.daily.departure-time{% endtrans %}</label>
+                            <input type="text" id="departure_time" name="departure_time" placeholder="hh:mm" />
+                            <link href="{{ asset('images/icon-clock-red.svg') }}" rel="stylesheet" />
+                        </div>
+                        <div class="input-animation">
+                            <label for="activities">{% trans %}sheet.daily.activities{% endtrans %}</label>
+                            <input type="text" id="activities" name="activities" placeholder="{% trans %}sheet.daily.activities-placeholder{% endtrans %}"/>
+                        </div>
+                        <div class="input-animation">
+                            <label for="communication">{% trans %}sheet.daily.communication-received{% endtrans %}</label>
+                            <input type="text" id="communication" name="communication" placeholder="{% trans %}sheet.daily.communication-received{% endtrans %}"/>
+                        </div>
+                        <div class="input-animation">
+                            <label for="nurse_comment">{% trans %}sheet.daily.nurse-comment{% endtrans %}</label>
+                            <textarea id="nurse_comment" name="nurse_comment" placeholder="{% trans %}sheet.daily.nurse-comment-placeholder{% endtrans %}"></textarea>
+                        </div>
+                    </form>
+
+                    <a href="#"class="btn bg-blue fa-utensils left d-block mb-2">{% trans %}sheet.daily.add-meal{% endtrans %}</a>
+                    <a href="#"class="btn bg-blue fa-bed left d-block mb-2">{% trans %}sheet.daily.add-sleep{% endtrans %}</a>
+                    <a href="#"class="btn bg-blue fa-toilet-paper left d-block">{% trans %}sheet.daily.add-stools{% endtrans %}</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script>
+        $("#dailySheetForm").submit(function(e) {
+            $.ajax({
+                type: "POST",
+                url: '{{ path('sheet_view_ajax', {'id': app.request.get('id')}) }}',
+                data: $(this).serialize(),
+                success: function(data) {
+                    console.log(data);
+                }
+            });
+            e.preventDefault();
+        });
+
+        $('input').on('change', function() {
+            setTimeout( function(){
+                $("#dailySheetForm").submit();
+            } , 5000 );
+        });
+
+        window.onbeforeunload = function () {
+            $("#dailySheetForm").submit();
+        }
+    </script>
+
+{% endblock %}
