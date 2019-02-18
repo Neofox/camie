@@ -45,7 +45,7 @@
       </trans-unit>
       <trans-unit id="Mkt7e3B" resname="page.home">
         <source>page.home</source>
-        <target>Acceuil</target>
+        <target>Accueil</target>
       </trans-unit>
       <trans-unit id="SX.mZ9j" resname="page.child_list">
         <source>page.child_list</source>

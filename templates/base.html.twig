@@ -30,7 +30,12 @@
                         <li><a href="{{ path('user_profile') }}">{% trans %}page.profile{% endtrans %}</a></li>
                     </ul>
                 </nav>
-                <a href="{{ path('app_logout') }}" class="link-nav-primary">{% trans %}login.logout{% endtrans %}</a>
+                <a href="{% if app.user %}
+                            {{ path('app_logout') }}" class="link-nav-primary">{% trans %}login.logout{% endtrans %}
+                        {% else %}
+                            {{ path('app_login') }}" class="link-nav-primary">{% trans %}login.login{% endtrans %}
+                        {% endif %}
+                </a>
             </section>
         {% endblock %}
         {% block main %}{% endblock %}
