@@ -1,31 +1,39 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}{% trans %}title.login{% endtrans %}{% endblock %}
 
 {% block main %}
-<form method="post">
-    {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
+<main>
+    <section>
+        <div class="page-wrapper">
+            <form method="post">
+                {% if error %}
+                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
 
-    <h1 class="h3 mb-3 font-weight-normal">{% trans %}login.sign_in{% endtrans %}</h1>
-    <label for="inputEmail" class="sr-only">{% trans %}login.login{% endtrans %}</label>
-    <input type="text" value="{{ last_email }}" name="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
-    <label for="inputPassword" class="sr-only">{% trans %}login.password{% endtrans %}</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                <h1 class="h3 mb-3 font-weight-normal">{% trans %}login.sign_in{% endtrans %}</h1>
+                <label for="inputEmail" class="sr-only">{% trans %}login.login{% endtrans %}</label>
+                <input type="text" value="{{ last_email }}" name="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
+                <label for="inputPassword" class="sr-only">{% trans %}login.password{% endtrans %}</label>
+                <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
 
-    <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}"
-    >
+                <input type="hidden" name="_csrf_token"
+                       value="{{ csrf_token('authenticate') }}"
+                >
 
-    <div class="checkbox mb-3">
-        <label>
-            <input type="checkbox" name="_remember_me"> {% trans %}login.remember_me{% endtrans %}
-        </label>
-    </div>
+                <div class="checkbox mb-3">
+                    <label for="_remember_me"> {% trans %}login.remember_me{% endtrans %}</label>
+                    <div class="custom-input-checkbox">
+                        <input type="checkbox" id="_remember_me" name="_remember_me" />
+                        <div class="custom-check"></div>
+                    </div>
+                </div>
 
-    <button class="btn btn-lg btn-primary" type="submit">
-        {% trans %}login.sign_in{% endtrans %}
-    </button>
-</form>
+                <button type="submit" class="btn btn-action">
+                    <i style="color: #505dff" class="fas fa-user-circle" aria-label="hidden">{% trans %}login.sign_in{% endtrans %}</i>
+                </button>
+            </form>
+        </div>
+    </section>
+</main>
 {% endblock %}
