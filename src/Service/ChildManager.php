@@ -5,6 +5,7 @@ namespace App\Service;
 
 use App\Entity\Child;
 use App\Entity\Nursery;
+use App\Entity\Sheet;
 use App\Repository\ChildRepository;
 use App\Repository\NurseryRepository;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -56,5 +57,10 @@ class ChildManager
         }
 
         return $child;
+    }
+
+    public function addSheet(Child $child, Sheet $sheet): Child
+    {
+        return $this->childRepository->addSheet($child, $sheet);
     }
 }

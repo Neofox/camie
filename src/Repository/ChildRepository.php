@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Child;
+use App\Entity\Sheet;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
@@ -17,6 +18,21 @@ class ChildRepository extends ServiceEntityRepository
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, Child::class);
+    }
+
+    /**
+     * @param Child $child
+     * @param Sheet $sheet
+     *
+     * @return Child
+     */
+    public function addSheet(Child $child, Sheet $sheet): Child
+    {
+        $child->addSheet($sheet);
+        $this->getEntityManager()->persist($child);
+        $this->getEntityManager()->flush();
+
+        return $child;
     }
 
     // /**

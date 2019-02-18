@@ -13,26 +13,28 @@
                     <form id="dailySheetForm">
                         <div class="input-animation">
                             <label for="arrival_time">{% trans %}sheet.daily.arrival-time{% endtrans %}</label>
-                            <input type="text" id="arrival_time" name="arrival_time" placeholder="hh:mm" />
+                            <input type="text" id="arrival_time" name="arrival_time" value="{{ sheet.data.arrival_time }}" placeholder="hh:mm" />
                             <link href="{{ asset('images/icon-clock-green.svg') }}" rel="stylesheet" />
                         </div>
                         <div class="input-animation">
                             <label for="departure_time">{% trans %}sheet.daily.departure-time{% endtrans %}</label>
-                            <input type="text" id="departure_time" name="departure_time" placeholder="hh:mm" />
+                            <input type="text" id="departure_time" name="departure_time" value="{{ sheet.data.departure_time }}" placeholder="hh:mm" />
                             <link href="{{ asset('images/icon-clock-red.svg') }}" rel="stylesheet" />
                         </div>
                         <div class="input-animation">
                             <label for="activities">{% trans %}sheet.daily.activities{% endtrans %}</label>
-                            <input type="text" id="activities" name="activities" placeholder="{% trans %}sheet.daily.activities-placeholder{% endtrans %}"/>
+                            <input type="text" id="activities" name="activities" value="{{ sheet.data.activities }}" placeholder="{% trans %}sheet.daily.activities-placeholder{% endtrans %}"/>
                         </div>
                         <div class="input-animation">
                             <label for="communication">{% trans %}sheet.daily.communication-received{% endtrans %}</label>
-                            <input type="text" id="communication" name="communication" placeholder="{% trans %}sheet.daily.communication-received{% endtrans %}"/>
+                            <input type="text" id="communication" name="communication" value="{{ sheet.data.communication }}" placeholder="{% trans %}sheet.daily.communication-received{% endtrans %}"/>
                         </div>
                         <div class="input-animation">
                             <label for="nurse_comment">{% trans %}sheet.daily.nurse-comment{% endtrans %}</label>
-                            <textarea id="nurse_comment" name="nurse_comment" placeholder="{% trans %}sheet.daily.nurse-comment-placeholder{% endtrans %}"></textarea>
+                            <textarea id="nurse_comment" name="nurse_comment" value="{{ sheet.data.nurse_comment }}" placeholder="{% trans %}sheet.daily.nurse-comment-placeholder{% endtrans %}"></textarea>
                         </div>
+
+                        <input type="hidden" name="sheet_type" value=1> {#TODO: find an other way#}
                     </form>
 
                     <a href="#"class="btn bg-blue fa-utensils left d-block mb-2">{% trans %}sheet.daily.add-meal{% endtrans %}</a>
@@ -64,7 +66,7 @@
         $('input').on('change', function() {
             setTimeout( function(){
                 $("#dailySheetForm").submit();
-            } , 5000 );
+            } , 1000 );
         });
 
         window.onbeforeunload = function () {

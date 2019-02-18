@@ -37,12 +37,14 @@ class Sheet
     private $type;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="date", nullable=false)
      */
     private $date;
 
-    public function __construct()
+    public function __construct(int $type)
     {
+        $this->setType($type);
+
         $this->child = new ArrayCollection();
         $this->date = new \DateTime();
     }
@@ -95,8 +97,16 @@ class Sheet
         return $this->type;
     }
 
+    public static function getAllTypes(): array
+    {
+        return (new \ReflectionClass(__CLASS__))->getConstants();
+    }
+
     public function setType(?int $type): self
     {
+        if (!in_array($type, $this->getAllTypes())) {
+            throw new \LogicException(sprintf('Type "%s is not a valid Sheet Type.', $type));
+        }
         $this->type = $type;
 
         return $this;

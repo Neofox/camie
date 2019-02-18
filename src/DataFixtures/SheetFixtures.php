@@ -22,14 +22,14 @@ class SheetFixtures extends Fixture
         for($i = 0;$i<self::NB_SHEETS;$i++) {
             $sheetDate = clone $date;
             $sheetDate->sub(new \DateInterval("P{$i}D"));
-            $sheet = new Sheet();
-            $sheet->setType(Sheet::TYPE_DAILY)
+            $sheet = new Sheet(Sheet::TYPE_DAILY);
+            $sheet
                 ->setDate($sheetDate)
                 ->setData(
                     [
                         'arrival_time' => '09:10',
                         'departure_time' => '16:30',
-                        'activity' => 'Sleeping',
+                        'activities' => 'Sleeping',
                         'communication' => '/',
                         'nurse_comment' => 'No comment.',
                     ]
