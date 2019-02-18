@@ -5,10 +5,6 @@
       <tool tool-id="symfony" tool-name="Symfony"/>
     </header>
     <body>
-      <trans-unit id="U4Qj3wm" resname="login.sign_in">
-        <source>login.sign_in</source>
-        <target>Sign in</target>
-      </trans-unit>
       <trans-unit id="FgrJl93" resname="login.login">
         <source>login.login</source>
         <target>Login</target>
@@ -20,6 +16,14 @@
       <trans-unit id="guXTUCg" resname="login.password">
         <source>login.password</source>
         <target>Password</target>
+      </trans-unit>
+      <trans-unit id="wsaupPh" resname="login.username">
+        <source>login.username</source>
+        <target>Username</target>
+      </trans-unit>
+      <trans-unit id="3s2y2gc" resname="login.password-placeholder">
+        <source>login.pasword-placeholder</source>
+        <target>Your password</target>
       </trans-unit>
       <trans-unit id="DRMZYH6" resname="title.home">
         <source>title.home</source>
@@ -39,7 +43,7 @@
         <source>home.contact.phone</source>
         <target>Phone number</target>
       </trans-unit>
-      <trans-unit id="CwaNH11" resname="home.contact.email">
+      <trans-unit id="l.h0a2f" resname="home.contact.email">
         <source>home.contact.email</source>
         <target>Email</target>
       </trans-unit>
@@ -51,7 +55,7 @@
         <source>page.child_list</source>
         <target>Children list</target>
       </trans-unit>
-      <trans-unit id="dhoidNo" resname="page.profile">
+      <trans-unit id="W9yniTz" resname="page.profile">
         <source>page.profile</source>
         <target>User profile</target>
       </trans-unit>
