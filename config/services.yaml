@@ -6,6 +6,7 @@
 parameters:
     locale: 'fr'
     locale_fallback: 'en'
+    app.locales: en|fr
 
 services:
     # default configuration for services in *this* file
