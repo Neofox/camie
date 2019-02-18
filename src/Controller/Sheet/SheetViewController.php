@@ -45,7 +45,8 @@ class SheetViewController extends AbstractController
      */
     public function ajax(Request $request, string $id, SheetManager $sheetManager, ChildManager $childManager)
     {
-        $sheetType = $request->request->get('sheet_type');
+        $sheetType = (int)$request->request->get('sheet_type');
+
         $data = $request->request->all();
         unset($data['sheet_type']);
 

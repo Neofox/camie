@@ -19,7 +19,7 @@
                 <div class="box-history">
                     <div class="box-history__left">
                         <p>{{ sheet.date|date('d-m-Y') }}</p>
-                        <small>{{ ('sheet.history.sheet-name-' ~ sheet.type.name|lower )|trans() }}</small>
+                        <small>{{ ('sheet.history.sheet-name-' ~ sheet.type|sheetTypeToString|lower )|trans() }}</small>
                     </div>
                     <div class="box-history__right">
                         <button type="button" class="btn-icon"><i class="fas fa-download"></i></button>

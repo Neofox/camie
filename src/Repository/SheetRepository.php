@@ -63,6 +63,7 @@ class SheetRepository extends ServiceEntityRepository
 
     public function createSheet(Sheet $sheet)
     {
+        dump($sheet);
         $this->getEntityManager()->persist($sheet);
         $this->getEntityManager()->flush();
     }
