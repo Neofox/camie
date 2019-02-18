@@ -39,6 +39,10 @@
         <source>home.contact.phone</source>
         <target>Téléphone</target>
       </trans-unit>
+      <trans-unit id="CwaNH11" resname="home.contact.email">
+        <source>home.contact.email</source>
+        <target>Email</target>
+      </trans-unit>
       <trans-unit id="Mkt7e3B" resname="page.home">
         <source>page.home</source>
         <target>Acceuil</target>
