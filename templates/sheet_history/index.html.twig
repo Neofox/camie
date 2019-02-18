@@ -8,33 +8,25 @@
             <div class="page-wrapper">
                 <div class="title-special">
                     <p>
-                        Juliette<br>
-                        Kindermans
+                        {{child.firstname}}<br>
+                        {{child.lastname}}
                     </p>
-                    <p>24 mois</p>
+                    <p>{% if child.birthdate|ageYear < 1 %} {{ child.birthdate|ageMonth }} {% trans %}sheet.history.age-month{% endtrans %}
+                    {% else %}{{ child.birthdate|ageYear }} {% trans %}sheet.history.age-year{% endtrans %} {% endif %}</p>
                 </div>
 
+                {% for sheet in child.sheets %}
                 <div class="box-history">
                     <div class="box-history__left">
-                        <p>28.01.2019</p>
-                        <small>Formulaire Journalier</small>
+                        <p>{{ sheet.date|date('d-m-Y') }}</p>
+                        <small>{{ ('sheet.history.sheet-name-' ~ sheet.type.name|lower )|trans() }}</small>
                     </div>
                     <div class="box-history__right">
                         <button type="button" class="btn-icon"><i class="fas fa-download"></i></button>
                         <button type="button" class="btn-icon"><i class="fas fa-paper-plane"></i></button>
                     </div>
                 </div>
-
-                <div class="box-history">
-                    <div class="box-history__left">
-                        <p>21.01.2019</p>
-                        <small>Formulaire Journalier</small>
-                    </div>
-                    <div class="box-history__right">
-                        <button type="button" class="btn-icon"><i class="fas fa-download"></i></button>
-                        <button type="button" class="btn-icon"><i class="fas fa-paper-plane"></i></button>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </section>
     </main>
