@@ -27,6 +27,7 @@ class ChildFixtures extends Fixture
                 ->setSexe($faker->randomElement(['F', 'M']))
                 ->setNursery($nursery)
             ;
+
             $manager->persist($child);
         }
 

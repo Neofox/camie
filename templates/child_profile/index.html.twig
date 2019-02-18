@@ -6,56 +6,60 @@
 <main>
     <section class="pb-5">
         <div class="page-wrapper">
-            <div class="box-user box-user--girl">
-                <div class="box-letters">JK</div>
+            <div class="box-user {% if child.sexe == 'F' %}box-user--girl{% endif %}">
+                <div class="box-letters">{{ child.firstname|first|upper}}{{child.lastname|first|upper }}</div>
 
                 <div class="box-user__content">
                     <form class="mb-3">
                         <div class="input-animation">
-                            <label for="prenom">Prénom</label>
-                            <input type="text" id="prenom" name="prenom" value="Juliette">
+                            <label for="firstname">{% trans %}child.profile.firstname{% endtrans %}</label>
+                            <input type="text" id="firstname" name="firstname" value="{{ child.firstname }}">
                         </div>
                         <div class="input-animation">
-                            <label for="nom">Nom</label>
-                            <input type="text" id="nom" name="nom" value="Kindermans">
+                            <label for="lastname">{% trans %}child.profile.lastname{% endtrans %}</label>
+                            <input type="text" id="lastname" name="lastname" value="{{ child.lastname }}">
                         </div>
                         <div class="input-animation">
-                            <label for="dateNaissance">Date de naissance</label>
-                            <input type="date" id="dateNaissance" name="dateNaissance" value="08/11/2018">
+                            <label for="birthdate">{% trans %}child.profile.birthdate{% endtrans %}</label>
+                            <input type="date" id="birthdate" name="birthdate" value="{{ child.birthdate|date('Y-m-d') }}">
                         </div>
                         <div class="input-group-radio mb-6" id="radioSexe">
                             <div class="input-radio">
-                                <input type="radio" id="fille" name="radio2" class="input-radio--selected"/>
-                                <label for="fille"><i class="fas fa-venus"></i> Fille</label>
+                                <input type="radio" id="fille" name="radio2" {% if child.sexe == 'F' %}class="input-radio--selected"{% else %}disabled{% endif %}/>
+                                <label for="fille"><i class="fas fa-venus"></i> {% trans %}child.profile.girl{% endtrans %}</label>
                             </div>
                             <div class="input-radio">
-                                <input type="radio" id="garcon" name="radio2" disabled/>
-                                <label for="garcon"><i class="fas fa-mars"></i> Garçon</label>
+                                <input type="radio" id="garcon" name="radio2" {% if child.sexe == 'M' %}class="input-radio--selected"{% else %}disabled{% endif %}/>
+                                <label for="garcon"><i class="fas fa-mars"></i> {% trans %}child.profile.boy{% endtrans %}</label>
                             </div>
                         </div>
 
-                        <div class="input-animation">
-                            <label for="tuteur">Prénom du tuteur</label>
-                            <input type="text" id="tuteur" name="tuteur" value="Damoiseaux Manon">
-                        </div>
+                        {% for user in child.users %}
+                            {% if 'ROLE_GUARDIAN' in user.roles %}
+                                <div class="input-animation">
+                                    <label for="guardian{{ user.id }}">{% trans %}child.profile.guardian-name{% endtrans %}</label>
+                                    <input type="text" id="guardian{{ user.id }}" name="user" value="{{ user.firstname|capitalize }} {{ user.lastname|capitalize }}">
+                                </div>
 
-                        <div class="input-animation">
-                            <label for="phone">Téléphone du tuteur</label>
-                            <input type="text" id="phone" name="phone" value="+32 (00) 499 618 944">
-                        </div>
+                                <div class="input-animation">
+                                    <label for="phone{{ user.id }}">{% trans %}child.profile.guardian-phone{% endtrans %}</label>
+                                    <input type="text" id="phone{{ user.id }}" name="phone" value="{{ user.phone }}">
+                                </div>
 
-                        <div class="input-animation">
-                            <label for="email">Email du tuteur</label>
-                            <input type="email" id="email" name="email" value="jnk089@gmail.com">
-                        </div>
+                                <div class="input-animation">
+                                    <label for="email{{ user.id }}">{% trans %}child.profile.guardian-email{% endtrans %}</label>
+                                    <input type="email" id="email{{ user.id }}" name="email" value="{{ user.email }}">
+                                </div>
+                            {% endif %}
+                        {% endfor %}
 
                         <div class="input-animation textarea">
-                            <label for="commentaire">Informations complémentaires</label>
-                            <textarea id="commentaire" name="commentaire" placeholder="Votre commentaire"></textarea>
+                            <label for="comment">{% trans %}child.profile.comment{% endtrans %}</label>
+                            <textarea id="comment" name="comment" placeholder="{% trans %}child.profile.comment-placeholder{% endtrans %}"></textarea>
                         </div>
                     </form>
 
-                    <a href="{{ path('sheets_history', {'id': 'toto'}) }}" class="btn bg-blue fa-history left d-block">Afficher l'historique</a>
+                    <a href="{{ path('sheets_history', {'id': child.id}) }}" class="btn bg-blue fa-history left d-block">{% trans %}child.profile.show-history{% endtrans %}</a>
                 </div>
             </div>
         </div>

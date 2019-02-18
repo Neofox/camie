@@ -2,7 +2,7 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Nurse;
+use App\Entity\Child;
 use App\Entity\Nursery;
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -31,6 +31,7 @@ class UserFixtures extends Fixture
 
         /** @var Nursery $nursery */
         $nursery = $manager->getRepository(Nursery::class)->findOneBy(['name' => 'Fake Nursery']);
+        $childs = $manager->getRepository(Child::class)->findAll();
 
         $user = new User();
         $user->setEmail('nurse@camie.lu');
@@ -46,6 +47,20 @@ class UserFixtures extends Fixture
         $user = new User();
         $user->setEmail('guardian@camie.lu');
         $user->setPassword($this->passwordEncoder->encodePassword($user, 'guardian'));
+        $user->setNursery($nursery);
+        $user->setFirstname($faker->firstName());
+        $user->setLastname($faker->lastName);
+        $user->setPhone($faker->phoneNumber);
+        $user->setRoles(['ROLE_GUARDIAN']);
+
+        $user->addChild($childs[array_rand($childs)]);
+        $user->addChild($childs[array_rand($childs)]);
+
+        $manager->persist($user);
+
+        $user = new User();
+        $user->setEmail('guardian2@camie.lu');
+        $user->setPassword($this->passwordEncoder->encodePassword($user, 'guardian2'));
         $user->setNursery($nursery);
         $user->setFirstname($faker->firstName());
         $user->setLastname($faker->lastName);

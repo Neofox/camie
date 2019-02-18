@@ -2,6 +2,7 @@
 
 namespace App\Controller\Child;
 
+use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -12,8 +13,9 @@ class ChildListController extends AbstractController
      */
     public function index()
     {
-        return $this->render('child_list/index.html.twig', [
-            'controller_name' => 'ChildListController',
-        ]);
+        /** @var User $user */
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+
+        return $this->render('child_list/index.html.twig', ['children' => $user->getChildren()]);
     }
 }
