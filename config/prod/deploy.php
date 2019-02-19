@@ -1,8 +1,8 @@
 <?php
 
-use EasyCorp\Bundle\EasyDeployBundle\Deployer\DefaultDeployer;
+use App\BetterDeployer;
 
-return new class extends DefaultDeployer
+return new class extends BetterDeployer
 {
     public function configure()
     {
@@ -12,6 +12,7 @@ return new class extends DefaultDeployer
             ->deployDir('/var/www/camie')
             ->repositoryUrl('git@github.com:Neofox/camie.git')
             ->repositoryBranch('master')
+            ->composerInstallFlags('--prefer-dist --no-interaction --no-dev')
         ;
     }
 
