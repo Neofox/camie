@@ -8,8 +8,8 @@ return new class extends DefaultDeployer
     {
         return $this->getConfigBuilder()
             // SSH connection string to connect to the remote server (format: user@host-or-IP:port-number)
-            ->server('camie@hostname')
-            ->deployDir('/var/www/vhosts/camie')
+            ->server('ubuntu@51.68.87.113')
+            ->deployDir('/var/www/camie')
             ->repositoryUrl('git@github.com:Neofox/camie.git')
             ->repositoryBranch('master')
         ;
