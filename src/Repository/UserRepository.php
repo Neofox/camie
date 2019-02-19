@@ -69,6 +69,12 @@ class UserRepository extends ServiceEntityRepository
         return $user;
     }
 
+    public function save(User $user)
+    {
+        $this->getEntityManager()->persist($user);
+        $this->getEntityManager()->flush();
+    }
+
     /*
     public function findOneBySomeField($value): ?User
     {

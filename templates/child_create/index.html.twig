@@ -54,6 +54,8 @@
                                 <textarea id="comment" name="comment" placeholder="{% trans %}child.create.comment-placeholder{% endtrans %}"></textarea>
                             </div>
 
+                            <input type="hidden" id="sexe" name="sexe" value="F"/>
+
                             <button type="submit" class="btn bg-blue d-block">{% trans %}child.create.validate{% endtrans %}</button>
                         </form>
                     </div>
@@ -61,4 +63,17 @@
             </div>
         </section>
     </main>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $('#fille').on('click', function () {
+            $('#sexe').val('F');
+        });
+
+        $('#garcon').on('click', function () {
+            $('#sexe').val('M');
+        });
+    </script>
 {% endblock %}

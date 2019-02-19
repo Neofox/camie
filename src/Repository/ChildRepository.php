@@ -35,6 +35,19 @@ class ChildRepository extends ServiceEntityRepository
         return $child;
     }
 
+    /**
+     * @param Child $child
+     *
+     * @return Child
+     */
+    public function save(Child $child): Child
+    {
+        $this->getEntityManager()->persist($child);
+        $this->getEntityManager()->flush();
+
+        return $child;
+    }
+
     // /**
     //  * @return Child[] Returns an array of Child objects
     //  */

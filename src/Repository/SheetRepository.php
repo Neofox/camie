@@ -54,7 +54,7 @@ class SheetRepository extends ServiceEntityRepository
             ->join('s.child', 'c')
             ->where('s.type = :type')
             ->andWhere('c = :child')
-            ->andWhere('s.date = CURRENT_DATE()')
+            ->andWhere('s.createdAt = CURRENT_DATE()')
             ->setParameter(':type', Sheet::TYPE_DAILY)
             ->setParameter(':child', $child);
 

@@ -24,7 +24,7 @@ class SheetFixtures extends Fixture
             $sheetDate->sub(new \DateInterval("P{$i}D"));
             $sheet = new Sheet(Sheet::TYPE_DAILY);
             $sheet
-                ->setDate($sheetDate)
+                ->setCreatedAt($sheetDate)
                 ->setData(
                     [
                         'arrival_time' => '09:10',

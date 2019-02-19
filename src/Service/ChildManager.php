@@ -63,4 +63,45 @@ class ChildManager
     {
         return $this->childRepository->addSheet($child, $sheet);
     }
+
+    /**
+     * @param array   $data
+     * @param Nursery $nursery
+     *
+     * @return Child
+     */
+    public function createChild(array $data, Nursery $nursery): Child
+    {
+        //TODO: validate more the data
+        $data = $this->validateChidData($data);
+
+        $child = new Child();
+        $child
+            ->setNursery($nursery)
+            ->setSexe($data['sexe'])
+            ->setFirstname($data['firstname'])
+            ->setLastname($data['lastname'])
+            ->setBirthdate(new \DateTime($data['birthdate']))
+            //setComment($data['comment'])
+        ;
+        $this->childRepository->save($child);
+
+        return $child;
+    }
+
+    /**
+     * @param array $data
+     *
+     * @return array
+     */
+    public function validateChidData(array $data): array
+    {
+        $validatedData = [];
+        $validatedData['firstname'] = $data['firstname'] ?? '';
+        $validatedData['lastname'] = $data['lastname'] ?? '';
+        $validatedData['birthdate'] = $data['birthdate'] ?? '0000-00-00';
+        $validatedData['sexe'] = $data['sexe'] ?? 'F';
+
+        return $validatedData;
+    }
 }

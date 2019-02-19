@@ -21,8 +21,8 @@
         <source>login.username</source>
         <target>Nom d'utilisateur</target>
       </trans-unit>
-      <trans-unit id="3s2y2gc" resname="login.password-placeholder">
-        <source>login.pasword-placeholder</source>
+      <trans-unit id="2NvbsIu" resname="login.password-placeholder">
+        <source>login.password-placeholder</source>
         <target>Votre mot de passe</target>
       </trans-unit>
       <trans-unit id="DRMZYH6" resname="title.home">
@@ -158,6 +158,106 @@
       <trans-unit id=".lYAthD" resname="user.profile.select-children">
         <source>user.profile.select-children</source>
         <target>Selectionnez les enfants sous votre responsabilité.</target>
+      </trans-unit>
+      <trans-unit id="eU.bBb8" resname="home.create-child">
+        <source>home.create-child</source>
+        <target>Créer un enfant</target>
+      </trans-unit>
+      <trans-unit id="cxVPdV0" resname="sheet.daily.arrival-time">
+        <source>sheet.daily.arrival-time</source>
+        <target>Heure d'arrivée</target>
+      </trans-unit>
+      <trans-unit id="AT0oHiM" resname="sheet.daily.departure-time">
+        <source>sheet.daily.departure-time</source>
+        <target>Heure de départ</target>
+      </trans-unit>
+      <trans-unit id="RazXZX8" resname="sheet.daily.activities">
+        <source>sheet.daily.activities</source>
+        <target>Activitées réalisées</target>
+      </trans-unit>
+      <trans-unit id="mwq5uU_" resname="sheet.daily.activities-placeholder">
+        <source>sheet.daily.activities-placeholder</source>
+        <target>Activités du jour</target>
+      </trans-unit>
+      <trans-unit id="dmOSYFj" resname="sheet.daily.communication-received">
+        <source>sheet.daily.communication-received</source>
+        <target>Communication reçue</target>
+      </trans-unit>
+      <trans-unit id="1dBbFKY" resname="sheet.daily.nurse-comment">
+        <source>sheet.daily.nurse-comment</source>
+        <target>Commentaire purécultrice</target>
+      </trans-unit>
+      <trans-unit id="xBDU4HF" resname="sheet.daily.nurse-comment-placeholder">
+        <source>sheet.daily.nurse-comment-placeholder</source>
+        <target>Commentaire supplémentaire</target>
+      </trans-unit>
+      <trans-unit id="K8UXGgY" resname="sheet.daily.add-meal">
+        <source>sheet.daily.add-meal</source>
+        <target>Ajouter un repas</target>
+      </trans-unit>
+      <trans-unit id="jofKhqJ" resname="sheet.daily.add-sleep">
+        <source>sheet.daily.add-sleep</source>
+        <target>Ajouter une sieste</target>
+      </trans-unit>
+      <trans-unit id="zMDa18O" resname="sheet.daily.add-stools">
+        <source>sheet.daily.add-stools</source>
+        <target>Ajouter une selle</target>
+      </trans-unit>
+      <trans-unit id="KyRtJAB" resname="title.child-create">
+        <source>title.child-create</source>
+        <target>Création d'enfant</target>
+      </trans-unit>
+      <trans-unit id="tfhcqKA" resname="child.create.firstname">
+        <source>child.create.firstname</source>
+        <target>Prénom</target>
+      </trans-unit>
+      <trans-unit id="nlKa69f" resname="child.create.firstname-placeholder">
+        <source>child.create.firstname-placeholder</source>
+        <target>Prénom de l'enfant</target>
+      </trans-unit>
+      <trans-unit id="cX6DaWe" resname="child.create.lastname">
+        <source>child.create.lastname</source>
+        <target>Nom</target>
+      </trans-unit>
+      <trans-unit id="KF.5yK9" resname="child.create.lastname-placeholder">
+        <source>child.create.lastname-placeholder</source>
+        <target>Nom de l'enfant</target>
+      </trans-unit>
+      <trans-unit id="p.S_rTr" resname="child.create.birthdate">
+        <source>child.create.birthdate</source>
+        <target>Date de naissance</target>
+      </trans-unit>
+      <trans-unit id="Jw0bkZh" resname="child.create.girl">
+        <source>child.create.girl</source>
+        <target>Fille</target>
+      </trans-unit>
+      <trans-unit id="5NiPZif" resname="child.create.boy">
+        <source>child.create.boy</source>
+        <target>Garçon</target>
+      </trans-unit>
+      <trans-unit id="Z9sc90X" resname="child.create.guardian-name">
+        <source>child.create.guardian-name</source>
+        <target>Nom du tuteur</target>
+      </trans-unit>
+      <trans-unit id="fIyulZ8" resname="child.create.guardian-phone">
+        <source>child.create.guardian-phone</source>
+        <target>Téléphone du tuteur</target>
+      </trans-unit>
+      <trans-unit id="EWyXL2Q" resname="child.create.guardian-email">
+        <source>child.create.guardian-email</source>
+        <target>Email du tuteur</target>
+      </trans-unit>
+      <trans-unit id="e_tVbqt" resname="child.create.comment">
+        <source>child.create.comment</source>
+        <target>Commentaire supplémantaire</target>
+      </trans-unit>
+      <trans-unit id="PdD0emh" resname="child.create.comment-placeholder">
+        <source>child.create.comment-placeholder</source>
+        <target>Prends des médicaments...</target>
+      </trans-unit>
+      <trans-unit id="xOFqaMB" resname="child.create.validate">
+        <source>child.create.validate</source>
+        <target>Créer l'enfant</target>
       </trans-unit>
     </body>
   </file>

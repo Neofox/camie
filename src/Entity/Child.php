@@ -34,7 +34,7 @@ class Child
     private $sexe;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="date")
      */
     private $birthdate;
 

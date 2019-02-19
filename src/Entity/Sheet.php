@@ -39,14 +39,14 @@ class Sheet
     /**
      * @ORM\Column(type="date", nullable=false)
      */
-    private $date;
+    private $createdAt;
 
     public function __construct(int $type)
     {
         $this->setType($type);
 
         $this->child = new ArrayCollection();
-        $this->date = new \DateTime();
+        $this->createdAt = new \DateTime();
     }
 
     public function getId(): ?int
@@ -112,14 +112,15 @@ class Sheet
         return $this;
     }
 
-    public function getDate(): ?\DateTimeInterface
+    public function getCreatedAt(): ?\DateTimeInterface
     {
-        return $this->date;
+        return $this->createdAt;
     }
 
-    public function setDate(\DateTimeInterface $date): self
+    //TODO: change that (with updated at?)
+    public function setCreatedAt(\DateTimeInterface $date): self
     {
-        $this->date = $date;
+        $this->createdAt = $date;
 
         return $this;
     }
