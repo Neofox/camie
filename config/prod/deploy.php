@@ -25,10 +25,9 @@ return new class extends BetterDeployer
     // run some local or remote commands after the deployment is finished
     public function beforeFinishingDeploy()
     {
-        $this->runRemote('ln -s {{ deploy_dir }}/current {{ deploy_dir }}/storage');
+        $this->runRemote('ln -s {{ deploy_dir }}/storage/.env.local {{ deploy_dir }}/current/.env.local');
         $this->runRemote('{{ console_bin }} doctrine:migrations:migrate');
         $this->runRemote('{{ console_bin }} doctrine:fixture:load');
-        // $this->runRemote('{{ console_bin }} app:my-task-name');
         // $this->runLocal('say "The deployment has finished."');
     }
 };
