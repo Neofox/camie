@@ -131,10 +131,6 @@
         <source>child.profile.comment</source>
         <target>Informations complémentaires</target>
       </trans-unit>
-      <trans-unit id="6mwAWBr" resname="child.profile.comment-placeholder">
-        <source>child.profile.comment-placeholder</source>
-        <target>Votre commentaire</target>
-      </trans-unit>
       <trans-unit id="P4L7eOq" resname="child.profile.show-history">
         <source>child.profile.show-history</source>
         <target>Afficher l'historique</target>

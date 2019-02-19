@@ -55,7 +55,8 @@
 
                         <div class="input-animation textarea">
                             <label for="comment">{% trans %}child.profile.comment{% endtrans %}</label>
-                            <textarea id="comment" name="comment" placeholder="{% trans %}child.profile.comment-placeholder{% endtrans %}"></textarea>
+                            <textarea id="comment" name="comment"></textarea>
+                            {#TODO: <textarea id="comment" name="comment">{{ child.comment }}</textarea>#}
                         </div>
                     </form>
 

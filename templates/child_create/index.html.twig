@@ -1,20 +1,64 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ChildCreateController!{% endblock %}
+{% block title %}{% trans %}title.child-create{% endtrans %}{% endblock %}
 
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+{% block main %}
+    <main>
+        <section class="pb-5">
+            <div class="page-wrapper">
+                <div class="box-user">
+                    <div class="box-letters">:)</div>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+                    <div class="box-user__content">
+                        <form class="mb-3" method="post">
+                            <div class="input-animation">
+                                <label for="firstname">{% trans %}child.create.firstname{% endtrans %}</label>
+                                <input type="text" id="firstname" name="firstname" placeholder="{% trans %}child.create.firstname-placeholder{% endtrans %}">
+                            </div>
+                            <div class="input-animation">
+                                <label for="lastname">{% trans %}child.create.lastname{% endtrans %}</label>
+                                <input type="text" id="lastname" name="lastname" placeholder="{% trans %}child.create.lastname-placeholder{% endtrans %}">
+                            </div>
+                            <div class="input-animation">
+                                <label for="birthdate">{% trans %}child.create.birthdate{% endtrans %}</label>
+                                <input type="date" id="birthdate" name="birthdate">
+                            </div>
+                            <div class="input-group-radio mb-6" id="radioSexe">
+                                <div class="input-radio">
+                                    <input type="radio" id="fille" name="radio2" checked/>
+                                    <label for="fille"><i class="fas fa-venus"></i> {% trans %}child.create.girl{% endtrans %}</label>
+                                </div>
+                                <div class="input-radio">
+                                    <input type="radio" id="garcon" name="radio2" />
+                                    <label for="garcon"><i class="fas fa-mars"></i> {% trans %}child.create.boy{% endtrans %}</label>
+                                </div>
+                            </div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/Users/Neofox/projects/camie/src/Controller/ChildCreateController.php'|file_link(0) }}">src/Controller/ChildCreateController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/Users/Neofox/projects/camie/templates/child_create/index.html.twig'|file_link(0) }}">templates/child_create/index.html.twig</a></code></li>
-    </ul>
-</div>
+                            <div class="input-animation">
+                                <label for="guardian">{% trans %}child.create.guardian-name{% endtrans %}</label>
+                                <input type="text" id="guardian" name="user" placeholder="{% trans %}child.create.guardian-name{% endtrans %}">
+                            </div>
+
+                            <div class="input-animation">
+                                <label for="phone">{% trans %}child.create.guardian-phone{% endtrans %}</label>
+                                <input type="text" id="phone" name="phone" placeholder="{% trans %}child.create.guardian-phone{% endtrans %}">
+                            </div>
+
+                            <div class="input-animation">
+                                <label for="email">{% trans %}child.create.guardian-email{% endtrans %}</label>
+                                <input type="email" id="email" name="email" placeholder="{% trans %}child.create.guardian-email{% endtrans %}">
+                            </div>
+
+                            <div class="input-animation textarea">
+                                <label for="comment">{% trans %}child.create.comment{% endtrans %}</label>
+                                <textarea id="comment" name="comment" placeholder="{% trans %}child.create.comment-placeholder{% endtrans %}"></textarea>
+                            </div>
+
+                            <button type="submit" class="btn bg-blue d-block">{% trans %}child.create.validate{% endtrans %}</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 {% endblock %}
