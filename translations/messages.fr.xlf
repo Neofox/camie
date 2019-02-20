@@ -83,6 +83,10 @@
         <source>sheet.history.age-year</source>
         <target>an(s)</target>
       </trans-unit>
+      <trans-unit id="cqFq32B" resname="sheet.history.sheet-name-daily">
+        <source>sheet.history.sheet-name-daily</source>
+        <target>Fiche journalière</target>
+      </trans-unit>
       <trans-unit id="hQgO8Mi" resname="title.child-list">
         <source>title.child-list</source>
         <target>Liste des enfants</target>
