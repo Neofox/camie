@@ -15,7 +15,7 @@
                         <div class="left__name">{{child.firstname}} <br> {{child.lastname}}</div>
                     </div>
                     <div class="box-user-2__right">
-                        <a href="{{ path('child_profile', {'id': child.id}) }}"><button type="button" class="btn-icon"><i class="fas fa-user-circle" aria-label="hidden"></i></button></a>
+                        <a href="{{ path('child_profile', {'id': child.id}) }}"><button id="profile{{ child.id }}" type="button" class="btn-icon"><i class="fas fa-user-circle" aria-label="hidden"></i></button></a>
                     </div>
                 </div>
             {% endfor %}
