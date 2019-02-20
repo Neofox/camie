@@ -15,7 +15,12 @@
         {% block header %}
             <div class="page-header">
                 <div class="page-wrapper">
-                    <a href="{{ path('user_profile') }}"><button type="button" data-modal="modalProfil" class="btn-icon"><i class="fas fa-user" aria-label="hidden"></i></button></a>
+                    {% if app.request.get('_route') == 'home' or app.request.get('_route') == 'index' %}
+                        {#<a href="{{ path('user_profile') }}"><button type="button" class="btn-icon"><i class="fas fa-user" aria-label="hidden"></i></button></a>#}
+                        <button type="button" disabled class="btn-icon disabled"><i class="fas fa-fw" aria-label="hidden"></i></button>
+                    {% else %}
+                        <a href="{{ app.request.headers.get('referer') }}"><button type="button" class="btn-icon"><i class="fas fa-chevron-left" aria-label="hidden"></i></button></a>
+                    {% endif %}
                     <span>Petit Soleil</span>
                     <button type="button" data-modal="modalNav" class="btn-icon"><i class="fas fa-bars" aria-label="hidden"></i></button>
                 </div>
