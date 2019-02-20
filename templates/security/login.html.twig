@@ -3,7 +3,8 @@
 {% block title %}{% trans %}title.login{% endtrans %}{% endblock %}
 
 {% block stylesheets %}
-    <link href='//fonts.googleapis.com/css?family=Raleway:400,300,600,700,800,900,300italic,600italic' rel='stylesheet' type='text/css'>
+    <link href="{{ asset('css/raleway_font.css') }}" rel='stylesheet' type='text/css'>
+    <link href="{{ asset('login/css/buddy.plugins.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('login/css/buddy.plugins.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('login/css/buddy.css') }}" rel="stylesheet" />
 {% endblock %}
