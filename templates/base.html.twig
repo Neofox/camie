@@ -13,7 +13,7 @@
     </head>
     <body class="overlay--open">
         {% block header %}
-            <div class="page-header">
+            <div class="page-header" style="z-index: 10">
                 <div class="page-wrapper">
                     {% if app.request.get('_route') == 'home' or app.request.get('_route') == 'index' %}
                         {#<a href="{{ path('user_profile') }}"><button type="button" class="btn-icon"><i class="fas fa-user" aria-label="hidden"></i></button></a>#}
