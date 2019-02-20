@@ -14,15 +14,15 @@
                     <form>
                         <div class="input-animation active">
                             <label for="firstname">{% trans %}user.profile.firstname{% endtrans %}</label>
-                            <input type="text" id="firstname" name="firstname" value="{{user.firstname}}">
+                            <input type="text" id="firstname" readonly name="firstname" value="{{user.firstname}}">
                         </div>
                         <div class="input-animation active">
                             <label for="lastname">{% trans %}user.profile.lastname{% endtrans %}</label>
-                            <input type="text" id="lastname" name="lastname" value="{{user.lastname}}">
+                            <input type="text" id="lastname" readonly name="lastname" value="{{user.lastname}}">
                         </div>
                         <div class="input-animation active">
                             <label for="email">{% trans %}user.profile.email{% endtrans %}</label>
-                            <input type="email" id="email" name="email" value="{{user.email}}">
+                            <input type="email" id="email" readonly name="email" value="{{user.email}}">
                         </div>
                     </form>
                 </div>

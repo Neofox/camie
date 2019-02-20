@@ -10,7 +10,7 @@
 
             {% for child in children %}
                 <div class="box-user-2 {% if child.sexe == 'F' %}box-user-2--girl{% endif %}">
-                    <div class="box-user-2__left" onclick="location.href='{{ path('sheet_view', {'id': child.id}) }}';">
+                    <div class="box-user-2__left" onclick="location.href='{{ path('sheet_view', {'childId': child.id}) }}';">
                         <div class="box-letters">{{child.firstname|first|upper}}{{child.lastname|first|upper}}</div>
                         <div class="left__name">{{child.firstname}} <br> {{child.lastname}}</div>
                     </div>

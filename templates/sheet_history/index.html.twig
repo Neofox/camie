@@ -17,7 +17,7 @@
 
                 {% for sheet in child.sheets %}
                 <div class="box-history">
-                    <div class="box-history__left">
+                    <div class="box-history__left" onclick="location.href='{{ path('sheet_history_view', {'childId': child.id, 'sheetId': sheet.id}) }}';">
                         <p>{{ sheet.createdAt|date('d-m-Y') }}</p>
                         <small>{{ ('sheet.history.sheet-name-' ~ sheet.type|sheetTypeToString|lower )|trans() }}</small>
                     </div>

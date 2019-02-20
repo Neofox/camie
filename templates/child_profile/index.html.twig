@@ -13,15 +13,15 @@
                     <form class="mb-3">
                         <div class="input-animation">
                             <label for="firstname">{% trans %}child.profile.firstname{% endtrans %}</label>
-                            <input type="text" id="firstname" name="firstname" value="{{ child.firstname }}">
+                            <input type="text" id="firstname" name="firstname" readonly value="{{ child.firstname }}">
                         </div>
                         <div class="input-animation">
                             <label for="lastname">{% trans %}child.profile.lastname{% endtrans %}</label>
-                            <input type="text" id="lastname" name="lastname" value="{{ child.lastname }}">
+                            <input type="text" id="lastname" name="lastname" readonly value="{{ child.lastname }}">
                         </div>
                         <div class="input-animation">
                             <label for="birthdate">{% trans %}child.profile.birthdate{% endtrans %}</label>
-                            <input type="date" id="birthdate" name="birthdate" value="{{ child.birthdate|date('Y-m-d') }}">
+                            <input type="date" id="birthdate" name="birthdate" readonly value="{{ child.birthdate|date('Y-m-d') }}">
                         </div>
                         <div class="input-group-radio mb-6" id="radioSexe">
                             <div class="input-radio">
@@ -38,29 +38,29 @@
                             {% if 'ROLE_GUARDIAN' in user.roles %}
                                 <div class="input-animation">
                                     <label for="guardian{{ user.id }}">{% trans %}child.profile.guardian-name{% endtrans %}</label>
-                                    <input type="text" id="guardian{{ user.id }}" name="user" value="{{ user.firstname|capitalize }} {{ user.lastname|capitalize }}">
+                                    <input type="text" id="guardian{{ user.id }}" name="user" readonly value="{{ user.firstname|capitalize }} {{ user.lastname|capitalize }}">
                                 </div>
 
                                 <div class="input-animation">
                                     <label for="phone{{ user.id }}">{% trans %}child.profile.guardian-phone{% endtrans %}</label>
-                                    <input type="text" id="phone{{ user.id }}" name="phone" value="{{ user.phone }}">
+                                    <input type="text" id="phone{{ user.id }}" readonly name="phone" value="{{ user.phone }}">
                                 </div>
 
                                 <div class="input-animation">
                                     <label for="email{{ user.id }}">{% trans %}child.profile.guardian-email{% endtrans %}</label>
-                                    <input type="email" id="email{{ user.id }}" name="email" value="{{ user.email }}">
+                                    <input type="email" id="email{{ user.id }}" readonly name="email" value="{{ user.email }}">
                                 </div>
                             {% endif %}
                         {% endfor %}
 
                         <div class="input-animation textarea">
                             <label for="comment">{% trans %}child.profile.comment{% endtrans %}</label>
-                            <textarea id="comment" name="comment"></textarea>
-                            {#TODO: <textarea id="comment" name="comment">{{ child.comment }}</textarea>#}
+                            <textarea id="comment" name="comment" readonly></textarea>
+                            {#TODO: <textarea id="comment" name="comment" readonly>{{ child.comment }}</textarea>#}
                         </div>
                     </form>
 
-                    <a href="{{ path('sheets_history', {'id': child.id}) }}" class="btn bg-blue fa-history left d-block">{% trans %}child.profile.show-history{% endtrans %}</a>
+                    <a href="{{ path('sheets_history', {'childId': child.id}) }}" class="btn bg-blue fa-history left d-block">{% trans %}child.profile.show-history{% endtrans %}</a>
                 </div>
             </div>
         </div>
