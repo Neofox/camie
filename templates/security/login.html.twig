@@ -4,8 +4,8 @@
 
 {% block stylesheets %}
     <link href='//fonts.googleapis.com/css?family=Raleway:400,300,600,700,800,900,300italic,600italic' rel='stylesheet' type='text/css'>
-    <link href="{{ asset('css/login/buddy.plugins.min.css') }}" rel="stylesheet" />
-    <link href="{{ asset('css/login/buddy.css') }}" rel="stylesheet" />
+    <link href="{{ asset('login/css/buddy.plugins.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('login/css/buddy.css') }}" rel="stylesheet" />
 {% endblock %}
 {% block header %}
     <div class="page-header-login">
@@ -64,8 +64,8 @@
 {% endblock %}
 
 {% block javascripts %}
-    {{ parent() }}
-
+    <script src="{{ asset('js/jquery-3.3.1.js') }}"></script>
+    <script src="{{ asset('login/js/buddy.min.js') }}"></script>
     <script>
         $('input').on('input', function() {
             if ($('#user').val() !== '' && $('#password').val() !== '') {
