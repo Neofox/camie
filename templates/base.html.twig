@@ -8,7 +8,7 @@
         {% block stylesheets %}
             <link href="{{ asset('css/raleway_font.css') }}" rel='stylesheet' type='text/css'>
             <link href="{{ asset('css/buddy.plugins.min.css') }}" rel="stylesheet" />
-            <link href="{{ asset('css/buddy.css') }}" rel="stylesheet" />
+            <link href="{{ asset('css/buddy.min.css') }}" rel="stylesheet" />
         {% endblock %}
     </head>
     <body class="overlay--open">
@@ -46,7 +46,7 @@
         {% block main %}{% endblock %}
         {% block javascripts %}
             <script src="{{ asset('js/buddy.min.js') }}"></script>
-            <script src="{{ asset('js/jquery-3.3.1.js') }}"></script>
+            <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
         {% endblock %}
     </body>
 </html>

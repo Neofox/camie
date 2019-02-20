@@ -5,8 +5,7 @@
 {% block stylesheets %}
     <link href="{{ asset('css/raleway_font.css') }}" rel='stylesheet' type='text/css'>
     <link href="{{ asset('login/css/buddy.plugins.min.css') }}" rel="stylesheet" />
-    <link href="{{ asset('login/css/buddy.plugins.min.css') }}" rel="stylesheet" />
-    <link href="{{ asset('login/css/buddy.css') }}" rel="stylesheet" />
+    <link href="{{ asset('login/css/buddy.min.css') }}" rel="stylesheet" />
 {% endblock %}
 {% block header %}
     <div class="page-header-login">
@@ -65,7 +64,7 @@
 {% endblock %}
 
 {% block javascripts %}
-    <script src="{{ asset('js/jquery-3.3.1.js') }}"></script>
+    <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
     <script src="{{ asset('login/js/buddy.min.js') }}"></script>
     <script>
         $('input').on('input', function() {
