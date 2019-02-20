@@ -27,7 +27,7 @@ return new class extends BetterDeployer
     {
         $this->runRemote('ln -s {{ deploy_dir }}/storage/.env.local {{ deploy_dir }}/current/.env.local');
         $this->runRemote('{{ console_bin }} doctrine:migrations:migrate');
-        $this->runRemote('{{ console_bin }} doctrine:fixture:load');
+        //$this->runRemote('{{ console_bin }} doctrine:fixture:load');
         $this->runRemote('sudo chmod -R 777 {{ deploy_dir }}/current/var');
 
         // $this->runLocal('say "The deployment has finished."');
