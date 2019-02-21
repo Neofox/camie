@@ -34,7 +34,8 @@
                             <textarea id="nurse_comment" name="nurse_comment" {% if readonly %}readonly{% endif %} placeholder="{% trans %}sheet.daily.nurse-comment-placeholder{% endtrans %}">{{ sheet.data.nurse_comment }}</textarea>
                         </div>
 
-                        <input type="hidden" name="sheet_type" {% if readonly %}readonly{% endif %} value={{ sheetTypeToInt('DAILY') }}>
+                        <input type="hidden" name="sheet_type" value={{ sheetTypeToInt('DAILY') }}>
+                        <input type="hidden" name="sheet_id" value={{ sheet.id }}>
                     </form>
 
                     <a href="#"class="btn bg-blue fa-utensils left d-block mb-2">{% trans %}sheet.daily.add-meal{% endtrans %}</a>

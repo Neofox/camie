@@ -4,7 +4,6 @@ namespace App\Controller\Sheet;
 
 use App\Entity\Sheet;
 use App\Service\ChildManager;
-use App\Service\SheetManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -32,7 +31,6 @@ class SheetHistoryController extends AbstractController
      * @param string       $childId
      * @param string       $sheetId
      * @param ChildManager $childManager
-     * @param SheetManager $sheetManager
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
