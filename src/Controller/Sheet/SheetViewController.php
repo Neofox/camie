@@ -46,14 +46,17 @@ class SheetViewController extends AbstractController
     public function ajax(Request $request, string $childId, SheetManager $sheetManager, ChildManager $childManager)
     {
         $sheetType = (int)$request->request->get('sheet_type');
+        $sheetId = $request->request->get('sheet_id');
 
         $data = $request->request->all();
-        unset($data['sheet_type']);
-
         $child = $childManager->getChildById($childId);
-        $sheetManager->saveSheetData($data, $child, $sheetType);
+        unset($data['sheet_type'], $data['sheet_id']);
 
-        //TODO: return something?
-        return new JsonResponse('Ok');
+        // We don't want to save data to the actual daily sheet when viewing past sheet
+        if (!$sheetId || $sheetManager->getDailySheet($child)->getId() == $sheetId) {
+            $sheetManager->saveSheetData($data, $child, $sheetType);
+        }
+
+        return new JsonResponse(null, 201);
     }
 }
