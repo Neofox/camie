@@ -21,8 +21,10 @@
             <br><br><br><br>
 
             {% if is_granted('ROLE_GUARDIAN') %}
-                <a style="text-decoration: none" href="{{ path('child_create') }}"><button type="button" name="button" class="btn bg-blue d-block mb-2">{% trans %}home.create-child{% endtrans %}</button></a>
+                <a style="text-decoration: none" href="{{ path('child_create') }}"><button type="button" name="button" class="btn d-block mb-2" style="background-color: #41a0ff">{% trans %}home.create-child{% endtrans %}</button></a>
             {% endif %}
+
+            <br><br>
         </div>
     </section>
 </main>
