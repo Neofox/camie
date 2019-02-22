@@ -33,20 +33,6 @@
         <source>home.welcome</source>
         <target>Welcome</target>
       </trans-unit>
-      <trans-unit id="29XaMUi" resname="home.introduction">
-        <source>home.introduction</source>
-        <target>Parents give you their treasure and are very demanding.
-                Camie makes it easy for you to spend more time on really important tasks: ensure the happiness and safety of children.
-        </target>
-      </trans-unit>
-      <trans-unit id="Cw_CNHA" resname="home.contact.phone">
-        <source>home.contact.phone</source>
-        <target>Phone number</target>
-      </trans-unit>
-      <trans-unit id="l.h0a2f" resname="home.contact.email">
-        <source>home.contact.email</source>
-        <target>Email</target>
-      </trans-unit>
       <trans-unit id="Mkt7e3B" resname="page.home">
         <source>page.home</source>
         <target>Homepage</target>
@@ -83,7 +69,7 @@
         <source>sheet.history.age-year</source>
         <target>years</target>
       </trans-unit>
-      <trans-unit id="cqFq32B" resname="sheet.history.sheet-name-daily">
+      <trans-unit id="iP7pfub" resname="sheet.history.sheet-name-daily">
         <source>sheet.history.sheet-name-daily</source>
         <target>Daily sheet</target>
       </trans-unit>

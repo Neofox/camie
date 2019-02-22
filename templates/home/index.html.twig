@@ -8,16 +8,16 @@
         <div class="page-wrapper">
             <p class="title-1">{% trans %}home.welcome{% endtrans %}</p>
             <p>
-                {% trans %}home.introduction{% endtrans %}<br>
+                {% trans from app.user.nursery.slugname %}home.introduction{% endtrans %}
             </p>
 
             <br><br><br><br>
 
-            <small>{% trans %}home.contact.phone{% endtrans %}</small>
-            <p><b>+32(00) 499 61 88 44</b></p>
+            <small>{% trans from app.user.nursery.slugname %}home.contact.phone{% endtrans %}</small>
+            <p><b>{{ app.user.nursery.phone }}</b></p>
             <br>
-            <small>{% trans %}home.contact.email{% endtrans %}</small>
-            <p><b>camieapp@gmail.com</b></p>
+            <small>{% trans from app.user.nursery.slugname %}home.contact.email{% endtrans %}</small>
+            <p><b>{{ app.user.nursery.email }}</b></p>
             <br><br><br><br>
 
             {% if is_granted('ROLE_GUARDIAN') %}

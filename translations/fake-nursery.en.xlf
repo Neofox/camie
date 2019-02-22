@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="en" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="29XaMUi" resname="home.introduction">
+        <source>home.introduction</source>
+        <target>Parents give you their treasure and are very demanding.
+                Camie makes it easy for you to spend more time on really important tasks: ensure the happiness and safety of children.
+        </target>
+      </trans-unit>
+      <trans-unit id="Cw_CNHA" resname="home.contact.phone">
+        <source>home.contact.phone</source>
+        <target>Phone</target>
+      </trans-unit>
+      <trans-unit id="l.h0a2f" resname="home.contact.email">
+        <source>home.contact.email</source>
+        <target>Email</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
