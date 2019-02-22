@@ -15,7 +15,7 @@
                     {% else %}{{ child.birthdate|ageYear }} {% trans %}sheet.history.age-year{% endtrans %} {% endif %}</p>
                 </div>
 
-                {% for sheet in child.sheets %}
+                {% for sheet in sheets %}
                 <div class="box-history">
                     <div class="box-history__left" onclick="location.href='{{ path('sheet_history_view', {'childId': child.id, 'sheetId': sheet.id}) }}';">
                         <p>{{ sheet.createdAt|date('d-m-Y') }}</p>

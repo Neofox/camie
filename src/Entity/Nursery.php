@@ -33,6 +33,21 @@ class Nursery
      */
     private $children;
 
+    /**
+     * @ORM\Column(type="string", length=20, nullable=true)
+     */
+    private $phone;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $email;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $hometext;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
@@ -42,6 +57,11 @@ class Nursery
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getSlugName(): string
+    {
+        return strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $this->getName())));
     }
 
     public function getName(): ?string
@@ -114,6 +134,42 @@ class Nursery
                 $child->setNursery(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPhone(): ?string
+    {
+        return $this->phone;
+    }
+
+    public function setPhone(?string $phone): self
+    {
+        $this->phone = $phone;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(?string $email): self
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    public function getHometext(): ?string
+    {
+        return $this->hometext;
+    }
+
+    public function setHometext(?string $hometext): self
+    {
+        $this->hometext = $hometext;
 
         return $this;
     }

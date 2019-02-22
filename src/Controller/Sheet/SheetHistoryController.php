@@ -20,8 +20,11 @@ class SheetHistoryController extends AbstractController
     public function index(string $childId, ChildManager $childManager)
     {
         $child = $childManager->getChildById($childId);
+        /** @var \ArrayIterator $sheetsIterator */
+        $sheetsIterator = $child->getSheets()->getIterator();
+        $sheetsIterator->uasort(function(Sheet $first, Sheet $second) {return $first->getCreatedAt() > $second->getCreatedAt() ? -1 : 1;});
 
-        return $this->render('sheet_history/index.html.twig', ['child' => $child]);
+        return $this->render('sheet_history/index.html.twig', ['child' => $child, 'sheets' => $sheetsIterator]);
     }
 
 

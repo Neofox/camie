@@ -8,21 +8,27 @@
         <div class="page-wrapper">
             <p class="title-1">{% trans %}home.welcome{% endtrans %}</p>
             <p>
-                {% trans %}home.introduction{% endtrans %}<br>
+                {% if app.user.nursery.hometext %}
+                    {{ app.user.nursery.hometext }}
+                {% else %}
+                    {% trans from 'fake-nursery' %}home.introduction{% endtrans %}
+                {% endif %}
             </p>
 
             <br><br><br><br>
 
             <small>{% trans %}home.contact.phone{% endtrans %}</small>
-            <p><b>+32(00) 499 61 88 44</b></p>
+            <p><b>{{ app.user.nursery.phone }}</b></p>
             <br>
             <small>{% trans %}home.contact.email{% endtrans %}</small>
-            <p><b>camieapp@gmail.com</b></p>
+            <p><b>{{ app.user.nursery.email }}</b></p>
             <br><br><br><br>
 
             {% if is_granted('ROLE_GUARDIAN') %}
-                <a style="text-decoration: none" href="{{ path('child_create') }}"><button type="button" name="button" class="btn bg-blue d-block mb-2">{% trans %}home.create-child{% endtrans %}</button></a>
+                <a style="text-decoration: none" href="{{ path('child_create') }}"><button type="button" name="button" class="btn d-block mb-2" style="background-color: #41a0ff">{% trans %}home.create-child{% endtrans %}</button></a>
             {% endif %}
+
+            <br><br>
         </div>
     </section>
 </main>

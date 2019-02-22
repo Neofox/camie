@@ -33,20 +33,6 @@
         <source>home.welcome</source>
         <target>Bienvenue</target>
       </trans-unit>
-      <trans-unit id="29XaMUi" resname="home.introduction">
-        <source>home.introduction</source>
-        <target>Les parents vous confient leurs trésor et sont donc très exigeants.
-                Camie vous simplifie la tâche pour pouvoir passer plus de temps sur les tâches vraiment importantes: veiller au bonheur et à la sécurité des enfants.
-         </target>
-      </trans-unit>
-      <trans-unit id="Cw_CNHA" resname="home.contact.phone">
-        <source>home.contact.phone</source>
-        <target>Téléphone</target>
-      </trans-unit>
-      <trans-unit id="l.h0a2f" resname="home.contact.email">
-        <source>home.contact.email</source>
-        <target>Email</target>
-      </trans-unit>
       <trans-unit id="Mkt7e3B" resname="page.home">
         <source>page.home</source>
         <target>Accueil</target>
@@ -83,7 +69,7 @@
         <source>sheet.history.age-year</source>
         <target>an(s)</target>
       </trans-unit>
-      <trans-unit id="cqFq32B" resname="sheet.history.sheet-name-daily">
+      <trans-unit id="iP7pfub" resname="sheet.history.sheet-name-daily">
         <source>sheet.history.sheet-name-daily</source>
         <target>Fiche journalière</target>
       </trans-unit>
@@ -262,6 +248,14 @@
       <trans-unit id="xOFqaMB" resname="child.create.validate">
         <source>child.create.validate</source>
         <target>Créer l'enfant</target>
+      </trans-unit>
+      <trans-unit id="Cw_CNdd65" resname="home.contact.phone">
+        <source>home.contact.phone</source>
+        <target>Téléphone</target>
+      </trans-unit>
+      <trans-unit id="CAwC8d3v" resname="home.contact.email">
+        <source>home.contact.email</source>
+        <target>Email</target>
       </trans-unit>
     </body>
   </file>

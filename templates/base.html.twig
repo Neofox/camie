@@ -8,7 +8,7 @@
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-capable" content="yes">
         
-        <title>{% block title %}Camie Project{% endblock %}</title>
+        <title>{% block title %}{{ app.user.nursery.name }}{% endblock %}</title>
         {% block stylesheets %}
             <link href="{{ asset('css/raleway_font.css') }}" rel='stylesheet' type='text/css'>
             <link href="{{ asset('css/buddy.plugins.min.css') }}" rel="stylesheet" />
@@ -21,11 +21,11 @@
                 <div class="page-wrapper">
                     {% if app.request.get('_route') == 'home' or app.request.get('_route') == 'index' %}
                         {#<a href="{{ path('user_profile') }}"><button type="button" class="btn-icon"><i class="fas fa-user" aria-label="hidden"></i></button></a>#}
-                        <button type="button" disabled class="btn-icon disabled"><i class="fas fa-fw" aria-label="hidden"></i></button>
+                        <button type="button" disabled style="pointer-events: none;" class="btn-icon disabled"><i class="fas fa-fw" aria-label="hidden"></i></button>
                     {% else %}
                         <a href="{{ app.request.headers.get('referer') }}"><button type="button" class="btn-icon"><i class="fas fa-chevron-left" aria-label="hidden"></i></button></a>
                     {% endif %}
-                    <span>Petit Soleil</span>
+                    <span>{{ app.user.nursery.name }}</span>
                     <button type="button" data-modal="modalNav" class="btn-icon"><i class="fas fa-bars" aria-label="hidden"></i></button>
                 </div>
             </div>
