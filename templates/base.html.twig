@@ -23,7 +23,7 @@
                         {#<a href="{{ path('user_profile') }}"><button type="button" class="btn-icon"><i class="fas fa-user" aria-label="hidden"></i></button></a>#}
                         <button type="button" disabled style="pointer-events: none;" class="btn-icon disabled"><i class="fas fa-fw" aria-label="hidden"></i></button>
                     {% else %}
-                        <a href="{{ app.request.headers.get('referer') }}"><button type="button" class="btn-icon"><i class="fas fa-chevron-left" aria-label="hidden"></i></button></a>
+                        <button type="button" class="btn-icon" onclick="history.back()"><i class="fas fa-chevron-left" aria-label="hidden"></i></button>
                     {% endif %}
                     <span>{{ app.user.nursery.name }}</span>
                     <button type="button" data-modal="modalNav" class="btn-icon"><i class="fas fa-bars" aria-label="hidden"></i></button>
