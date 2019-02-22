@@ -21,7 +21,7 @@
                 <div class="page-wrapper">
                     {% if app.request.get('_route') == 'home' or app.request.get('_route') == 'index' %}
                         {#<a href="{{ path('user_profile') }}"><button type="button" class="btn-icon"><i class="fas fa-user" aria-label="hidden"></i></button></a>#}
-                        <button type="button" disabled class="btn-icon disabled"><i class="fas fa-fw" aria-label="hidden"></i></button>
+                        <button type="button" disabled style="pointer-events: none;" class="btn-icon disabled"><i class="fas fa-fw" aria-label="hidden"></i></button>
                     {% else %}
                         <a href="{{ app.request.headers.get('referer') }}"><button type="button" class="btn-icon"><i class="fas fa-chevron-left" aria-label="hidden"></i></button></a>
                     {% endif %}
