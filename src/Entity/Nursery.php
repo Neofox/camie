@@ -43,6 +43,11 @@ class Nursery
      */
     private $email;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $hometext;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
@@ -153,6 +158,18 @@ class Nursery
     public function setEmail(?string $email): self
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    public function getHometext(): ?string
+    {
+        return $this->hometext;
+    }
+
+    public function setHometext(?string $hometext): self
+    {
+        $this->hometext = $hometext;
 
         return $this;
     }

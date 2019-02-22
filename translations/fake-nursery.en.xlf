@@ -11,14 +11,6 @@
                 Camie makes it easy for you to spend more time on really important tasks: ensure the happiness and safety of children.
         </target>
       </trans-unit>
-      <trans-unit id="Cw_CNHA" resname="home.contact.phone">
-        <source>home.contact.phone</source>
-        <target>Phone</target>
-      </trans-unit>
-      <trans-unit id="l.h0a2f" resname="home.contact.email">
-        <source>home.contact.email</source>
-        <target>Email</target>
-      </trans-unit>
     </body>
   </file>
 </xliff>

@@ -8,15 +8,19 @@
         <div class="page-wrapper">
             <p class="title-1">{% trans %}home.welcome{% endtrans %}</p>
             <p>
-                {% trans from app.user.nursery.slugname %}home.introduction{% endtrans %}
+                {% if app.user.nursery.hometext %}
+                    {{ app.user.nursery.hometext }}
+                {% else %}
+                    {% trans from 'fake-nursery' %}home.introduction{% endtrans %}
+                {% endif %}
             </p>
 
             <br><br><br><br>
 
-            <small>{% trans from app.user.nursery.slugname %}home.contact.phone{% endtrans %}</small>
+            <small>{% trans %}home.contact.phone{% endtrans %}</small>
             <p><b>{{ app.user.nursery.phone }}</b></p>
             <br>
-            <small>{% trans from app.user.nursery.slugname %}home.contact.email{% endtrans %}</small>
+            <small>{% trans %}home.contact.email{% endtrans %}</small>
             <p><b>{{ app.user.nursery.email }}</b></p>
             <br><br><br><br>
 
