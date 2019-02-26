@@ -12,7 +12,7 @@ return new class extends BetterDeployer
             ->deployDir('/var/www/camie')
             ->repositoryUrl('git@github.com:Neofox/camie.git')
             ->repositoryBranch('master')
-            ->composerInstallFlags('--prefer-dist --no-interaction --no-dev')
+            ->warmupCache(true)
         ;
     }
 

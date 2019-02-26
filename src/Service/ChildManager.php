@@ -53,7 +53,7 @@ class ChildManager
         $child = $this->childRepository->find($childId);
 
         if (!$child) {
-            throw new \LogicException(sprintf('The child with ID "%s" does not exist.', $child));
+            throw new \LogicException(sprintf('The child with ID "%s" does not exist.', $childId));
         }
 
         return $child;
