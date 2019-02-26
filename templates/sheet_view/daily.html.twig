@@ -10,28 +10,38 @@
                 <div class="box-letters">{{ child.firstname|first|upper}}{{child.lastname|first|upper }}</div>
 
                 <div class="box-user__content">
-                    <form id="dailySheetForm">
-                        <div class="input-animation">
-                            <label for="arrival_time">{% trans %}sheet.daily.arrival-time{% endtrans %}</label>
-                            <input type="text" id="arrival_time" name="arrival_time" value="{{ sheet.data.arrival_time }}" {% if readonly %}readonly{% endif %} placeholder="hh:mm" />
-                            <link href="{{ asset('images/icon-clock-green.svg') }}" rel="stylesheet" />
+                    <form id="dailySheetForm" class="grid-flex">
+                        <div class="column w-100">
+                            <div class="input-animation">
+                                <label for="arrival_time">{% trans %}sheet.daily.arrival-time{% endtrans %}</label>
+                                <input type="text" id="arrival_time" name="arrival_time" value="{{ sheet.data.arrival_time }}" {% if readonly %}readonly{% endif %} placeholder="hh:mm" />
+                                <img src="{{ asset('images/icon-clock-green.svg') }}" alt="green clock" />
+                            </div>
                         </div>
-                        <div class="input-animation">
-                            <label for="departure_time">{% trans %}sheet.daily.departure-time{% endtrans %}</label>
-                            <input type="text" id="departure_time" name="departure_time"  value="{{ sheet.data.departure_time }}" {% if readonly %}readonly{% endif %} placeholder="hh:mm" />
-                            <link href="{{ asset('images/icon-clock-red.svg') }}" rel="stylesheet" />
+                        <div class="column w-100">
+                            <div class="input-animation">
+                                <label for="departure_time">{% trans %}sheet.daily.departure-time{% endtrans %}</label>
+                                <input type="text" id="departure_time" name="departure_time"  value="{{ sheet.data.departure_time }}" {% if readonly %}readonly{% endif %} placeholder="hh:mm" />
+                                <img src="{{ asset('images/icon-clock-red.svg') }}" alt="red clock" />
+                            </div>
                         </div>
-                        <div class="input-animation">
-                            <label for="activities">{% trans %}sheet.daily.activities{% endtrans %}</label>
-                            <input type="text" id="activities" name="activities" value="{{ sheet.data.activities }}" {% if readonly %}readonly{% endif %} placeholder="{% trans %}sheet.daily.activities-placeholder{% endtrans %}"/>
+                        <div class="column w-100">
+                            <div class="input-animation">
+                                <label for="activities">{% trans %}sheet.daily.activities{% endtrans %}</label>
+                                <input type="text" id="activities" name="activities" value="{{ sheet.data.activities }}" {% if readonly %}readonly{% endif %} placeholder="{% trans %}sheet.daily.activities-placeholder{% endtrans %}"/>
+                            </div>
                         </div>
-                        <div class="input-animation">
-                            <label for="communication">{% trans %}sheet.daily.communication-received{% endtrans %}</label>
-                            <input type="text" id="communication" name="communication" value="{{ sheet.data.communication }}" {% if readonly %}readonly{% endif %} placeholder="{% trans %}sheet.daily.communication-received{% endtrans %}"/>
+                        <div class="column w-100">
+                            <div class="input-animation">
+                                <label for="communication">{% trans %}sheet.daily.communication-received{% endtrans %}</label>
+                                <input type="text" id="communication" name="communication" value="{{ sheet.data.communication }}" {% if readonly %}readonly{% endif %} placeholder="{% trans %}sheet.daily.communication-received{% endtrans %}"/>
+                            </div>
                         </div>
-                        <div class="input-animation">
-                            <label for="nurse_comment">{% trans %}sheet.daily.nurse-comment{% endtrans %}</label>
-                            <textarea id="nurse_comment" name="nurse_comment" {% if readonly %}readonly{% endif %} placeholder="{% trans %}sheet.daily.nurse-comment-placeholder{% endtrans %}">{{ sheet.data.nurse_comment }}</textarea>
+                        <div class="column w-100">
+                            <div class="input-animation">
+                                <label for="nurse_comment">{% trans %}sheet.daily.nurse-comment{% endtrans %}</label>
+                                <textarea id="nurse_comment" name="nurse_comment" {% if readonly %}readonly{% endif %} placeholder="{% trans %}sheet.daily.nurse-comment-placeholder{% endtrans %}">{{ sheet.data.nurse_comment }}</textarea>
+                            </div>
                         </div>
 
                         <input type="hidden" name="sheet_type" value={{ sheetTypeToInt('DAILY') }}>
