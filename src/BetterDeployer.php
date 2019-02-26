@@ -253,7 +253,7 @@ abstract class BetterDeployer extends AbstractDeployer
         $this->runRemote(sprintf('if [ -d {{ deploy_dir }}/repo ]; then cd {{ deploy_dir }}/repo && git fetch -q origin && git fetch --tags -q origin && git reset -q --hard %s && git clean -q -d -x -f; else git clone -q -b %s %s {{ deploy_dir }}/repo && cd {{ deploy_dir }}/repo && git checkout -q -b deploy %s; fi', $repositoryRevision, $this->getConfig(Option::repositoryBranch), $this->getConfig(Option::repositoryUrl), $repositoryRevision));
 
         $this->log('<h3>Copying the updated code to the new release directory</>');
-        $this->runRemote(sprintf('cp -RPp {{ deploy_dir }}/repo/. {{ project_dir }}'));
+        $this->runRemote(sprintf('cp -RPp {{ deploy_dir }}/repo/. {{ project_dir }}')); //FIX cp was not copying .env files
     }
 
     private function doCreateCacheDir(): void
@@ -364,7 +364,7 @@ abstract class BetterDeployer extends AbstractDeployer
 
         $this->log('<h2>Warming up cache</>');
         $this->runRemote(sprintf('{{ console_bin }} cache:warmup --no-debug --env=%s', $this->getConfig(Option::symfonyEnvironment)));
-        $this->runRemote('chmod -R g+w {{ cache_dir }}');
+        $this->runRemote('chmod -R a+w {{ cache_dir }}'); //FIX www-data write in /var/cache temp solution
     }
 
     private function doClearControllers(): void
