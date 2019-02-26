@@ -10,53 +10,69 @@
                 <div class="box-letters">{{ child.firstname|first|upper}}{{child.lastname|first|upper }}</div>
 
                 <div class="box-user__content">
-                    <form class="mb-3">
-                        <div class="input-animation">
-                            <label for="firstname">{% trans %}child.profile.firstname{% endtrans %}</label>
-                            <input type="text" id="firstname" name="firstname" readonly value="{{ child.firstname }}">
-                        </div>
-                        <div class="input-animation">
-                            <label for="lastname">{% trans %}child.profile.lastname{% endtrans %}</label>
-                            <input type="text" id="lastname" name="lastname" readonly value="{{ child.lastname }}">
-                        </div>
-                        <div class="input-animation">
-                            <label for="birthdate">{% trans %}child.profile.birthdate{% endtrans %}</label>
-                            <input type="date" id="birthdate" name="birthdate" readonly value="{{ child.birthdate|date('Y-m-d') }}">
-                        </div>
-                        <div class="input-group-radio mb-6" id="radioSexe">
-                            <div class="input-radio">
-                                <input type="radio" id="fille" name="radio2" {% if child.sexe == 'F' %}class="input-radio--selected"{% else %}disabled{% endif %}/>
-                                <label for="fille"><i class="fas fa-venus"></i> {% trans %}child.profile.girl{% endtrans %}</label>
+                    <form class="grid-flex mb-3">
+                        <div class="column w-100">
+                            <div class="input-animation">
+                                <label for="firstname">{% trans %}child.profile.firstname{% endtrans %}</label>
+                                <input type="text" id="firstname" name="firstname" readonly value="{{ child.firstname }}">
                             </div>
-                            <div class="input-radio">
-                                <input type="radio" id="garcon" name="radio2" {% if child.sexe == 'M' %}class="input-radio--selected"{% else %}disabled{% endif %}/>
-                                <label for="garcon"><i class="fas fa-mars"></i> {% trans %}child.profile.boy{% endtrans %}</label>
+                        </div>
+                        <div class="column w-100">
+                            <div class="input-animation">
+                                <label for="lastname">{% trans %}child.profile.lastname{% endtrans %}</label>
+                                <input type="text" id="lastname" name="lastname" readonly value="{{ child.lastname }}">
+                            </div>
+                        </div>
+                        <div class="column w-100">
+                            <div class="input-animation">
+                                <label for="birthdate">{% trans %}child.profile.birthdate{% endtrans %}</label>
+                                <input type="date" id="birthdate" name="birthdate" readonly value="{{ child.birthdate|date('Y-m-d') }}">
+                            </div>
+                        </div>
+                        <div class="column w-100 mb-2">
+                            <div class="input-group-radio" id="radioSexe">
+                                <div class="input-radio">
+                                    <input type="radio" id="fille" name="radio2" {% if child.sexe == 'F' %}class="input-radio--selected"{% else %}disabled{% endif %}/>
+                                    <label for="fille"><i class="fas fa-venus"></i> {% trans %}child.profile.girl{% endtrans %}</label>
+                                </div>
+                                <div class="input-radio">
+                                    <input type="radio" id="garcon" name="radio2" {% if child.sexe == 'M' %}class="input-radio--selected"{% else %}disabled{% endif %}/>
+                                    <label for="garcon"><i class="fas fa-mars"></i> {% trans %}child.profile.boy{% endtrans %}</label>
+                                </div>
                             </div>
                         </div>
 
                         {% for user in child.users %}
                             {% if 'ROLE_GUARDIAN' in user.roles %}
-                                <div class="input-animation">
-                                    <label for="guardian{{ user.id }}">{% trans %}child.profile.guardian-name{% endtrans %}</label>
-                                    <input type="text" id="guardian{{ user.id }}" name="user" readonly value="{{ user.firstname|capitalize }} {{ user.lastname|capitalize }}">
+                                <div class="column w-100">
+                                    <div class="input-animation">
+                                        <label for="guardian{{ user.id }}">{% trans %}child.profile.guardian-name{% endtrans %}</label>
+                                        <input type="text" id="guardian{{ user.id }}" name="user" readonly value="{{ user.firstname|capitalize }} {{ user.lastname|capitalize }}">
+                                    </div>
                                 </div>
 
-                                <div class="input-animation">
-                                    <label for="phone{{ user.id }}">{% trans %}child.profile.guardian-phone{% endtrans %}</label>
-                                    <input type="text" id="phone{{ user.id }}" readonly name="phone" value="{{ user.phone }}">
+                                <div class="column w-100">
+                                    <div class="input-animation">
+                                        <label for="phone{{ user.id }}">{% trans %}child.profile.guardian-phone{% endtrans %}</label>
+                                        <input type="text" id="phone{{ user.id }}" readonly name="phone" value="{{ user.phone }}">
+                                    </div>
                                 </div>
 
-                                <div class="input-animation">
-                                    <label for="email{{ user.id }}">{% trans %}child.profile.guardian-email{% endtrans %}</label>
-                                    <input type="email" id="email{{ user.id }}" readonly name="email" value="{{ user.email }}">
+                                <div class="column w-100">
+                                    <div class="input-animation">
+                                        <label for="email{{ user.id }}">{% trans %}child.profile.guardian-email{% endtrans %}</label>
+                                        <input type="email" id="email{{ user.id }}" readonly name="email" value="{{ user.email }}">
+                                    </div>
                                 </div>
                             {% endif %}
                         {% endfor %}
 
-                        <div class="input-animation textarea">
-                            <label for="comment">{% trans %}child.profile.comment{% endtrans %}</label>
-                            <textarea id="comment" name="comment" readonly></textarea>
-                            {#TODO: <textarea id="comment" name="comment" readonly>{{ child.comment }}</textarea>#}
+                        <div class="column w-100">
+                            <div class="input-animation textarea">
+                                <label for="comment">{% trans %}child.profile.comment{% endtrans %}</label>
+                                <textarea id="comment" name="comment" readonly></textarea>
+                                {#TODO: <textarea id="comment" name="comment" readonly>{{ child.comment }}</textarea>#}
+                            </div>
                         </div>
                     </form>
 

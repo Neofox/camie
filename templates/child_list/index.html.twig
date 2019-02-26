@@ -12,10 +12,11 @@
                 <div class="box-user-2 {% if child.sexe == 'F' %}box-user-2--girl{% endif %}">
                     <div class="box-user-2__left" onclick="location.href='{{ path('sheet_view', {'childId': child.id}) }}';">
                         <div class="box-letters">{{child.firstname|first|upper}}{{child.lastname|first|upper}}</div>
-                        <div class="left__name">{{child.firstname}} <br> {{child.lastname}}</div>
+                        <div class="left__name">{{child.firstname}} <br> {{child.lastname}} <br> <span>{% trans %}sheet.history.sheet-name-daily{% endtrans %}</span></div>
                     </div>
                     <div class="box-user-2__right">
                         <a href="{{ path('child_profile', {'id': child.id}) }}"><button id="profile{{ child.id }}" type="button" class="btn-icon"><i class="fas fa-user-circle" aria-label="hidden"></i></button></a>
+                        <div class="right_info">Profil</div>
                     </div>
                 </div>
             {% endfor %}
