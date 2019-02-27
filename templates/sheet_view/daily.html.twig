@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}{% trans %}title.sheet-view{% endtrans %}{% endblock %}
+{% block description %}{% trans %}title.sheet-view{% endtrans %}{% endblock %}
 
 {% block main %}
 <main>
@@ -61,7 +62,7 @@
 {% block javascripts %}
     {{ parent() }}
 
-    <script>
+    <script async>
         $("#dailySheetForm").submit(function(e) {
             $.ajax({
                 type: "POST",

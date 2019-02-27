@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}{% trans %}title.child-create{% endtrans %}{% endblock %}
+{% block description %}{% trans %}title.child-create{% endtrans %}{% endblock %}
 
 {% block main %}
     <main>
@@ -83,7 +84,7 @@
 
 {% block javascripts %}
     {{ parent() }}
-    <script>
+    <script async>
         $('#fille').on('click', function () {
             $('#sexe').val('F');
         });

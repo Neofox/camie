@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}{% trans %}title.login{% endtrans %}{% endblock %}
+{% block description %}{% trans %}title.login{% endtrans %}{% endblock %}
 
 {% block header %}
     <div class="page-header-login">
@@ -59,9 +60,8 @@
 {% endblock %}
 
 {% block javascripts %}
-    <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
-    <script src="{{ asset('login/js/buddy.min.js') }}"></script>
-    <script>
+    <script src="{{ asset('js/jquery-3.3.1.min.js') }}" ref="preload" as="script"></script>
+    <script async>
         $('input').on('input', function() {
             if ($('#user').val() !== '' && $('#password').val() !== '') {
                 $('.box-user').removeClass('box-user--activated').addClass('box-user--activated');
