@@ -59,7 +59,7 @@
 
 {% block javascripts %}
     {{ parent() }}
-    <script>
+    <script async>
         $('input[type=checkbox]').on('click', function() {
            $.ajax({
                url: '{{ path('user_profile_ajax') }}',
@@ -70,7 +70,7 @@
                    'action': $(this).is(':checked') ? 'assign' : 'unassign'
                },
                success: function (data) {
-                   console.log(data);
+                   //console.log(data);
                }
            });
         });

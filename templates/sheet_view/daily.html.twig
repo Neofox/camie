@@ -61,7 +61,7 @@
 {% block javascripts %}
     {{ parent() }}
 
-    <script>
+    <script async>
         $("#dailySheetForm").submit(function(e) {
             $.ajax({
                 type: "POST",
