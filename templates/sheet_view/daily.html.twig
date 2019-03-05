@@ -15,14 +15,16 @@
                         <div class="column w-100">
                             <div class="input-animation">
                                 <label for="arrival_time">{% trans %}sheet.daily.arrival-time{% endtrans %}</label>
-                                <input type="text" id="arrival_time" name="arrival_time" value="{{ sheet.data.arrival_time }}" {% if readonly %}readonly{% endif %} placeholder="hh:mm" />
+                                <input type="time" id="arrival_time" name="arrival_time" value="{{ sheet.data.arrival_time }}" {% if readonly %}readonly{% endif
+                                %} placeholder="hh:mm" />
                                 <img src="{{ asset('images/icon-clock-green.svg') }}" alt="green clock" />
                             </div>
                         </div>
                         <div class="column w-100">
                             <div class="input-animation">
                                 <label for="departure_time">{% trans %}sheet.daily.departure-time{% endtrans %}</label>
-                                <input type="text" id="departure_time" name="departure_time"  value="{{ sheet.data.departure_time }}" {% if readonly %}readonly{% endif %} placeholder="hh:mm" />
+                                <input type="time" id="departure_time" name="departure_time"  value="{{ sheet.data.departure_time }}" {% if readonly
+                                %}readonly{% endif %} placeholder="hh:mm" />
                                 <img src="{{ asset('images/icon-clock-red.svg') }}" alt="red clock" />
                             </div>
                         </div>
