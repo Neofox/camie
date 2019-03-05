@@ -1,0 +1,113 @@
+<section class="overlay overlay--scale overlay--low-opacity overlay--v-align-middle" data-modal="addMeals">
+    <div class="overlay__close"></div>
+    <div class="page-wrapper">
+        <div class="box-info">
+            <p class="text-left"><button type="button" class="link-prev" data-close="close">Retour</button></p>
+            <div class="box-info__title">
+                <i class="fas fa-utensils"></i> <span>Ajouter un repas</span>
+            </div>
+            <div class="box-info__content">
+                <form class="grid-flex">
+                    <div class="column w-100">
+                        <div class="input-animation">
+                            <label for="heureRepas">Heure du repas</label>
+                            <input type="time" id="heureRepas" name="heureRepas" placeholder="hh:mm" />
+                            <img src="{{ asset('images/icon-clock-green.svg') }}" />
+                        </div>
+                    </div>
+                    <div class="column w-100">
+                        <div class="input-animation">
+                            <label for="heureRepas">Forme du repas</label>
+                            <select id="mealselect" required>
+                                <option value="" hidden>Sélectionnez la forme du repas</option> <!-- placeholder, ne surtout pas enlever le hidden -->
+                                <option name="babybottle" id="babybottle">Biberon</option>
+                                <option id="breadsoup">Panade</option>
+                                <option id="menuofday">Menu du jour</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="column w-100" id="selectInput"></div>
+
+                    <div class="column w-100">
+                        <div class="input-animation">
+                            <label for="commentaire">Commentaire</label>
+                            <textarea id="commentaire" name="commentaire" placeholder="Commentaire supplémentaire"></textarea>
+                        </div>
+                    </div>
+
+                    <button type="button" type="submit" name="button" disabled class="btn bg-green disabled">Ajouter le repas</button> <!-- enlever disabled pour avoir le bouton vert -->
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
+
+<script>
+    $('#mealselect').on('change', function () {
+        let option = $("option:selected", this);
+
+        if (option.attr('id') === 'babybottle') {
+            $('#selectInput').html(`
+<div class="column w-100">
+    <div class="input-animation">
+        <label for="biberon">Nombre de ml du biberon</label>
+        <input type="text" id="biberon" name="biberon" placeholder="150" />
+    </div>
+</div>
+            `);
+        }
+        if (option.attr('id') === 'breadsoup') {
+            $('#selectInput').html(`
+<div class="column w-100">
+    <div class="input-animation">
+        <label for="panade">Gout de la panade</label>
+        <input type="text" id="panade" name="panade" placeholder="Sucrée" />
+    </div>
+</div>
+            `);
+        }
+        if (option.attr('id') === 'menuofday') {
+            $('#selectInput').html(`
+<div class="column w-100">
+  <div class="input-animation">
+    <label for="entree">Entrée</label>
+    <select required>
+      <option value="" hidden>Sélectionnez l'état de l'entrée</option>
+      <option>Rien mangé</option>
+      <option>A mangé la moitié</option>
+      <option>A tout mangé</option>
+      <option>S'est reservi</option>
+    </select>
+  </div>
+</div>
+<div class="column w-100">
+  <div class="input-animation">
+    <label>Plat</label>
+    <select required>
+      <option value="" hidden>Sélectionnez l'état du repas</option>
+      <option>Rien mangé</option>
+      <option>A mangé la moitié</option>
+      <option>A tout mangé</option>
+      <option>S'est reservi</option>
+    </select>
+  </div>
+</div>
+<div class="column w-100">
+  <div class="input-animation">
+    <label for="entree">Dessert</label>
+    <select required>
+      <option value="" hidden>Sélectionnez l'état du dessert0</option>
+      <option>Rien mangé</option>
+      <option>A mangé la moitié</option>
+      <option>A tout mangé</option>
+      <option>S'est reservi</option>
+    </select>
+  </div>
+</div>
+            `);
+        }
+    });
+</script>

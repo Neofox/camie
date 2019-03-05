@@ -51,14 +51,25 @@
                         <input type="hidden" name="sheet_id" value={{ sheet.id }}>
                     </form>
 
-                    <a href="#"class="btn bg-blue fa-utensils left d-block mb-2">{% trans %}sheet.daily.add-meal{% endtrans %}</a>
-                    <a href="#"class="btn bg-blue fa-bed left d-block mb-2">{% trans %}sheet.daily.add-sleep{% endtrans %}</a>
-                    <a href="#"class="btn bg-blue fa-toilet-paper left d-block">{% trans %}sheet.daily.add-stools{% endtrans %}</a>
+                    <button type="button" data-modal="addMeals" class="btn bg-blue fa-utensils left d-block mb-2">
+                        {% trans %}sheet.daily.add-meal{% endtrans %}
+                    </button>
+                    <button type="button" data-modal="addSleep" class="btn bg-blue fa-bed left d-block mb-2">
+                        {% trans %}sheet.daily.add-sleep{% endtrans %}
+                    </button>
+                    <button type="button" data-modal="addStools" class="btn bg-blue fa-toilet-paper left d-block mb-2">
+                        {% trans %}sheet.daily.add-stools{% endtrans %}
+                    </button>
                 </div>
             </div>
         </div>
     </section>
 </main>
+
+    {% include 'sheet_view/daily-add-meal-modal.html.twig' %}
+    {% include 'sheet_view/daily-add-sleep-modal.html.twig' %}
+    {% include 'sheet_view/daily-add-stools-modal.html.twig' %}
+
 {% endblock %}
 
 {% block javascripts %}

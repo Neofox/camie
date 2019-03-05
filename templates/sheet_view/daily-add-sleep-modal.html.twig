@@ -1,0 +1,38 @@
+<section class="overlay overlay--scale overlay--low-opacity overlay--v-align-middle" data-modal="addSleep">
+    <div class="overlay__close"></div>
+    <div class="page-wrapper">
+        <div class="box-info">
+            <p class="text-left"><button type="button" class="link-prev" data-close="close">Retour</button></p>
+            <div class="box-info__title">
+                <i class="fas fa-bed"></i> <span>Ajouter une sieste</span>
+            </div>
+            <div class="box-info__content">
+                <form class="grid-flex">
+                    <div class="column w-100">
+                        <div class="input-animation">
+                            <label for="heureDebutSieste">Heure de début</label>
+                            <input type="time" id="heureDebutSieste" name="heureDebutSieste" placeholder="hh:mm" />
+                            <img src="{{ asset('images/icon-clock-green.svg') }}" />
+                        </div>
+                    </div>
+                    <div class="column w-100">
+                        <div class="input-animation">
+                            <label for="heureFinSieste">Heure de fin</label>
+                            <input type="time" id="heureFinSieste" name="heureFinSieste" placeholder="hh:mm" />
+                            <img src="{{ asset('images/icon-clock-red.svg') }}" />
+                        </div>
+                    </div>
+
+                    <div class="column w-100">
+                        <div class="input-animation">
+                            <label for="commentaire">Commentaire</label>
+                            <textarea id="commentaire" name="commentaire" placeholder="Commentaire supplémentaire"></textarea>
+                        </div>
+                    </div>
+
+                    <button type="button" type="submit" name="button" disabled class="btn bg-green disabled">Ajouter la sieste</button> <!-- enlever disabled pour avoir le bouton vert -->
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
