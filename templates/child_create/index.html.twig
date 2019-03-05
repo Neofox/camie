@@ -80,6 +80,10 @@
             </div>
         </section>
     </main>
+
+    {% if created %}
+        {% include 'utils/success-modal.html.twig' with {'success_message': 'child.create.created'|trans()} %}
+    {% endif %}
 {% endblock %}
 
 {% block javascripts %}
