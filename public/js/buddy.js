@@ -39,13 +39,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /********** component form / input animation **********/
 
-  var target = document.querySelectorAll('.btn-icon[data-modal], .box-user-2__left[data-modal]');
+  var target = document.querySelectorAll('.btn-icon[data-modal], .box-user-2__left[data-modal], button[data-modal]');
   var sections = document.querySelectorAll('section');
+  var closeModal = document.querySelectorAll('[data-close="close"]');
+  var body = document.getElementsByTagName('body')[0];
+  var overlayClose = document.querySelectorAll('.overlay .overlay__close');
 
   for (var _i2 = 0; _i2 < target.length; _i2++) {
     target[_i2].addEventListener('click', function () {
-      var dataModal = event.currentTarget.getAttribute('data-modal'),
-          body = document.getElementsByTagName('body')[0];
+      var dataModal = event.currentTarget.getAttribute('data-modal');
 
       for (var _i3 = 0, _x2 = sections.length; _i3 < _x2; _i3++) {
         if (sections[_i3].getAttribute('data-modal') == dataModal) {
@@ -60,6 +62,24 @@ document.addEventListener('DOMContentLoaded', function () {
             sections[_i3].classList.add('overlay--open');
           }
         }
+      }
+    });
+  }
+
+  for (var j = 0; j < closeModal.length; j++) {
+    closeModal[j].addEventListener('click', function () {
+      for (var _i4 = 0, _x3 = sections.length; _i4 < _x3; _i4++) {
+        body.classList.remove('overlay--open');
+        sections[_i4].classList.remove('overlay--open');
+      }
+    });
+  }
+
+  for (var _j = 0; _j < overlayClose.length; _j++) {
+    overlayClose[_j].addEventListener('click', function () {
+      for (var _i5 = 0, _x4 = sections.length; _i5 < _x4; _i5++) {
+        body.classList.remove('overlay--open');
+        sections[_i5].classList.remove('overlay--open');
       }
     });
   }

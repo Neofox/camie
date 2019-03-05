@@ -17,10 +17,6 @@
         <div class="page-wrapper">
             <div class="box-user">
                 <div class="box-user__login"><img src="{{ asset('images/dog.svg') }}" alt="" /></div>
-                {% if error %}
-                    <div style="text-align: center;color: red">/!\ {{ error.messageKey|trans(error.messageData, 'security') }} /!\</div>
-                {% endif %}
-
                 <div class="box-user__content">
                     <form class="grid-flex" method="post">
                         <div class="column w-100">
@@ -57,6 +53,10 @@
     </section>
 </main>
 
+{% if error %}
+    {% include 'utils/error-modal.html.twig' with {'error_message': error.messageKey|trans(error.messageData, 'security')} %}
+{% endif %}
+
 {% endblock %}
 
 {% block javascripts %}
@@ -75,5 +75,4 @@
             }
         });
     </script>
-
 {% endblock %}
