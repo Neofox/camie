@@ -25,8 +25,10 @@
                     sections[j].classList.remove('overlay--open');j++;
                 }
             } else {
+                if (!sections[_i3].classList.contains('overlay--nav')){ //We don't want to open the nav bar
+                    sections[_i3].classList.add('overlay--open');
+                }
                 body.classList.add('overlay--open');
-                sections[_i3].classList.add('overlay--open');
             }
         }
 

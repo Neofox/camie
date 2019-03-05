@@ -31,10 +31,10 @@ class ChildCreateController extends AbstractController
             $child = $childManager->createChild($formData, $user->getNursery());
             $userManager->createOrAssignGuardian($data, $child);
 
-            $this->redirectToRoute('home');
+            return $this->render('child_create/index.html.twig', ['created' => true]);
         }
 
-        return $this->render('child_create/index.html.twig', []);
+        return $this->render('child_create/index.html.twig', ['created' => false]);
     }
 
     private function sanitizeFormDate(array $formData): array
