@@ -2,37 +2,54 @@
     <div class="overlay__close"></div>
     <div class="page-wrapper">
         <div class="box-info">
-            <p class="text-left"><button type="button" class="link-prev" data-close="close">Retour</button></p>
+            <p class="text-left"><button type="button" class="link-prev" data-close="close">{% trans %}sheet.daily.modal.back{% endtrans %}</button></p>
             <div class="box-info__title">
-                <i class="fas fa-bed"></i> <span>Ajouter une sieste</span>
+                <i class="fas fa-bed"></i> <span>{% trans %}sheet.daily.modal.add-sleep{% endtrans %}</span>
             </div>
             <div class="box-info__content">
                 <form class="grid-flex">
                     <div class="column w-100">
                         <div class="input-animation">
-                            <label for="heureDebutSieste">Heure de début</label>
-                            <input type="time" id="heureDebutSieste" name="heureDebutSieste" placeholder="hh:mm" />
+                            <label for="startSleep">{% trans %}sheet.daily.modal.sleep-start{% endtrans %}</label>
+                            <input type="time" id="startSleep" name="startSleep" />
                             <img src="{{ asset('images/icon-clock-green.svg') }}" />
                         </div>
                     </div>
                     <div class="column w-100">
                         <div class="input-animation">
-                            <label for="heureFinSieste">Heure de fin</label>
-                            <input type="time" id="heureFinSieste" name="heureFinSieste" placeholder="hh:mm" />
+                            <label for="endSleep">{% trans %}sheet.daily.modal.sleep-end{% endtrans %}</label>
+                            <input type="time" id="endSleep" name="endSleep" />
                             <img src="{{ asset('images/icon-clock-red.svg') }}" />
                         </div>
                     </div>
 
                     <div class="column w-100">
                         <div class="input-animation">
-                            <label for="commentaire">Commentaire</label>
-                            <textarea id="commentaire" name="commentaire" placeholder="Commentaire supplémentaire"></textarea>
+                            <label for="commentaire">{% trans %}sheet.daily.modal.commentary{% endtrans %}</label>
+                            <textarea id="commentaire" name="commentaire" placeholder="{% trans %}sheet.daily.modal.commentary-placeholder{% endtrans %}"></textarea>
                         </div>
                     </div>
 
-                    <button type="button" type="submit" name="button" disabled class="btn bg-green disabled">Ajouter la sieste</button> <!-- enlever disabled pour avoir le bouton vert -->
+                    <button type="submit" name="button" id="submitSleepBtn" disabled class="btn bg-green disabled">
+                        {% trans %}sheet.daily.modal.add-sleep{% endtrans %}
+                    </button>
                 </form>
             </div>
         </div>
     </div>
 </section>
+
+
+<script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
+
+<script type="application/javascript">
+    $('input').on('change', function() {
+        if ($('#startSleep').val() !== '' && $('#endSleep').val() !== '') {
+            $('#submitSleepBtn').prop('disabled', false);
+            $('#submitSleepBtn').removeClass('disabled')
+        } else {
+            $('#submitSleepBtn').prop('disabled', true);
+            $('#submitSleepBtn').removeClass('disabled').addClass('disabled')
+        }
+    });
+</script>
