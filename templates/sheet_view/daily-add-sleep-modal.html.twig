@@ -1,0 +1,78 @@
+<section class="overlay overlay--scale overlay--low-opacity overlay--v-align-middle" data-modal="addSleep">
+    <div class="overlay__close"></div>
+    <div class="page-wrapper">
+        <div class="box-info">
+            <p class="text-left"><button type="button" class="link-prev" data-close="close">{% trans %}sheet.daily.modal.back{% endtrans %}</button></p>
+            <div class="box-info__title">
+                <i class="fas fa-bed"></i> <span>{% trans %}sheet.daily.modal.add-sleep{% endtrans %}</span>
+            </div>
+            <div class="box-info__content">
+                <form method="post" class="grid-flex">
+                    <div class="column w-100">
+                        <div class="input-animation">
+                            <label for="startSleep">{% trans %}sheet.daily.modal.sleep-start{% endtrans %}</label>
+                            <input type="time" id="startSleep" name="startSleep" />
+                            <img src="{{ asset('images/icon-clock-green.svg') }}" />
+                        </div>
+                    </div>
+                    <div class="column w-100">
+                        <div class="input-animation">
+                            <label for="endSleep">{% trans %}sheet.daily.modal.sleep-end{% endtrans %}</label>
+                            <input type="time" id="endSleep" name="endSleep" />
+                            <img src="{{ asset('images/icon-clock-red.svg') }}" />
+                        </div>
+                    </div>
+
+                    <div class="column w-100">
+                        <div class="input-animation">
+                            <label for="sleep_commentary">{% trans %}sheet.daily.modal.commentary{% endtrans %}</label>
+                            <textarea id="sleep_commentary" name="sleep_commentary" placeholder="{% trans %}sheet.daily.modal.commentary-placeholder{% endtrans %}"></textarea>
+                        </div>
+                    </div>
+
+                    <button type="submit" name="button" id="submitSleepBtn" disabled class="btn bg-green disabled">
+                        {% trans %}sheet.daily.modal.add-sleep{% endtrans %}
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
+
+<script type="application/javascript">
+    $('input').on('change', function() {
+        if ($('#startSleep').val() !== '' && $('#endSleep').val() !== '') {
+            $('#submitSleepBtn').prop('disabled', false);
+            $('#submitSleepBtn').removeClass('disabled')
+        } else {
+            $('#submitSleepBtn').prop('disabled', true);
+            $('#submitSleepBtn').removeClass('disabled').addClass('disabled')
+        }
+    });
+</script>
+
+
+<script type="application/javascript">
+
+    $("#submitSleepBtn").on('click', function() {
+        let data = [];
+
+        data = {...data, ...{start: $('#startSleep').val()}};
+        data = {...data, ...{end: $('#endSleep').val()}};
+        data = {...data, ...{comment: $('#sleep_commentary').val()}};
+
+        $.ajax({
+            type: "POST",
+            url: '{{ path('sheet_view_ajax', {'childId': app.request.get('childId')}) }}',
+            data: [
+                {name: 'sheet_type', value: {{ sheetTypeToInt('DAILY') }}},
+                {name: 'sleep', value: JSON.stringify(data)},
+                {name: 'sheet_id', value: "{{ sheet.id }}"}
+            ],
+            success: function(data) {}
+        });
+    });
+</script>

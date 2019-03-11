@@ -51,41 +51,149 @@
                         <input type="hidden" name="sheet_id" value={{ sheet.id }}>
                     </form>
 
-                    <a href="#"class="btn bg-blue fa-utensils left d-block mb-2">{% trans %}sheet.daily.add-meal{% endtrans %}</a>
-                    <a href="#"class="btn bg-blue fa-bed left d-block mb-2">{% trans %}sheet.daily.add-sleep{% endtrans %}</a>
-                    <a href="#"class="btn bg-blue fa-toilet-paper left d-block">{% trans %}sheet.daily.add-stools{% endtrans %}</a>
+                    {% if sheet.data.sleep is defined %}
+                        {% for sleep in sheet.data.sleep %}
+                        <button type="button" class="btn-3" {% if not readonly %}data-modal="validate_modal"{% endif %}>
+                            <div class="btn-3__wrapper">
+                                <span class="btn-3__icon"><span><i class="fa fa-bed"></i></span></span>
+                                <span class="btn-3__title">
+                                    {% trans %}sheet.daily.sleeping{% endtrans %}<br>
+                                    <span class="title__sub-title">{% trans %}sheet.daily.sleeping.from{% endtrans %} <span>{{sleep.start}}</span> {% trans %}sheet.daily.sleeping.to{% endtrans %} <span>{{sleep.end}}</span></span>
+                                </span>
+                                {% if not readonly %}
+                                    <span class="btn-3__remove"><i class="fa fa-trash"></i></span>
+                                {% endif %}
+                            </div>
+                        </button>
+                        {% endfor %}
+                    {% endif %}
+
+                    {% if sheet.data.stools is defined %}
+                        {% for timestamp,stool in sheet.data.stools %}
+                            {% if stool.stool == 'l'%}{% set stoolType = 'sheet.daily.stool.liquid' %}{% endif %}
+                            {% if stool.stool == 's'%}{% set stoolType = 'sheet.daily.stool.solid' %}{% endif %}
+                            {% if stool.stool == 'n'%}{% set stoolType = 'sheet.daily.stool.normal' %}{% endif %}
+                            <button type="button" class="btn-3" {% if not readonly %}data-modal="validate_modal"{% endif %}>
+                                <div class="btn-3__wrapper">
+                                    <span class="btn-3__icon"><span><i class="fa fa-toilet-paper"></i></span></span>
+                                    <span class="btn-3__title">
+                                        {% trans %}sheet.daily.stool{% endtrans %} <span class="c-blue">{{ stoolType|trans() }}</span><br>
+                                        <span class="title__sub-title">{% trans %}sheet.daily.stool.at{% endtrans %} <span>{{timestamp|date('H:i')}}</span> {% if stool.accident %}{% trans %}sheet.daily.stool.by-accident{% endtrans %}{% else %}{% trans %}sheet.daily.stool.not-by-accident{% endtrans %}{% endif %}</span>
+                                    </span>
+                                    {% if not readonly %}
+                                        <span class="btn-3__remove"><i class="fa fa-trash"></i></span>
+                                    {% endif %}
+                                </div>
+                                <p>
+                                    {{ stool.comment }}
+                                </p>
+                            </button>
+                        {% endfor %}
+                    {% endif %}
+
+                    {% if sheet.data.meal is defined %}
+                        {% for timestamp,meals in sheet.data.meal %}
+                            {% for type,meal in meals %}
+                                {% if type == 'babybottle' %}
+                                    <button type="button" class="btn-3" {% if not readonly %}data-modal="validate_modal"{% endif %}>
+                                        <div class="btn-3__wrapper">
+                                            <span class="btn-3__icon"><span><i class="fa fa-utensils"></i></span></span>
+                                            <span class="btn-3__title">
+                                                {% trans %}sheet.daily.meal.babybottle{% endtrans %}<br>
+                                                <span class="title__sub-title">{% if meal.details is defined %}<span>{{ meal.details }} ml</span>{% endif %} {% trans %}sheet.daily.meal.at{% endtrans %} <span>{{meal.hour|date('H:i')}}</span></span>
+                                            </span>
+                                        {% if not readonly %}
+                                            <span class="btn-3__remove"><i class="fa fa-trash"></i></span>
+                                        {% endif %}
+                                        </div>
+                                    </button>
+                                {% elseif type == 'breadsoup' %}
+                                    <button type="button" class="btn-3" {% if not readonly %}data-modal="validate_modal"{% endif %}>
+                                        <div class="btn-3__wrapper">
+                                            <span class="btn-3__icon"><span><i class="fa fa-utensils"></i></span></span>
+                                            <span class="btn-3__title">
+                                                {% trans %}sheet.daily.meal.breadsoup{% endtrans %}<br>
+                                                <span class="title__sub-title">{% if meal.details is defined %}<span>{{meal.details}}</span>{% endif %} {% trans %}sheet.daily.meal.at{% endtrans %} <span>{{meal.hour|date('H:i')}}</span></span>
+                                            </span>
+                                        {% if not readonly %}
+                                            <span class="btn-3__remove"><i class="fa fa-trash"></i></span>
+                                        {% endif %}
+                                        </div>
+                                    </button>
+                                {% elseif type == 'menuofday' %}
+                                    <button type="button" class="btn-3" {% if not readonly %}data-modal="validate_modal"{% endif %}>
+                                        <div class="btn-3__wrapper">
+                                            <span class="btn-3__icon"><span><i class="fa fa-utensils"></i></span></span>
+                                            <span class="btn-3__title">
+                                                {% trans %}sheet.daily.meal.menuofday{% endtrans %}<br>
+                                                <span class="title__sub-title">
+                                                    {% trans %}sheet.daily.meal.menuofday.entrance{% endtrans %}: <span>{{ 'sheet.daily.modal.meal-eat-' ~ meal.entrance|trans() }}</span><br>
+                                                    {% trans %}sheet.daily.meal.menuofday.dish{% endtrans %}: <span>{{ 'sheet.daily.modal.meal-eat-' ~ meal.dish|trans() }}</span><br>
+                                                    {% trans %}sheet.daily.meal.menuofday.dessert{% endtrans %}: <span>{{ 'sheet.daily.modal.meal-eat-' ~ meal.dessert|trans() }}</span>
+                                                </span>
+                                            </span>
+                                        {% if not readonly %}
+                                            <span class="btn-3__remove"><i class="fa fa-trash"></i></span>
+                                        {% endif %}
+                                        </div>
+                                    </button>
+                                {% endif %}
+                            {% endfor %}
+
+                        {% endfor %}
+                    {% endif %}
+
+                    {% if not readonly %}
+                    <button type="button" data-modal="addMeals" class="btn bg-blue fa-utensils left d-block mb-2">
+                        {% trans %}sheet.daily.add-meal{% endtrans %}
+                    </button>
+                    <button type="button" data-modal="addSleep" class="btn bg-blue fa-bed left d-block mb-2">
+                        {% trans %}sheet.daily.add-sleep{% endtrans %}
+                    </button>
+                    <button type="button" data-modal="addStools" class="btn bg-blue fa-toilet-paper left d-block mb-2">
+                        {% trans %}sheet.daily.add-stools{% endtrans %}
+                    </button>
+                    {% endif %}
                 </div>
             </div>
         </div>
     </section>
 </main>
+    {% if not readonly %}
+        {% include 'sheet_view/daily-add-meal-modal.html.twig' %}
+        {% include 'sheet_view/daily-add-sleep-modal.html.twig' %}
+        {% include 'sheet_view/daily-add-stools-modal.html.twig' %}
+        {% include 'utils/validation-modal.html.twig' with {'validation_message': 'sheet.daily.remove.validation'|trans()} %}
+    {% endif %}
+
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
 
-    <script async>
-        $("#dailySheetForm").submit(function(e) {
-            $.ajax({
-                type: "POST",
-                url: '{{ path('sheet_view_ajax', {'childId': app.request.get('childId')}) }}',
-                data: $(this).serialize(),
-                success: function(data) {
-                    console.log(data);
-                }
+    {% if not readonly %}
+
+        <script async>
+            $("#dailySheetForm").submit(function(e) {
+                $.ajax({
+                    type: "POST",
+                    url: '{{ path('sheet_view_ajax', {'childId': app.request.get('childId')}) }}',
+                    data: $(this).serialize(),
+                    success: function(data) {}
+                });
+                e.preventDefault();
             });
-            e.preventDefault();
-        });
 
-        $('input').on('change', function() {
-            setTimeout( function(){
+            $('input').on('change', function() {
+                setTimeout( function(){
+                    $("#dailySheetForm").submit();
+                } , 1000 );
+            });
+
+            window.onbeforeunload = function () {
                 $("#dailySheetForm").submit();
-            } , 1000 );
-        });
-
-        window.onbeforeunload = function () {
-            $("#dailySheetForm").submit();
-        }
-    </script>
+            }
+        </script>
+    {% endif %}
 
 {% endblock %}

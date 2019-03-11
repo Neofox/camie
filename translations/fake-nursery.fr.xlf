@@ -5,8 +5,8 @@
       <tool tool-id="symfony" tool-name="Symfony"/>
     </header>
     <body>
-      <trans-unit id="Jvd545s" resname="home.introduction">
-        <source>home.introduction.fake-nursery</source>
+      <trans-unit id="29XaMUi" resname="home.introduction">
+        <source>home.introduction</source>
         <target>Les parents vous confient leurs trésor et sont donc très exigeants.
                 Camie vous simplifie la tâche pour pouvoir passer plus de temps sur les tâches vraiment importantes: veiller au bonheur et à la sécurité des enfants.
         </target>

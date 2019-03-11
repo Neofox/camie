@@ -48,7 +48,8 @@ class SheetViewController extends AbstractController
         $sheetType = (int)$request->request->get('sheet_type');
         $sheetId = $request->request->get('sheet_id');
 
-        $data = $request->request->all();
+        $data = $this->formatData($request);
+
         $child = $childManager->getChildById($childId);
         unset($data['sheet_type'], $data['sheet_id']);
 
@@ -58,5 +59,23 @@ class SheetViewController extends AbstractController
         }
 
         return new JsonResponse(null, 201);
+    }
+
+
+    private function formatData(Request $request): array
+    {
+        $data = $request->request->all();
+        //TODO: bad way to do that
+        if ($stools = $request->request->get('stools')) {
+            $data['stools'] = [time() => json_decode($stools)];
+        }
+        if ($sleep = $request->request->get('sleep')) {
+            $data['sleep'] = [time() => json_decode($sleep)];
+        }
+        if ($meal = $request->request->get('meal')) {
+            $data['meal'] = [time() => json_decode($meal)];
+        }
+
+        return $data;
     }
 }

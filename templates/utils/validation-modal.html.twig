@@ -1,0 +1,12 @@
+<section class="overlay overlay--scale overlay--v-align-middle overlay--low-opacity" data-modal="validate_modal">
+    <div class="overlay__close"></div>
+    <div class="page-wrapper">
+        <div class="box-info">
+            <p class="c-main-color"><b>{{ validation_message }}</b></p>
+            <p class="text-center">
+                <button type="button" class="btn-2 bg-green" data-close="close">{% trans %}modal.accept{% endtrans %}</button>
+                <button type="button" class="btn-2 bg-gray" data-close="close">{% trans %}modal.cancel{% endtrans %}</button>
+            </p>
+        </div>
+    </div>
+</section>
