@@ -249,13 +249,233 @@
         <source>child.create.validate</source>
         <target>Créer l'enfant</target>
       </trans-unit>
-      <trans-unit id="Cw_CNdd65" resname="home.contact.phone">
+      <trans-unit id="Cw_CNHA" resname="home.contact.phone">
         <source>home.contact.phone</source>
         <target>Téléphone</target>
       </trans-unit>
-      <trans-unit id="CAwC8d3v" resname="home.contact.email">
+      <trans-unit id="l.h0a2f" resname="home.contact.email">
         <source>home.contact.email</source>
         <target>Email</target>
+      </trans-unit>
+      <trans-unit id="4GXxWCY" resname="sheet.daily.modal.back">
+        <source>sheet.daily.modal.back</source>
+        <target>Retour</target>
+      </trans-unit>
+      <trans-unit id="4kNbFEc" resname="sheet.daily.modal.add-sleep">
+        <source>sheet.daily.modal.add-sleep</source>
+        <target>Ajouter une sieste</target>
+      </trans-unit>
+      <trans-unit id="NMHb_JQ" resname="sheet.daily.modal.sleep-start">
+        <source>sheet.daily.modal.sleep-start</source>
+        <target>Heure de début</target>
+      </trans-unit>
+      <trans-unit id="HKYI324" resname="sheet.daily.modal.sleep-end">
+        <source>sheet.daily.modal.sleep-end</source>
+        <target>Heure de fin</target>
+      </trans-unit>
+      <trans-unit id="3h0sEci" resname="sheet.daily.modal.commentary">
+        <source>sheet.daily.modal.commentary</source>
+        <target>Commentaire</target>
+      </trans-unit>
+      <trans-unit id="LvFqlFu" resname="sheet.daily.modal.commentary-placeholder">
+        <source>sheet.daily.modal.commentary-placeholder</source>
+        <target>Commentaire supplémentaire</target>
+      </trans-unit>
+      <trans-unit id="XxgKa.h" resname="sheet.daily.modal.meal-time">
+        <source>sheet.daily.modal.meal-time</source>
+        <target>Heure du repas</target>
+      </trans-unit>
+      <trans-unit id="C3al72Q" resname="sheet.daily.modal.meal-type">
+        <source>sheet.daily.modal.meal-type</source>
+        <target>Forme du repas</target>
+      </trans-unit>
+      <trans-unit id="ak7dueR" resname="sheet.daily.modal.select-meal">
+        <source>sheet.daily.modal.select-meal</source>
+        <target>Selectionnez la forme du repas</target>
+      </trans-unit>
+      <trans-unit id="GbeU4vw" resname="sheet.daily.modal.meal-babybottle">
+        <source>sheet.daily.modal.meal-babybottle</source>
+        <target>Biberon</target>
+      </trans-unit>
+      <trans-unit id="OvvJXpP" resname="sheet.daily.modal.meal-breadsoup">
+        <source>sheet.daily.modal.meal-breadsoup</source>
+        <target>Panade</target>
+      </trans-unit>
+      <trans-unit id="D1CUrhI" resname="sheet.daily.modal.meal-menuofday">
+        <source>sheet.daily.modal.meal-menuofday</source>
+        <target>Menu du jour</target>
+      </trans-unit>
+      <trans-unit id="8j.54oc" resname="sheet.daily.modal.meal-babybottle-size">
+        <source>sheet.daily.modal.meal-babybottle-size</source>
+        <target>Taille du biberon (ml)</target>
+      </trans-unit>
+      <trans-unit id="mXYfnPi" resname="sheet.daily.modal.meal-breadsoup-type">
+        <source>sheet.daily.modal.meal-breadsoup-type</source>
+        <target>Gôut de la panade</target>
+      </trans-unit>
+      <trans-unit id="qEk7QjT" resname="sheet.daily.modal.meal-breadsoup-type-placeholder">
+        <source>sheet.daily.modal.meal-breadsoup-type-placeholder</source>
+        <target>Sucrée</target>
+      </trans-unit>
+      <trans-unit id="TfvCWF6" resname="sheet.daily.modal.meal-entrance">
+        <source>sheet.daily.modal.meal-entrance</source>
+        <target>Entrée</target>
+      </trans-unit>
+      <trans-unit id="1zSPbnw" resname="sheet.daily.modal.entrance-option">
+        <source>sheet.daily.modal.entrance-option</source>
+        <target>Sélectionnez l'état de l'entrée</target>
+      </trans-unit>
+      <trans-unit id="jYL1cYY" resname="sheet.daily.modal.meal-eat-nothing">
+        <source>sheet.daily.modal.meal-eat-nothing</source>
+        <target>N'a rien mangé</target>
+      </trans-unit>
+      <trans-unit id="yHqNS0Z" resname="sheet.daily.modal.meal-eat-half">
+        <source>sheet.daily.modal.meal-eat-half</source>
+        <target>A mangé la moitié</target>
+      </trans-unit>
+      <trans-unit id="GkpO3le" resname="sheet.daily.modal.meal-eat-all">
+        <source>sheet.daily.modal.meal-eat-all</source>
+        <target>A tout mangé</target>
+      </trans-unit>
+      <trans-unit id="PVhtcea" resname="sheet.daily.modal.meal-eat-more">
+        <source>sheet.daily.modal.meal-eat-more</source>
+        <target>En a redemandé</target>
+      </trans-unit>
+      <trans-unit id="h9dZrZV" resname="sheet.daily.modal.meal-dish">
+        <source>sheet.daily.modal.meal-dish</source>
+        <target>Plat principal</target>
+      </trans-unit>
+      <trans-unit id="GGX3iSr" resname="sheet.daily.modal.meal-dish-option">
+        <source>sheet.daily.modal.meal-dish-option</source>
+        <target>Sélectionnez l'état du plat principal</target>
+      </trans-unit>
+      <trans-unit id="wje_m2z" resname="sheet.daily.modal.meal-dessert">
+        <source>sheet.daily.modal.meal-dessert</source>
+        <target>Dessert</target>
+      </trans-unit>
+      <trans-unit id="Oqhaypw" resname="sheet.daily.modal.meal-dessert-option">
+        <source>sheet.daily.modal.meal-dessert-option</source>
+        <target>Sélectionnez l'état du dessert</target>
+      </trans-unit>
+      <trans-unit id="J19wIc1" resname="sheet.daily.modal.add-stools">
+        <source>sheet.daily.modal.add-stools</source>
+        <target>Ajouter des selles</target>
+      </trans-unit>
+      <trans-unit id="ghdW1hT" resname="sheet.daily.modal.stool-arrived-accident">
+        <source>sheet.daily.modal.stool-arrived-accident</source>
+        <target>Arrivé par accident ?</target>
+      </trans-unit>
+      <trans-unit id="AQ75J3Z" resname="sheet.daily.modal.yes">
+        <source>sheet.daily.modal.yes</source>
+        <target>Oui</target>
+      </trans-unit>
+      <trans-unit id="CN7nplc" resname="sheet.daily.modal.no">
+        <source>sheet.daily.modal.no</source>
+        <target>Non</target>
+      </trans-unit>
+      <trans-unit id="6WbLMUy" resname="sheet.daily.modal.stools-shape">
+        <source>sheet.daily.modal.stools-shape</source>
+        <target>Forme de la selle</target>
+      </trans-unit>
+      <trans-unit id="Bpj6l81" resname="sheet.daily.modal.liquid-stools">
+        <source>sheet.daily.modal.liquid-stools</source>
+        <target>Selle liquide</target>
+      </trans-unit>
+      <trans-unit id="UwO9chc" resname="sheet.daily.modal.soft-stools">
+        <source>sheet.daily.modal.soft-stools</source>
+        <target>Selle molle</target>
+      </trans-unit>
+      <trans-unit id="L5ThcJk" resname="sheet.daily.modal.hard-stools">
+        <source>sheet.daily.modal.hard-stools</source>
+        <target>Selle dure</target>
+      </trans-unit>
+      <trans-unit id="_4S4sfD" resname="sheet.daily.sleeping">
+        <source>sheet.daily.sleeping</source>
+        <target>Sieste</target>
+      </trans-unit>
+      <trans-unit id="_jkAkko" resname="sheet.daily.sleeping.from">
+        <source>sheet.daily.sleeping.from</source>
+        <target>De</target>
+      </trans-unit>
+      <trans-unit id="TmTt73A" resname="sheet.daily.sleeping.to">
+        <source>sheet.daily.sleeping.to</source>
+        <target>à</target>
+      </trans-unit>
+      <trans-unit id="NfsUQyb" resname="sheet.daily.stool">
+        <source>sheet.daily.stool</source>
+        <target>Selle</target>
+      </trans-unit>
+      <trans-unit id="XU2GowO" resname="sheet.daily.stool.solid">
+        <source>sheet.daily.stool.solid</source>
+        <target>dure</target>
+      </trans-unit>
+      <trans-unit id="wldjuZn" resname="sheet.daily.stool.liquid">
+        <source>sheet.daily.stool.liquid</source>
+        <target>liquide</target>
+      </trans-unit>
+      <trans-unit id=".xVq23I" resname="sheet.daily.stool.normal">
+        <source>sheet.daily.stool.normal</source>
+        <target>molle</target>
+      </trans-unit>
+      <trans-unit id="BKvUVR3" resname="sheet.daily.stool.at">
+        <source>sheet.daily.stool.at</source>
+        <target>à</target>
+      </trans-unit>
+      <trans-unit id="3SPGBMv" resname="sheet.daily.stool.by-accident">
+        <source>sheet.daily.stool.by-accident</source>
+        <target>arrivé par accident</target>
+      </trans-unit>
+      <trans-unit id="O8m1gxZ" resname="sheet.daily.stool.not-by-accident">
+        <source>sheet.daily.stool.not-by-accident</source>
+        <target>n'est pas arrivé par accident</target>
+      </trans-unit>
+      <trans-unit id="CQU3dJL" resname="sheet.daily.meal.babybottle">
+        <source>sheet.daily.meal.babybottle</source>
+        <target>Biberon</target>
+      </trans-unit>
+      <trans-unit id="nEji6q5" resname="sheet.daily.meal.at">
+        <source>sheet.daily.meal.at</source>
+        <target>à</target>
+      </trans-unit>
+      <trans-unit id="FYIjILc" resname="sheet.daily.meal.breadsoup">
+        <source>sheet.daily.meal.breadsoup</source>
+        <target>Panade</target>
+      </trans-unit>
+      <trans-unit id="EAu1Nml" resname="sheet.daily.meal.menuofday">
+        <source>sheet.daily.meal.menuofday</source>
+        <target>Menu du jour</target>
+      </trans-unit>
+      <trans-unit id="YO7rqty" resname="sheet.daily.meal.menuofday.entrance">
+        <source>sheet.daily.meal.menuofday.entrance</source>
+        <target>Entrée</target>
+      </trans-unit>
+      <trans-unit id="s9fxZCQ" resname="sheet.daily.meal.menuofday.dish">
+        <source>sheet.daily.meal.menuofday.dish</source>
+        <target>Plat principal</target>
+      </trans-unit>
+      <trans-unit id="oj1bzW1" resname="sheet.daily.meal.menuofday.dessert">
+        <source>sheet.daily.meal.menuofday.dessert</source>
+        <target>Dessert</target>
+      </trans-unit>
+      <trans-unit id="Cob5dk8" resname="sheet.daily.remove.validation">
+        <source>sheet.daily.remove.validation</source>
+        <target>Êtes-vous sûr de vouloir suprimer cette entrée ?</target>
+      </trans-unit>
+      <trans-unit id="U9pnEll" resname="child.create.created">
+        <source>child.create.created</source>
+        <target>Enfant ajouté.</target>
+      </trans-unit>
+      <trans-unit id="Sumeg5G" resname="modal.close">
+        <source>modal.close</source>
+        <target>Fermer</target>
+      </trans-unit>
+      <trans-unit id="t.yBlYU" resname="modal.accept">
+        <source>modal.accept</source>
+        <target>Valider</target>
+      </trans-unit>
+      <trans-unit id="vsgIXhA" resname="modal.cancel">
+        <source>modal.cancel</source>
+        <target>Annuler</target>
       </trans-unit>
     </body>
   </file>
