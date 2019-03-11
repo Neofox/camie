@@ -359,7 +359,7 @@
       </trans-unit>
       <trans-unit id="J19wIc1" resname="sheet.daily.modal.add-stools">
         <source>sheet.daily.modal.add-stools</source>
-        <target>Ajouter des selles</target>
+        <target>Ajouter une selles</target>
       </trans-unit>
       <trans-unit id="ghdW1hT" resname="sheet.daily.modal.stool-arrived-accident">
         <source>sheet.daily.modal.stool-arrived-accident</source>
@@ -476,6 +476,10 @@
       <trans-unit id="vsgIXhA" resname="modal.cancel">
         <source>modal.cancel</source>
         <target>Annuler</target>
+      </trans-unit>
+      <trans-unit id="HQM8U8S" resname="sheet.daily.modal.add-meal">
+        <source>sheet.daily.modal.add-meal</source>
+        <target>Ajouter un repas</target>
       </trans-unit>
     </body>
   </file>
