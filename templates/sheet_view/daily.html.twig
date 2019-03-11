@@ -53,7 +53,7 @@
 
                     {% if sheet.data.sleep is defined %}
                         {% for sleep in sheet.data.sleep %}
-                        <button type="button" class="btn-3" data-modal="validation_modal">
+                        <button type="button" class="btn-3" data-modal="validate_modal">
                             <div class="btn-3__wrapper">
                                 <span class="btn-3__icon"><span><i class="fa fa-bed"></i></span></span>
                                 <span class="btn-3__title">
@@ -73,7 +73,7 @@
                             {% if stool.stool == 'l'%}{% set stoolType = 'sheet.daily.stool.liquid' %}{% endif %}
                             {% if stool.stool == 's'%}{% set stoolType = 'sheet.daily.stool.solid' %}{% endif %}
                             {% if stool.stool == 'n'%}{% set stoolType = 'sheet.daily.stool.normal' %}{% endif %}
-                            <button type="button" class="btn-3" data-modal="removeInfos">
+                            <button type="button" class="btn-3" data-modal="validate_modal">
                                 <div class="btn-3__wrapper">
                                     <span class="btn-3__icon"><span><i class="fa fa-toilet-paper"></i></span></span>
                                     <span class="btn-3__title">
@@ -95,12 +95,12 @@
                         {% for timestamp,meals in sheet.data.meal %}
                             {% for type,meal in meals %}
                                 {% if type == 'babybottle' %}
-                                    <button type="button" class="btn-3" data-modal="removeInfos">
+                                    <button type="button" class="btn-3" data-modal="validate_modal">
                                         <div class="btn-3__wrapper">
                                             <span class="btn-3__icon"><span><i class="fa fa-utensils"></i></span></span>
                                             <span class="btn-3__title">
-                                                {% trans %}daily.sheet.meal.babybottle{% endtrans %}<br>
-                                                <span class="title__sub-title">{% if meal.details is defined %}<span>{{ meal.details }} ml</span>{% endif %} {% trans %}daily.sheet.meal.at{% endtrans %} <span>{{meal.hour|date('H:i')}}</span></span>
+                                                {% trans %}sheet.daily.meal.babybottle{% endtrans %}<br>
+                                                <span class="title__sub-title">{% if meal.details is defined %}<span>{{ meal.details }} ml</span>{% endif %} {% trans %}sheet.daily.meal.at{% endtrans %} <span>{{meal.hour|date('H:i')}}</span></span>
                                             </span>
                                         {% if not readonly %}
                                             <span class="btn-3__remove"><i class="fa fa-trash"></i></span>
@@ -108,12 +108,12 @@
                                         </div>
                                     </button>
                                 {% elseif type == 'breadsoup' %}
-                                    <button type="button" class="btn-3" data-modal="removeInfos">
+                                    <button type="button" class="btn-3" data-modal="validate_modal">
                                         <div class="btn-3__wrapper">
                                             <span class="btn-3__icon"><span><i class="fa fa-utensils"></i></span></span>
                                             <span class="btn-3__title">
-                                                {% trans %}daily.sheet.meal.breadsoup{% endtrans %}<br>
-                                                <span class="title__sub-title">{% if meal.details is defined %}<span>{{meal.details}}</span>{% endif %} {% trans %}daily.sheet.meal.at{% endtrans %} <span>{{meal.hour|date('H:i')}}</span></span>
+                                                {% trans %}sheet.daily.meal.breadsoup{% endtrans %}<br>
+                                                <span class="title__sub-title">{% if meal.details is defined %}<span>{{meal.details}}</span>{% endif %} {% trans %}sheet.daily.meal.at{% endtrans %} <span>{{meal.hour|date('H:i')}}</span></span>
                                             </span>
                                         {% if not readonly %}
                                             <span class="btn-3__remove"><i class="fa fa-trash"></i></span>
@@ -121,15 +121,15 @@
                                         </div>
                                     </button>
                                 {% elseif type == 'menuofday' %}
-                                    <button type="button" class="btn-3" data-modal="removeInfos">
+                                    <button type="button" class="btn-3" data-modal="validate_modal">
                                         <div class="btn-3__wrapper">
                                             <span class="btn-3__icon"><span><i class="fa fa-utensils"></i></span></span>
                                             <span class="btn-3__title">
-                                                {% trans %}daily.sheet.meal.menuofday{% endtrans %}<br>
+                                                {% trans %}sheet.daily.meal.menuofday{% endtrans %}<br>
                                                 <span class="title__sub-title">
-                                                    {% trans %}daily.sheet.meal.menuofday.entrance{% endtrans %}: <span>{{ 'sheet.daily.modal.meal-eat-' ~ meal.entrance|trans() }}</span><br>
-                                                    {% trans %}daily.sheet.meal.menuofday.dish{% endtrans %}: <span>{{ 'sheet.daily.modal.meal-eat-' ~ meal.dish|trans() }}</span><br>
-                                                    {% trans %}daily.sheet.meal.menuofday.dessert{% endtrans %}: <span>{{ 'sheet.daily.modal.meal-eat-' ~ meal.dessert|trans() }}</span>
+                                                    {% trans %}sheet.daily.meal.menuofday.entrance{% endtrans %}: <span>{{ 'sheet.daily.modal.meal-eat-' ~ meal.entrance|trans() }}</span><br>
+                                                    {% trans %}sheet.daily.meal.menuofday.dish{% endtrans %}: <span>{{ 'sheet.daily.modal.meal-eat-' ~ meal.dish|trans() }}</span><br>
+                                                    {% trans %}sheet.daily.meal.menuofday.dessert{% endtrans %}: <span>{{ 'sheet.daily.modal.meal-eat-' ~ meal.dessert|trans() }}</span>
                                                 </span>
                                             </span>
                                         {% if not readonly %}
@@ -163,6 +163,7 @@
     {% include 'sheet_view/daily-add-meal-modal.html.twig' %}
     {% include 'sheet_view/daily-add-sleep-modal.html.twig' %}
     {% include 'sheet_view/daily-add-stools-modal.html.twig' %}
+    {% include 'utils/validation-modal.html.twig' with {'validation_message': 'sheet.daily.remove.validation'|trans()} %}
 
 {% endblock %}
 
