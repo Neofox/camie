@@ -60,7 +60,9 @@
                                     {% trans %}sheet.daily.sleeping{% endtrans %}<br>
                                     <span class="title__sub-title">{% trans %}sheet.daily.sleeping.from{% endtrans %} <span>{{sleep.start}}</span> {% trans %}sheet.daily.sleeping.to{% endtrans %} <span>{{sleep.end}}</span></span>
                                 </span>
-                                <span class="btn-3__remove"><i class="fa fa-trash"></i></span>
+                                {% if not readonly %}
+                                    <span class="btn-3__remove"><i class="fa fa-trash"></i></span>
+                                {% endif %}
                             </div>
                         </button>
                         {% endfor %}
@@ -75,10 +77,12 @@
                                 <div class="btn-3__wrapper">
                                     <span class="btn-3__icon"><span><i class="fa fa-toilet-paper"></i></span></span>
                                     <span class="btn-3__title">
-								{% trans %}sheet.daily.stool{% endtrans %} <span class="c-blue">{{ stoolType|trans() }}</span><br>
-								<span class="title__sub-title">{% trans %}sheet.daily.stool.at{% endtrans %} <span>{{timestamp|date('H:i')}}</span> {% if stool.accident %}{% trans %}sheet.daily.stool.by-accident{% endtrans %}{% else %}{% trans %}sheet.daily.stool.not-by-accident{% endtrans %}{% endif %}</span>
-							</span>
-                                    <span class="btn-3__remove"><i class="fa fa-trash"></i></span>
+                                        {% trans %}sheet.daily.stool{% endtrans %} <span class="c-blue">{{ stoolType|trans() }}</span><br>
+                                        <span class="title__sub-title">{% trans %}sheet.daily.stool.at{% endtrans %} <span>{{timestamp|date('H:i')}}</span> {% if stool.accident %}{% trans %}sheet.daily.stool.by-accident{% endtrans %}{% else %}{% trans %}sheet.daily.stool.not-by-accident{% endtrans %}{% endif %}</span>
+                                    </span>
+                                    {% if not readonly %}
+                                        <span class="btn-3__remove"><i class="fa fa-trash"></i></span>
+                                    {% endif %}
                                 </div>
                                 <p>
                                     {{ stool.comment }}
@@ -98,7 +102,9 @@
                                                 {% trans %}daily.sheet.meal.babybottle{% endtrans %}<br>
                                                 <span class="title__sub-title">{% if meal.details is defined %}<span>{{ meal.details }} ml</span>{% endif %} {% trans %}daily.sheet.meal.at{% endtrans %} <span>{{meal.hour|date('H:i')}}</span></span>
                                             </span>
+                                        {% if not readonly %}
                                             <span class="btn-3__remove"><i class="fa fa-trash"></i></span>
+                                        {% endif %}
                                         </div>
                                     </button>
                                 {% elseif type == 'breadsoup' %}
@@ -109,7 +115,9 @@
                                                 {% trans %}daily.sheet.meal.breadsoup{% endtrans %}<br>
                                                 <span class="title__sub-title">{% if meal.details is defined %}<span>{{meal.details}}</span>{% endif %} {% trans %}daily.sheet.meal.at{% endtrans %} <span>{{meal.hour|date('H:i')}}</span></span>
                                             </span>
+                                        {% if not readonly %}
                                             <span class="btn-3__remove"><i class="fa fa-trash"></i></span>
+                                        {% endif %}
                                         </div>
                                     </button>
                                 {% elseif type == 'menuofday' %}
@@ -124,7 +132,9 @@
                                                     {% trans %}daily.sheet.meal.menuofday.dessert{% endtrans %}: <span>{{ 'sheet.daily.modal.meal-eat-' ~ meal.dessert|trans() }}</span>
                                                 </span>
                                             </span>
+                                        {% if not readonly %}
                                             <span class="btn-3__remove"><i class="fa fa-trash"></i></span>
+                                        {% endif %}
                                         </div>
                                     </button>
                                 {% endif %}
@@ -133,6 +143,7 @@
                         {% endfor %}
                     {% endif %}
 
+                    {% if not readonly %}
                     <button type="button" data-modal="addMeals" class="btn bg-blue fa-utensils left d-block mb-2">
                         {% trans %}sheet.daily.add-meal{% endtrans %}
                     </button>
@@ -142,6 +153,7 @@
                     <button type="button" data-modal="addStools" class="btn bg-blue fa-toilet-paper left d-block mb-2">
                         {% trans %}sheet.daily.add-stools{% endtrans %}
                     </button>
+                    {% endif %}
                 </div>
             </div>
         </div>
