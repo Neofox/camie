@@ -7,7 +7,7 @@
                 <i class="fas fa-utensils"></i> <span>{% trans %}sheet.daily.modal.add-sleep{% endtrans %}</span>
             </div>
             <div class="box-info__content">
-                <form class="grid-flex">
+                <form method="post" class="grid-flex">
                     <div class="column w-100">
                         <div class="input-animation">
                             <label for="mealTime">{% trans %}sheet.daily.modal.meal-time{% endtrans %}</label>
@@ -30,8 +30,8 @@
 
                     <div class="column w-100">
                         <div class="input-animation">
-                            <label for="commentaire">{% trans %}sheet.daily.modal.commentary{% endtrans %}</label>
-                            <textarea id="commentaire" name="commentaire" placeholder="{% trans %}sheet.daily.modal.commentary-placeholder{% endtrans %}"></textarea>
+                            <label for="meal_commentary">{% trans %}sheet.daily.modal.commentary{% endtrans %}</label>
+                            <textarea id="meal_commentary" name="meal_commentary" placeholder="{% trans %}sheet.daily.modal.commentary-placeholder{% endtrans %}"></textarea>
                         </div>
                     </div>
 
@@ -55,8 +55,8 @@
             $('#selectInput').html(`
 <div class="column w-100">
     <div class="input-animation">
-        <label for="babybottle">{% trans %}sheet.daily.modal.meal-babybottle-size{% endtrans %}</label>
-        <input type="text" id="babybottle" name="babybottle" placeholder="150" />
+        <label for="babybottle_size">{% trans %}sheet.daily.modal.meal-babybottle-size{% endtrans %}</label>
+        <input type="text" id="babybottle_size" name="babybottle_size" placeholder="150" />
     </div>
 </div>
             `);
@@ -65,8 +65,8 @@
             $('#selectInput').html(`
 <div class="column w-100">
     <div class="input-animation">
-        <label for="breadsoup">{% trans %}sheet.daily.modal.meal-breadsoup-type{% endtrans %}</label>
-        <input type="text" id="breadsoup" name="breadsoup" placeholder="{% trans %}sheet.daily.modal.meal-breadsoup-type-placeholder{% endtrans %}" />
+        <label for="breadsoup_details">{% trans %}sheet.daily.modal.meal-breadsoup-type{% endtrans %}</label>
+        <input type="text" id="breadsoup_details" name="breadsoup_details" placeholder="{% trans %}sheet.daily.modal.meal-breadsoup-type-placeholder{% endtrans %}" />
     </div>
 </div>
             `);
@@ -78,10 +78,10 @@
     <label for="entrance">{% trans %}sheet.daily.modal.meal-entrance{% endtrans %}</label>
     <select id="entrance" required>
       <option value="" hidden>{% trans %}sheet.daily.modal.entrance-option{% endtrans %}</option>
-      <option>{% trans %}sheet.daily.modal.meal-eat-nothing{% endtrans %}</option>
-      <option>{% trans %}sheet.daily.modal.meal-eat-half{% endtrans %}</option>
-      <option>{% trans %}sheet.daily.modal.meal-eat-all{% endtrans %}</option>
-      <option>{% trans %}sheet.daily.modal.meal-eat-more{% endtrans %}</option>
+      <option value="nothing">{% trans %}sheet.daily.modal.meal-eat-nothing{% endtrans %}</option>
+      <option value="half">{% trans %}sheet.daily.modal.meal-eat-half{% endtrans %}</option>
+      <option value="all">{% trans %}sheet.daily.modal.meal-eat-all{% endtrans %}</option>
+      <option value="more">{% trans %}sheet.daily.modal.meal-eat-more{% endtrans %}</option>
     </select>
   </div>
 </div>
@@ -90,10 +90,10 @@
     <label for="dish">{% trans %}sheet.daily.modal.meal-dish{% endtrans %}</label>
     <select id="dish" required>
       <option value="" hidden>{% trans %}sheet.daily.modal.meal-dish-option{% endtrans %}</option>
-      <option>{% trans %}sheet.daily.modal.meal-eat-nothing{% endtrans %}</option>
-      <option>{% trans %}sheet.daily.modal.meal-eat-half{% endtrans %}</option>
-      <option>{% trans %}sheet.daily.modal.meal-eat-all{% endtrans %}</option>
-      <option>{% trans %}sheet.daily.modal.meal-eat-more{% endtrans %}</option>
+      <option value="nothing">{% trans %}sheet.daily.modal.meal-eat-nothing{% endtrans %}</option>
+      <option value="half">{% trans %}sheet.daily.modal.meal-eat-half{% endtrans %}</option>
+      <option value="all">{% trans %}sheet.daily.modal.meal-eat-all{% endtrans %}</option>
+      <option value="more">{% trans %}sheet.daily.modal.meal-eat-more{% endtrans %}</option>
     </select>
   </div>
 </div>
@@ -102,10 +102,10 @@
     <label for="dessert">{% trans %}sheet.daily.modal.meal-dessert{% endtrans %}</label>
     <select id="dessert" required>
       <option value="" hidden>{% trans %}sheet.daily.modal.meal-dessert-option{% endtrans %}</option>
-      <option>{% trans %}sheet.daily.modal.meal-eat-nothing{% endtrans %}</option>
-      <option>{% trans %}sheet.daily.modal.meal-eat-half{% endtrans %}</option>
-      <option>{% trans %}sheet.daily.modal.meal-eat-all{% endtrans %}</option>
-      <option>{% trans %}sheet.daily.modal.meal-eat-more{% endtrans %}</option>
+      <option value="nothing">{% trans %}sheet.daily.modal.meal-eat-nothing{% endtrans %}</option>
+      <option value="half">{% trans %}sheet.daily.modal.meal-eat-half{% endtrans %}</option>
+      <option value="all">{% trans %}sheet.daily.modal.meal-eat-all{% endtrans %}</option>
+      <option value="more">{% trans %}sheet.daily.modal.meal-eat-more{% endtrans %}</option>
     </select>
   </div>
 </div>
@@ -116,13 +116,51 @@
 
 
 <script type="application/javascript">
-    $('input').on('change', function() {
-        if ($('#mealTime').val() !== '') {
+    $(document).on('change',"#mealTime, #mealselect",  function() {
+        if ($('#mealTime').val() !== '' && $('#mealselect').val() !== '') {
             $('#submitMealBtn').prop('disabled', false);
             $('#submitMealBtn').removeClass('disabled')
         } else {
             $('#submitMealBtn').prop('disabled', true);
             $('#submitMealBtn').removeClass('disabled').addClass('disabled')
         }
+    });
+</script>
+
+
+<script type="application/javascript">
+
+    $("#submitMealBtn").on('click', function() {
+        let data = [];
+        let mealType = $("option:selected", $('#mealselect')).attr('id');
+
+        data = {...data, ...{hour: $('#mealTime').val()}};
+        data = {...data, ...{comment: $('#meal_commentary').val()}};
+
+        switch (mealType) {
+            case 'babybottle':
+                data = {...data, ...{details: $('#babybottle_size').val()}};
+                break;
+            case 'breadsoup':
+                data = {...data, ...{details: $('breadsoup_details').val()}};
+                break;
+            case 'menuofday':
+                data = {...data, ...{entrance: $("option:selected", $('#entrance')).val()}};
+                data = {...data, ...{dish: $("option:selected", $('#dish')).val()}};
+                data = {...data, ...{dessert: $("option:selected", $('#dessert')).val()}};
+                break;
+        }
+        let mealData = {[mealType]: data};
+
+        $.ajax({
+            type: "POST",
+            url: '{{ path('sheet_view_ajax', {'childId': app.request.get('childId')}) }}',
+            data: [
+                {name: 'sheet_type', value: {{ sheetTypeToInt('DAILY') }}},
+                {name: 'meal', value: JSON.stringify(mealData)},
+                {name: 'sheet_id', value: "{{ sheet.id }}"}
+            ],
+            success: function(data) {}
+        });
     });
 </script>

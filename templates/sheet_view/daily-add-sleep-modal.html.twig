@@ -7,7 +7,7 @@
                 <i class="fas fa-bed"></i> <span>{% trans %}sheet.daily.modal.add-sleep{% endtrans %}</span>
             </div>
             <div class="box-info__content">
-                <form class="grid-flex">
+                <form method="post" class="grid-flex">
                     <div class="column w-100">
                         <div class="input-animation">
                             <label for="startSleep">{% trans %}sheet.daily.modal.sleep-start{% endtrans %}</label>
@@ -25,8 +25,8 @@
 
                     <div class="column w-100">
                         <div class="input-animation">
-                            <label for="commentaire">{% trans %}sheet.daily.modal.commentary{% endtrans %}</label>
-                            <textarea id="commentaire" name="commentaire" placeholder="{% trans %}sheet.daily.modal.commentary-placeholder{% endtrans %}"></textarea>
+                            <label for="sleep_commentary">{% trans %}sheet.daily.modal.commentary{% endtrans %}</label>
+                            <textarea id="sleep_commentary" name="sleep_commentary" placeholder="{% trans %}sheet.daily.modal.commentary-placeholder{% endtrans %}"></textarea>
                         </div>
                     </div>
 
@@ -51,5 +51,28 @@
             $('#submitSleepBtn').prop('disabled', true);
             $('#submitSleepBtn').removeClass('disabled').addClass('disabled')
         }
+    });
+</script>
+
+
+<script type="application/javascript">
+
+    $("#submitSleepBtn").on('click', function() {
+        let data = [];
+
+        data = {...data, ...{start: $('#startSleep').val()}};
+        data = {...data, ...{end: $('#endSleep').val()}};
+        data = {...data, ...{comment: $('#sleep_commentary').val()}};
+
+        $.ajax({
+            type: "POST",
+            url: '{{ path('sheet_view_ajax', {'childId': app.request.get('childId')}) }}',
+            data: [
+                {name: 'sheet_type', value: {{ sheetTypeToInt('DAILY') }}},
+                {name: 'sleep', value: JSON.stringify(data)},
+                {name: 'sheet_id', value: "{{ sheet.id }}"}
+            ],
+            success: function(data) {}
+        });
     });
 </script>

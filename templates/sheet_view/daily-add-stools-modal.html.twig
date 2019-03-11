@@ -7,7 +7,7 @@
                 <i class="fas fa-toilet-paper"></i> <span>{% trans %}sheet.daily.modal.add-stools{% endtrans %}</span>
             </div>
             <div class="box-info__content">
-                <form class="grid-flex">
+                <form method="post" id="stoolsForm" class="grid-flex">
                     <div class="column w-100 mb-2">
                         <label>{% trans %}sheet.daily.modal.stool-arrived-accident{% endtrans %}</label>
                         <div class="input-group-radio">
@@ -55,8 +55,8 @@
 
                     <div class="column w-100">
                         <div class="input-animation">
-                            <label for="commentary">{% trans %}sheet.daily.modal.commentary{% endtrans %}</label>
-                            <textarea id="commentary" name="commentary" placeholder="{% trans %}sheet.daily.modal.commentary-placeholder{% endtrans %}"></textarea>
+                            <label for="stools_commentary">{% trans %}sheet.daily.modal.commentary{% endtrans %}</label>
+                            <textarea id="stools_commentary" name="stools_commentary" placeholder="{% trans %}sheet.daily.modal.commentary-placeholder{% endtrans %}"></textarea>
                         </div>
                     </div>
 
@@ -84,3 +84,27 @@
         }
     });
 </script>
+
+<script type="application/javascript">
+
+    $("#submitStoolsBtn").on('click', function() {
+        let data = [];
+
+        data = {...data, ...{accident: $("[name='radio2']:checked").attr('id') === 'radioYes'}};
+        data = {...data, ...{stool: $("[name='stoolGroup']:checked").attr('id').substr(0,1)}};
+        data = {...data, ...{comment: $('#stools_commentary').val()}};
+
+        $.ajax({
+            type: "POST",
+            url: '{{ path('sheet_view_ajax', {'childId': app.request.get('childId')}) }}',
+            data: [
+                {name: 'sheet_type', value: {{ sheetTypeToInt('DAILY') }}},
+                {name: 'stools', value: JSON.stringify(data)},
+                {name: 'sheet_id', value: "{{ sheet.id }}"}
+                ],
+            success: function(data) {}
+        });
+    });
+</script>
+
+

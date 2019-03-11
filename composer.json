@@ -1,4 +1,12 @@
 {
+    "name": "neofox/camie",
+    "description": "Nursary management tool",
+    "authors": [
+        {
+            "name": "Jérôme Schaeffer",
+            "email": "jer.schaeffer@gmail.com"
+        }
+    ],
     "type": "project",
     "license": "proprietary",
     "require": {
@@ -24,7 +32,8 @@
         "symfony/twig-bundle": "4.2.*",
         "symfony/validator": "4.2.*",
         "symfony/web-link": "4.2.*",
-        "symfony/yaml": "4.2.*"
+        "symfony/yaml": "4.2.*",
+        "ext-json": "*"
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^3.1",

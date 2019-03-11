@@ -53,6 +53,20 @@ class SheetManager
             $this->sheetRepository->createSheet($sheet);
         }
 
+        //TODO: refactor this part
+        if (isset($data['stools']) && isset($sheet->getData()['stools'])) {
+            $data['stools'] += $sheet->getData()['stools'];
+        }
+        if (isset($data['sleep']) && isset($sheet->getData()['sleep'])) {
+            $data['sleep'] += $sheet->getData()['sleep'];
+        }
+        if (isset($data['meal']) && isset($sheet->getData()['meal'])) {
+            $data['meal'] += $sheet->getData()['meal'];
+        }
+
+        //If new data came from a sub form, don't erase other data
+        $data = array_merge($sheet->getData(), $data);
+
         //TODO: validate data
         $this->sheetRepository->updateSheetData($sheet, $data);
     }

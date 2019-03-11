@@ -81,9 +81,7 @@
                 type: "POST",
                 url: '{{ path('sheet_view_ajax', {'childId': app.request.get('childId')}) }}',
                 data: $(this).serialize(),
-                success: function(data) {
-                    console.log(data);
-                }
+                success: function(data) {}
             });
             e.preventDefault();
         });
