@@ -73,7 +73,7 @@
                     {% if sheet.data.stools is defined %}
                         {% for timestamp,stool in sheet.data.stools %}
                             {% if stool.stool == 'l'%}{% set stoolType = 'sheet.daily.stool.liquid' %}{% endif %}
-                            {% if stool.stool == 's'%}{% set stoolType = 'sheet.daily.stool.solid' %}{% endif %}
+                            {% if stool.stool == 's'%}{% set stoolType = 'sheet.daily.stool.soft' %}{% endif %}
                             {% if stool.stool == 'n'%}{% set stoolType = 'sheet.daily.stool.normal' %}{% endif %}
                             <button type="button" class="btn-3" {% if not readonly %}data-modal="validate_modal"{% endif %}>
                                 <input type="hidden" name="type" value="stools" />

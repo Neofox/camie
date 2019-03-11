@@ -72,7 +72,10 @@
                 {name: 'sleep', value: JSON.stringify(data)},
                 {name: 'sheet_id', value: "{{ sheet.id }}"}
             ],
-            success: function(data) {}
+            success: function(data) {
+                //TODO: add the button and don't reload the page
+                document.location.reload(true);
+            }
         });
     });
 </script>

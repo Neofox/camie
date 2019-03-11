@@ -405,9 +405,9 @@
         <source>sheet.daily.stool</source>
         <target>Selle</target>
       </trans-unit>
-      <trans-unit id="XU2GowO" resname="sheet.daily.stool.solid">
-        <source>sheet.daily.stool.solid</source>
-        <target>dure</target>
+      <trans-unit id="XU2GowO" resname="sheet.daily.stool.soft">
+        <source>sheet.daily.stool.soft</source>
+        <target>molle</target>
       </trans-unit>
       <trans-unit id="wldjuZn" resname="sheet.daily.stool.liquid">
         <source>sheet.daily.stool.liquid</source>
@@ -415,7 +415,7 @@
       </trans-unit>
       <trans-unit id=".xVq23I" resname="sheet.daily.stool.normal">
         <source>sheet.daily.stool.normal</source>
-        <target>molle</target>
+        <target>dure</target>
       </trans-unit>
       <trans-unit id="BKvUVR3" resname="sheet.daily.stool.at">
         <source>sheet.daily.stool.at</source>
