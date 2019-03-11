@@ -29,8 +29,7 @@ class SheetRepository extends ServiceEntityRepository
     public function updateSheetData(Sheet $sheet, array $data): Sheet
     {
         $sheet->setData($data);
-        $this->getEntityManager()->persist($sheet);
-        $this->getEntityManager()->flush();
+        $this->save($sheet);
 
         return $sheet;
     }
@@ -67,32 +66,10 @@ class SheetRepository extends ServiceEntityRepository
         $this->getEntityManager()->flush();
     }
 
-    // /**
-    //  * @return Sheet[] Returns an array of Sheet objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function save(Sheet $sheet)
     {
-        return $this->createQueryBuilder('s')
-            ->andWhere('s.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('s.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+        $this->getEntityManager()->persist($sheet);
+        $this->getEntityManager()->flush();
     }
-    */
 
-    /*
-    public function findOneBySomeField($value): ?Sheet
-    {
-        return $this->createQueryBuilder('s')
-            ->andWhere('s.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

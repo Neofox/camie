@@ -52,8 +52,10 @@
                     </form>
 
                     {% if sheet.data.sleep is defined %}
-                        {% for sleep in sheet.data.sleep %}
+                        {% for timestamp, sleep in sheet.data.sleep %}
                         <button type="button" class="btn-3" {% if not readonly %}data-modal="validate_modal"{% endif %}>
+                            <input type="hidden" name="type" value="sleep" />
+                            <input type="hidden" name="timestamp" value={{ timestamp }} />
                             <div class="btn-3__wrapper">
                                 <span class="btn-3__icon"><span><i class="fa fa-bed"></i></span></span>
                                 <span class="btn-3__title">
@@ -74,6 +76,8 @@
                             {% if stool.stool == 's'%}{% set stoolType = 'sheet.daily.stool.solid' %}{% endif %}
                             {% if stool.stool == 'n'%}{% set stoolType = 'sheet.daily.stool.normal' %}{% endif %}
                             <button type="button" class="btn-3" {% if not readonly %}data-modal="validate_modal"{% endif %}>
+                                <input type="hidden" name="type" value="stools" />
+                                <input type="hidden" name="timestamp" value={{ timestamp }} />
                                 <div class="btn-3__wrapper">
                                     <span class="btn-3__icon"><span><i class="fa fa-toilet-paper"></i></span></span>
                                     <span class="btn-3__title">
@@ -96,6 +100,8 @@
                             {% for type,meal in meals %}
                                 {% if type == 'babybottle' %}
                                     <button type="button" class="btn-3" {% if not readonly %}data-modal="validate_modal"{% endif %}>
+                                        <input type="hidden" name="type" value="meal" />
+                                        <input type="hidden" name="timestamp" value={{ timestamp }} />
                                         <div class="btn-3__wrapper">
                                             <span class="btn-3__icon"><span><i class="fa fa-utensils"></i></span></span>
                                             <span class="btn-3__title">
@@ -109,6 +115,8 @@
                                     </button>
                                 {% elseif type == 'breadsoup' %}
                                     <button type="button" class="btn-3" {% if not readonly %}data-modal="validate_modal"{% endif %}>
+                                        <input type="hidden" name="type" value="meal" />
+                                        <input type="hidden" name="timestamp" value={{ timestamp }} />
                                         <div class="btn-3__wrapper">
                                             <span class="btn-3__icon"><span><i class="fa fa-utensils"></i></span></span>
                                             <span class="btn-3__title">
@@ -122,6 +130,8 @@
                                     </button>
                                 {% elseif type == 'menuofday' %}
                                     <button type="button" class="btn-3" {% if not readonly %}data-modal="validate_modal"{% endif %}>
+                                        <input type="hidden" name="type" value="meal" />
+                                        <input type="hidden" name="timestamp" value={{ timestamp }} />
                                         <div class="btn-3__wrapper">
                                             <span class="btn-3__icon"><span><i class="fa fa-utensils"></i></span></span>
                                             <span class="btn-3__title">
@@ -163,7 +173,7 @@
         {% include 'sheet_view/daily-add-meal-modal.html.twig' %}
         {% include 'sheet_view/daily-add-sleep-modal.html.twig' %}
         {% include 'sheet_view/daily-add-stools-modal.html.twig' %}
-        {% include 'utils/validation-modal.html.twig' with {'validation_message': 'sheet.daily.remove.validation'|trans()} %}
+        {% include 'utils/validation-modal.html.twig' with { validation_message: 'sheet.daily.remove.validation'|trans()} %}
     {% endif %}
 
 {% endblock %}
@@ -172,6 +182,33 @@
     {{ parent() }}
 
     {% if not readonly %}
+
+        <script type="application/javascript">
+
+            let removeType = undefined;
+            let removeTimestamp = undefined;
+
+            $('[data-modal="validate_modal"]').on('click', function () {
+                removeType = $(this).find('[name="type"]').val();
+                removeTimestamp = $(this).find('[name="timestamp"]').val();
+            });
+
+            $('#validateBtn').on('click', function (e) {
+                $.ajax({
+                    type: "POST",
+                    url: '{{ path('sheet_view_ajax_remove', {'childId': app.request.get('childId')}) }}',
+                    data: [
+                        {name: 'sheetId', value: {{ sheet.id }} },
+                        {name: 'type', value: removeType},
+                        {name: 'timestamp', value: removeTimestamp},
+                    ],
+                    success: function(data) {
+                        //TODO: remove the button and don't reload the page
+                        document.location.reload(true);
+                    }
+                });
+            })
+        </script>
 
         <script async>
             $("#dailySheetForm").submit(function(e) {

@@ -61,6 +61,29 @@ class SheetViewController extends AbstractController
         return new JsonResponse(null, 201);
     }
 
+    /**
+     *
+     * @Route("/sheet/{childId}/view/ajax/remove", name="sheet_view_ajax_remove")
+     *
+     * @param Request      $request
+     * @param string       $childId
+     * @param ChildManager $childManager
+     * @param SheetManager $sheetManager
+     *
+     * @return JsonResponse
+     */
+    public function ajax_remove(Request $request, string $childId, ChildManager $childManager, SheetManager $sheetManager): JsonResponse
+    {
+        $sheetId = $request->request->get('sheetId');
+
+        $child = $childManager->getChildById($childId);
+        $sheet = $child->getSheets()->filter(function (Sheet $sheet) use($sheetId) {return $sheet->getId() == $sheetId; })->first();
+        $sheet = $sheetManager->removeSubData($sheet, $request->request->get('type'), (int) $request->request->get('timestamp'));
+        $sheetManager->save($sheet);
+
+        return new JsonResponse(null, 204);
+    }
+
 
     private function formatData(Request $request): array
     {
