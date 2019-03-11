@@ -159,11 +159,10 @@
         </div>
     </section>
 </main>
-
-    {% include 'sheet_view/daily-add-meal-modal.html.twig' %}
-    {% include 'sheet_view/daily-add-sleep-modal.html.twig' %}
-    {% include 'sheet_view/daily-add-stools-modal.html.twig' %}
     {% if not readonly %}
+        {% include 'sheet_view/daily-add-meal-modal.html.twig' %}
+        {% include 'sheet_view/daily-add-sleep-modal.html.twig' %}
+        {% include 'sheet_view/daily-add-stools-modal.html.twig' %}
         {% include 'utils/validation-modal.html.twig' with {'validation_message': 'sheet.daily.remove.validation'|trans()} %}
     {% endif %}
 
