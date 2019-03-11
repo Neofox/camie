@@ -171,26 +171,29 @@
 {% block javascripts %}
     {{ parent() }}
 
-    <script async>
-        $("#dailySheetForm").submit(function(e) {
-            $.ajax({
-                type: "POST",
-                url: '{{ path('sheet_view_ajax', {'childId': app.request.get('childId')}) }}',
-                data: $(this).serialize(),
-                success: function(data) {}
+    {% if not readonly %}
+
+        <script async>
+            $("#dailySheetForm").submit(function(e) {
+                $.ajax({
+                    type: "POST",
+                    url: '{{ path('sheet_view_ajax', {'childId': app.request.get('childId')}) }}',
+                    data: $(this).serialize(),
+                    success: function(data) {}
+                });
+                e.preventDefault();
             });
-            e.preventDefault();
-        });
 
-        $('input').on('change', function() {
-            setTimeout( function(){
+            $('input').on('change', function() {
+                setTimeout( function(){
+                    $("#dailySheetForm").submit();
+                } , 1000 );
+            });
+
+            window.onbeforeunload = function () {
                 $("#dailySheetForm").submit();
-            } , 1000 );
-        });
-
-        window.onbeforeunload = function () {
-            $("#dailySheetForm").submit();
-        }
-    </script>
+            }
+        </script>
+    {% endif %}
 
 {% endblock %}
