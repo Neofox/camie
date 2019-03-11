@@ -4,11 +4,20 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="Description" content="{% block description %}Base description page{% endblock %}">
         <meta name="theme-color" content="#ff9fa0">
+        <link rel="manifest" href="/manifest.json">
+
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta name="Description" content="{% block description %}Base description page{% endblock %}">
-        
+        <link rel="apple-touch-startup-image" href="{{ asset('images/camie_icon.png') }}" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" />
+        <link rel="apple-touch-startup-image" href="{{ asset('images/camie_icon.png') }}" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" />
+        <link rel="apple-touch-startup-image" href="{{ asset('images/camie_icon.png') }}" media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)" />
+        <link rel="apple-touch-startup-image" href="{{ asset('images/camie_icon.png') }}" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" />
+        <link rel="apple-touch-startup-image" href="{{ asset('images/camie_icon.png') }}" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" />
+        <link rel="apple-touch-startup-image" href="{{ asset('images/camie_icon.png') }}" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)" />
+        <link rel="apple-touch-startup-image" href="{{ asset('images/camie_icon.png') }}" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" />
+
         <title>{% block title %}{{ app.user.nursery.name }}{% endblock %}</title>
         {% block stylesheets %}
             <link href="{{ asset('css/raleway_font.css') }}" rel='stylesheet' type='text/css'>
