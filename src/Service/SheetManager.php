@@ -68,7 +68,8 @@ class SheetManager
         $data = array_merge($sheet->getData(), $data);
 
         //TODO: validate data
-        $this->sheetRepository->updateSheetData($sheet, $data);
+        $sheet->setData($data);
+        $this->sheetRepository->save($sheet);
     }
 
     public function getSheetTypes(): array
@@ -79,6 +80,19 @@ class SheetManager
     public function getDailySheet(Child $child): ?Sheet
     {
         return $this->sheetRepository->findChildDailySheet($child);
+    }
+
+    public function removeSubData(Sheet $sheet, string $type, int $timestamp): Sheet
+    {
+        $data = $sheet->getData();
+        unset($data[$type][$timestamp]);
+
+        return $sheet->setData($data);
+    }
+
+    public function save(Sheet $sheet)
+    {
+        return $this->sheetRepository->save($sheet);
     }
 
 }
