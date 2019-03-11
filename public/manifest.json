@@ -1,0 +1,15 @@
+{
+  "short_name": "Camie",
+  "name": "Camie",
+  "icons": [
+    {
+      "src": "/images/camie_icon.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/home",
+  "background_color": "#FFFFFF",
+  "display": "standalone",
+  "theme_color": "#ff9fa0"
+}
