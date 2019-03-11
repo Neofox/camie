@@ -477,6 +477,10 @@
         <source>modal.cancel</source>
         <target>Cancel</target>
       </trans-unit>
+      <trans-unit id="HQM8U8S" resname="sheet.daily.modal.add-meal">
+        <source>sheet.daily.modal.add-meal</source>
+        <target>Add a meal</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
