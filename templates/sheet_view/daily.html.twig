@@ -53,7 +53,7 @@
 
                     {% if sheet.data.sleep is defined %}
                         {% for sleep in sheet.data.sleep %}
-                        <button type="button" class="btn-3" data-modal="validate_modal">
+                        <button type="button" class="btn-3" {% if not readonly %}data-modal="validate_modal"{% endif %}>
                             <div class="btn-3__wrapper">
                                 <span class="btn-3__icon"><span><i class="fa fa-bed"></i></span></span>
                                 <span class="btn-3__title">
@@ -73,7 +73,7 @@
                             {% if stool.stool == 'l'%}{% set stoolType = 'sheet.daily.stool.liquid' %}{% endif %}
                             {% if stool.stool == 's'%}{% set stoolType = 'sheet.daily.stool.solid' %}{% endif %}
                             {% if stool.stool == 'n'%}{% set stoolType = 'sheet.daily.stool.normal' %}{% endif %}
-                            <button type="button" class="btn-3" data-modal="validate_modal">
+                            <button type="button" class="btn-3" {% if not readonly %}data-modal="validate_modal"{% endif %}>
                                 <div class="btn-3__wrapper">
                                     <span class="btn-3__icon"><span><i class="fa fa-toilet-paper"></i></span></span>
                                     <span class="btn-3__title">
@@ -95,7 +95,7 @@
                         {% for timestamp,meals in sheet.data.meal %}
                             {% for type,meal in meals %}
                                 {% if type == 'babybottle' %}
-                                    <button type="button" class="btn-3" data-modal="validate_modal">
+                                    <button type="button" class="btn-3" {% if not readonly %}data-modal="validate_modal"{% endif %}>
                                         <div class="btn-3__wrapper">
                                             <span class="btn-3__icon"><span><i class="fa fa-utensils"></i></span></span>
                                             <span class="btn-3__title">
@@ -108,7 +108,7 @@
                                         </div>
                                     </button>
                                 {% elseif type == 'breadsoup' %}
-                                    <button type="button" class="btn-3" data-modal="validate_modal">
+                                    <button type="button" class="btn-3" {% if not readonly %}data-modal="validate_modal"{% endif %}>
                                         <div class="btn-3__wrapper">
                                             <span class="btn-3__icon"><span><i class="fa fa-utensils"></i></span></span>
                                             <span class="btn-3__title">
@@ -121,7 +121,7 @@
                                         </div>
                                     </button>
                                 {% elseif type == 'menuofday' %}
-                                    <button type="button" class="btn-3" data-modal="validate_modal">
+                                    <button type="button" class="btn-3" {% if not readonly %}data-modal="validate_modal"{% endif %}>
                                         <div class="btn-3__wrapper">
                                             <span class="btn-3__icon"><span><i class="fa fa-utensils"></i></span></span>
                                             <span class="btn-3__title">
@@ -163,7 +163,9 @@
     {% include 'sheet_view/daily-add-meal-modal.html.twig' %}
     {% include 'sheet_view/daily-add-sleep-modal.html.twig' %}
     {% include 'sheet_view/daily-add-stools-modal.html.twig' %}
-    {% include 'utils/validation-modal.html.twig' with {'validation_message': 'sheet.daily.remove.validation'|trans()} %}
+    {% if not readonly %}
+        {% include 'utils/validation-modal.html.twig' with {'validation_message': 'sheet.daily.remove.validation'|trans()} %}
+    {% endif %}
 
 {% endblock %}
 
