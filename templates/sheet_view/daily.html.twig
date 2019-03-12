@@ -15,35 +15,39 @@
                         <div class="column w-100">
                             <div class="input-animation">
                                 <label for="arrival_time">{% trans %}sheet.daily.arrival-time{% endtrans %}</label>
-                                <input type="time" id="arrival_time" name="arrival_time" value="{{ sheet.data.arrival_time }}" {% if readonly %}readonly{% endif
-                                %} placeholder="hh:mm" />
+                                <input type="time" id="arrival_time" name="arrival_time" value="{{ sheet.data.arrival_time }}"
+                                       {% if readonly %}readonly{% endif %} placeholder="hh:mm"/>
                                 <img src="{{ asset('images/icon-clock-green.svg') }}" alt="green clock" />
                             </div>
                         </div>
                         <div class="column w-100">
                             <div class="input-animation">
+                                <label for="communication">{% trans %}sheet.daily.communication-received{% endtrans %}</label>
+                                <input type="text" id="communication" name="communication" value="{{ sheet.data.communication }}"
+                                       {% if readonly %}readonly{% endif %} placeholder="{% trans %}sheet.daily.communication-received{% endtrans %}"/>
+                            </div>
+                        </div>
+                        <div class="column w-100">
+                            <div class="input-animation">
                                 <label for="departure_time">{% trans %}sheet.daily.departure-time{% endtrans %}</label>
-                                <input type="time" id="departure_time" name="departure_time"  value="{{ sheet.data.departure_time }}" {% if readonly
-                                %}readonly{% endif %} placeholder="hh:mm" />
+                                <input type="time" id="departure_time" name="departure_time"  value="{{ sheet.data.departure_time }}"
+                                       {% if readonly %}readonly{% endif %} placeholder="hh:mm" />
                                 <img src="{{ asset('images/icon-clock-red.svg') }}" alt="red clock" />
                             </div>
                         </div>
                         <div class="column w-100">
                             <div class="input-animation">
                                 <label for="activities">{% trans %}sheet.daily.activities{% endtrans %}</label>
-                                <input type="text" id="activities" name="activities" value="{{ sheet.data.activities }}" {% if readonly %}readonly{% endif %} placeholder="{% trans %}sheet.daily.activities-placeholder{% endtrans %}"/>
-                            </div>
-                        </div>
-                        <div class="column w-100">
-                            <div class="input-animation">
-                                <label for="communication">{% trans %}sheet.daily.communication-received{% endtrans %}</label>
-                                <input type="text" id="communication" name="communication" value="{{ sheet.data.communication }}" {% if readonly %}readonly{% endif %} placeholder="{% trans %}sheet.daily.communication-received{% endtrans %}"/>
+                                <input type="text" id="activities" name="activities" value="{{ sheet.data.activities }}"
+                                       {% if readonly %}readonly{% endif %} placeholder="{% trans %}sheet.daily.activities-placeholder{% endtrans %}"/>
                             </div>
                         </div>
                         <div class="column w-100">
                             <div class="input-animation">
                                 <label for="nurse_comment">{% trans %}sheet.daily.nurse-comment{% endtrans %}</label>
-                                <textarea id="nurse_comment" name="nurse_comment" {% if readonly %}readonly{% endif %} placeholder="{% trans %}sheet.daily.nurse-comment-placeholder{% endtrans %}">{{ sheet.data.nurse_comment }}</textarea>
+                                <textarea id="nurse_comment" name="nurse_comment" {% if readonly %}readonly{% endif %}
+                                          placeholder="{% trans %}sheet.daily.nurse-comment-placeholder{% endtrans %}">{{ sheet.data.nurse_comment }}
+                                </textarea>
                             </div>
                         </div>
 
@@ -60,7 +64,9 @@
                                 <span class="btn-3__icon"><span><i class="fa fa-bed"></i></span></span>
                                 <span class="btn-3__title">
                                     {% trans %}sheet.daily.sleeping{% endtrans %}<br>
-                                    <span class="title__sub-title">{% trans %}sheet.daily.sleeping.from{% endtrans %} <span>{{sleep.start}}</span> {% trans %}sheet.daily.sleeping.to{% endtrans %} <span>{{sleep.end}}</span></span>
+                                    <span class="title__sub-title">{% trans %}sheet.daily.sleeping.from{% endtrans %}
+                                        <span>{{sleep.start}}</span> {% trans %}sheet.daily.sleeping.to{% endtrans %} <span>{{sleep.end}}</span>
+                                    </span>
                                 </span>
                                 {% if not readonly %}
                                     <span class="btn-3__remove"><i class="fa fa-trash"></i></span>
@@ -82,7 +88,11 @@
                                     <span class="btn-3__icon"><span><i class="fa fa-toilet-paper"></i></span></span>
                                     <span class="btn-3__title">
                                         {% trans %}sheet.daily.stool{% endtrans %} <span class="c-blue">{{ stoolType|trans() }}</span><br>
-                                        <span class="title__sub-title">{% trans %}sheet.daily.stool.at{% endtrans %} <span>{{timestamp|date('H:i')}}</span> {% if stool.accident %}{% trans %}sheet.daily.stool.by-accident{% endtrans %}{% else %}{% trans %}sheet.daily.stool.not-by-accident{% endtrans %}{% endif %}</span>
+                                        <span class="title__sub-title">{% trans %}sheet.daily.stool.at{% endtrans %}
+                                            <span>{{timestamp|date('H:i')}}</span>
+                                            {% if stool.accident %}{% trans %}sheet.daily.stool.by-accident{% endtrans %}
+                                            {% else %}{% trans %}sheet.daily.stool.not-by-accident{% endtrans %}{% endif %}
+                                        </span>
                                     </span>
                                     {% if not readonly %}
                                         <span class="btn-3__remove"><i class="fa fa-trash"></i></span>
@@ -106,7 +116,9 @@
                                             <span class="btn-3__icon"><span><i class="fa fa-utensils"></i></span></span>
                                             <span class="btn-3__title">
                                                 {% trans %}sheet.daily.meal.babybottle{% endtrans %}<br>
-                                                <span class="title__sub-title">{% if meal.details is defined %}<span>{{ meal.details }} ml</span>{% endif %} {% trans %}sheet.daily.meal.at{% endtrans %} <span>{{meal.hour|date('H:i')}}</span></span>
+                                                <span class="title__sub-title">{% if meal.details is defined %}<span>{{ meal.details }} ml</span>{% endif %}
+                                                    {% trans %}sheet.daily.meal.at{% endtrans %} <span>{{meal.hour|date('H:i')}}</span>
+                                                </span>
                                             </span>
                                         {% if not readonly %}
                                             <span class="btn-3__remove"><i class="fa fa-trash"></i></span>
@@ -121,7 +133,9 @@
                                             <span class="btn-3__icon"><span><i class="fa fa-utensils"></i></span></span>
                                             <span class="btn-3__title">
                                                 {% trans %}sheet.daily.meal.breadsoup{% endtrans %}<br>
-                                                <span class="title__sub-title">{% if meal.details is defined %}<span>{{meal.details}}</span>{% endif %} {% trans %}sheet.daily.meal.at{% endtrans %} <span>{{meal.hour|date('H:i')}}</span></span>
+                                                <span class="title__sub-title">{% if meal.details is defined %}<span>{{meal.details}}</span>{% endif %}
+                                                    {% trans %}sheet.daily.meal.at{% endtrans %} <span>{{meal.hour|date('H:i')}}</span>
+                                                </span>
                                             </span>
                                         {% if not readonly %}
                                             <span class="btn-3__remove"><i class="fa fa-trash"></i></span>
