@@ -178,6 +178,9 @@
                         {% trans %}sheet.daily.add-stools{% endtrans %}
                     </button>
                     {% endif %}
+
+                    <hr><br>
+                    <button type="button" name="addSheet" id="addSheet" data-modal="success_modal" class="btn bg-green d-block mb-2">{% trans %}sheet.daily.add{% endtrans %}</button>
                 </div>
             </div>
         </div>
@@ -187,6 +190,7 @@
         {% include 'sheet_view/daily-add-meal-modal.html.twig' %}
         {% include 'sheet_view/daily-add-sleep-modal.html.twig' %}
         {% include 'sheet_view/daily-add-stools-modal.html.twig' %}
+        {% include 'utils/success-modal.html.twig' with {success_message: 'sheet.daily.add.validation'|trans(), removeJS: true} %}
         {% include 'utils/validation-modal.html.twig' with { validation_message: 'sheet.daily.remove.validation'|trans()} %}
     {% endif %}
 
@@ -196,11 +200,8 @@
     {{ parent() }}
 
     {% if not readonly %}
-
         <script type="application/javascript">
-
-            let removeType = undefined;
-            let removeTimestamp = undefined;
+            let removeType, removeTimestamp = undefined;
 
             $('[data-modal="validate_modal"]').on('click', function () {
                 removeType = $(this).find('[name="type"]').val();
@@ -235,10 +236,8 @@
                 e.preventDefault();
             });
 
-            $('input').on('change', function() {
-                setTimeout( function(){
-                    $("#dailySheetForm").submit();
-                } , 1000 );
+            $('#addSheet').on('click', function () {
+                $("#dailySheetForm").submit();
             });
 
             window.onbeforeunload = function () {
