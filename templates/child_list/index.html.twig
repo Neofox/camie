@@ -13,9 +13,9 @@
                 <div class="box-user-2">
                     <div class="box-user-2__left" onclick="location.href='{{ path('sheet_view', {'childId': child.id}) }}';">
                         {% if child.sexe == 'F' %}
-                            <img src="{{ asset('images/icon-fiche-fille.svg')}}" >
+                            <img alt="icon-girl" src="{{ asset('images/icon-fiche-fille.svg')}}" >
                         {% else %}
-                            <img src="{{ asset('images/icon-fiche-garcon.svg')}}" >
+                            <img alt="icon-boy" src="{{ asset('images/icon-fiche-garcon.svg')}}" >
                         {% endif %}
                         <div class="left__name">{{child.firstname}} <br> {{child.lastname}} <br> <span>{% trans %}sheet.history.sheet-name-daily{% endtrans %}</span></div>
                     </div>

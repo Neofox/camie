@@ -12,12 +12,12 @@
                         <div class="input-animation">
                             <label for="mealTime">{% trans %}sheet.daily.modal.meal-time{% endtrans %}</label>
                             <input type="time" id="mealTime" name="mealTime" />
-                            <img src="{{ asset('images/icon-clock-green.svg') }}" />
+                            <img alt="green clock" src="{{ asset('images/icon-clock-green.svg') }}" />
                         </div>
                     </div>
                     <div class="column w-100">
                         <div class="input-animation">
-                            <label for="heureRepas">{% trans %}sheet.daily.modal.meal-type{% endtrans %}</label>
+                            <label for="mealselect">{% trans %}sheet.daily.modal.meal-type{% endtrans %}</label>
                             <select id="mealselect" required>
                                 <option value="" hidden>{% trans %}sheet.daily.modal.select-meal{% endtrans %}</option>
                                 <option name="babybottle" id="babybottle">{% trans %}sheet.daily.modal.meal-babybottle{% endtrans %}</option>
