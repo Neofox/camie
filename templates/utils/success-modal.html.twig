@@ -9,7 +9,7 @@
     </div>
 </section>
 
-
+{% if removeJS is not defined or removeJS == false %}
 <script type="application/javascript">
     (function() {
         var body = document.getElementsByTagName('body')[0];
@@ -51,3 +51,4 @@
         }
     })();
 </script>
+{% endif %}

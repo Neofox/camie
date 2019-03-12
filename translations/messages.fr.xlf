@@ -405,7 +405,7 @@
         <source>sheet.daily.stool</source>
         <target>Selle</target>
       </trans-unit>
-      <trans-unit id="XU2GowO" resname="sheet.daily.stool.soft">
+      <trans-unit id="rdWeWy5" resname="sheet.daily.stool.soft">
         <source>sheet.daily.stool.soft</source>
         <target>molle</target>
       </trans-unit>
@@ -480,6 +480,14 @@
       <trans-unit id="HQM8U8S" resname="sheet.daily.modal.add-meal">
         <source>sheet.daily.modal.add-meal</source>
         <target>Ajouter un repas</target>
+      </trans-unit>
+      <trans-unit id="6dzNxl9" resname="sheet.daily.add">
+        <source>sheet.daily.add</source>
+        <target>Mettre à jour la fiche</target>
+      </trans-unit>
+      <trans-unit id="fyzIugU" resname="sheet.daily.add.validation">
+        <source>sheet.daily.add.validation</source>
+        <target>La fiche journalière a bien été mise à jour !</target>
       </trans-unit>
     </body>
   </file>
