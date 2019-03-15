@@ -489,6 +489,10 @@
         <source>sheet.daily.add.validation</source>
         <target>La fiche journalière a bien été mise à jour !</target>
       </trans-unit>
+      <trans-unit id="yJl2T5l" resname="sheet.daily.modal.stool-time">
+        <source>sheet.daily.modal.stool-time</source>
+        <target>Heure d'arrivée</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

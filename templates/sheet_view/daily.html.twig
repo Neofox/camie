@@ -89,7 +89,7 @@
                                     <span class="btn-3__title">
                                         {% trans %}sheet.daily.stool{% endtrans %} <span class="c-blue">{{ stoolType|trans() }}</span><br>
                                         <span class="title__sub-title">{% trans %}sheet.daily.stool.at{% endtrans %}
-                                            <span>{{timestamp|date('H:i')}}</span>
+                                            <span>{{stool.time|date('H:i')}}</span>
                                             {% if stool.accident %}{% trans %}sheet.daily.stool.by-accident{% endtrans %}
                                             {% else %}{% trans %}sheet.daily.stool.not-by-accident{% endtrans %}{% endif %}
                                         </span>
