@@ -11,7 +11,7 @@
                     <div class="box-letters">:)</div>
 
                     <div class="box-user__content">
-                        <form class="grid-flex mb-3" method="post">
+                        <form class="grid-flex mb-3" id="createChildForm" method="post">
                             <div class="column w-100">
                                 <div class="input-animation">
                                     <label for="firstname">{% trans %}child.create.firstname{% endtrans %}</label>
@@ -73,7 +73,7 @@
 
                             <input type="hidden" id="sexe" name="sexe" value="F"/>
 
-                            <button type="submit" class="btn bg-blue d-block">{% trans %}child.create.validate{% endtrans %}</button>
+                            <button type="submit" id="submitBtn" class="btn bg-blue d-block">{% trans %}child.create.validate{% endtrans %}</button>
                         </form>
                     </div>
                 </div>
@@ -88,7 +88,24 @@
 
 {% block javascripts %}
     {{ parent() }}
-    <script async>
+    <script type="application/javascript">
+        var safeToLeave = false;
+
+        const form = $('#createChildForm');
+        form.data('serialize', form.serialize());
+
+        function handleExit() {
+            if (form.serialize() !== form.data('serialize') && !safeToLeave) {
+                return true;
+            }
+            return null;
+        }
+
+        window.onbeforeunload = handleExit;
+        form.on('submit', function () {safeToLeave = true;});
+    </script>
+
+    <script type="application/javascript" async>
         $('#fille').on('click', function () {
             $('#sexe').val('F');
         });
