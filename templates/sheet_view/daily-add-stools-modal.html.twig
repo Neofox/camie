@@ -8,6 +8,13 @@
             </div>
             <div class="box-info__content">
                 <form method="post" id="stoolsForm" class="grid-flex">
+                    <div class="column w-100">
+                        <div class="input-animation">
+                            <label for="stoolsTime">{% trans %}sheet.daily.modal.stool-time{% endtrans %}</label>
+                            <input type="time" id="stoolsTime" name="stoolsTime" />
+                            <img alt="green clock" src="{{ asset('images/icon-clock-green.svg') }}" />
+                        </div>
+                    </div>
                     <div class="column w-100 mb-2">
                         <label>{% trans %}sheet.daily.modal.stool-arrived-accident{% endtrans %}</label>
                         <div class="input-group-radio">
@@ -75,7 +82,7 @@
 <script type="application/javascript">
     $('input').on('change', function() {
 
-        if ($('[name="stoolGroup"]').is(':checked') && $('[name="radio2"]').is(':checked')) {
+        if ($('#stoolsTime').val() !== '' && $('[name="stoolGroup"]').is(':checked') && $('[name="radio2"]').is(':checked')) {
             $('#submitStoolsBtn').prop('disabled', false);
             $('#submitStoolsBtn').removeClass('disabled')
         } else {
@@ -90,6 +97,7 @@
     $("#submitStoolsBtn").on('click', function() {
         let data = [];
 
+        data = {...data, ...{time: $('#stoolsTime').val()}};
         data = {...data, ...{accident: $("[name='radio2']:checked").attr('id') === 'radioYes'}};
         data = {...data, ...{stool: $("[name='stoolGroup']:checked").attr('id').substr(0,1)}};
         data = {...data, ...{comment: $('#stools_commentary').val()}};
