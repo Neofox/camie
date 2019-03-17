@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>export pdf</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,700,800" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Raleway', sans-serif;
+            color: #173655;
+        }
+
+
+        .page-header .grid-flex {
+            display: flex;
+
+        }
+
+        .page-header .grid-flex .column {
+            flex: 0 0 50%;
+            max-width: 50%;
+            font-size: 22px;
+        }
+
+        .page-header .grid-flex .column:last-child {
+            text-align: right;
+            font-size: 18px
+        }
+
+        .page-content {
+            margin-top: 80px;
+        }
+
+        .text-1 {
+            font-size: 18px;
+            margin-bottom: 0;
+        }
+
+        .text-2 {
+            margin-top: 0;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .box-1 {
+            margin-top: 30px;
+            width: 500px;
+        }
+
+        .box-1:first-of-type {
+            margin-top: 40px;
+            width: 500px;
+        }
+
+        .box-1 .box-1__title {
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .box-1 .box-1__content {
+            background-color: #F2F0F4;
+            border-radius: 8px;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrapper">
+    <div class="page-header">
+        <div class="grid-flex">
+            <div class="column">
+                <strong>{% trans %}title.sheet-view{% endtrans %}</strong><br>
+                de <strong>{{ child.firstname }} {{ child.lastname }}</strong><br>
+                {{ child.birthdate|date('d-m-Y') }}
+            </div>
+            <div class="column">
+                <strong>{{ child.nursery.name }}</strong><br>
+                {{ child.nursery.phone }}<br>
+                {{ child.nursery.email }}<br>
+                camie.lu
+            </div>
+        </div>
+    </div>
+
+    <div class="page-content">
+        <p class="text-1">{% trans %}sheet.daily.arrival-time{% endtrans %}: </p>
+        <p class="text-2">{{ sheet.data.arrival_time }}</p>
+
+        <p class="text-1">{% trans %}sheet.daily.communication-received{% endtrans %}: </p>
+        <p class="text-2">{{ sheet.data.communication }}</p>
+
+        <p class="text-1">{% trans %}sheet.daily.departure-time{% endtrans %}: </p>
+        <p class="text-2">{{ sheet.data.departure_time }}</p>
+
+        <p class="text-1">{% trans %}sheet.daily.activities{% endtrans %}: </p>
+        <p class="text-2">{{ sheet.data.activities }}</p>
+
+        <p class="text-1">{% trans %}sheet.daily.nurse-comment{% endtrans %}: </p>
+        <p class="text-2">{{ sheet.data.nurse_comment }}</p>
+
+
+        {% if sheet.data.sleep is defined %}
+            {% for timestamp, sleep in sheet.data.sleep %}
+                <div class="box-1">
+                    <p class="box-1__title">{% trans %}sheet.daily.sleeping{% endtrans %}</p>
+                    <div class="box-1__content">
+                        {% trans %}sheet.daily.sleeping.from{% endtrans %} <strong>{{sleep.start}}</strong> {% trans %}sheet.daily.sleeping.to{% endtrans %} <strong>{{sleep.end}}</strong>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        {% if sheet.data.stools is defined %}
+            {% for timestamp,stool in sheet.data.stools %}
+                {% if stool.stool == 'l'%}{% set stoolType = 'sheet.daily.stool.liquid' %}{% endif %}
+                {% if stool.stool == 's'%}{% set stoolType = 'sheet.daily.stool.soft' %}{% endif %}
+                {% if stool.stool == 'n'%}{% set stoolType = 'sheet.daily.stool.normal' %}{% endif %}
+                <div class="box-1">
+                    <p class="box-1__title">Selle</p>
+                    <div class="box-1__content">
+                        {% trans %}sheet.daily.stool{% endtrans %} <strong>{{ stoolType|trans() }}</strong> {% trans %}sheet.daily.stool.at{% endtrans %} <strong>{{stool.time|date('H:i')}}</strong> {% if stool.accident %}{% trans %}sheet.daily.stool.by-accident{% endtrans %}
+                    {% else %}{% trans %}sheet.daily.stool.not-by-accident{% endtrans %}{% endif %}<br>
+                        {{ stool.comment }}
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <div class="box-1">
+            <p class="box-1__title">Repas</p>
+            <div class="box-1__content">
+                {% if sheet.data.meal is defined %}
+                    {% for timestamp,meals in sheet.data.meal %}
+                        {% for type,meal in meals %}
+                            {% if type == 'babybottle' %}
+                                <strong>{% trans %}sheet.daily.meal.babybottle{% endtrans %}</strong> {% if meal.details is defined %}<strong>{{ meal.details }} ml</strong>{% endif %} {% trans %}sheet.daily.meal.at{% endtrans %} <strong>{{meal.hour|date('H:i')}}</strong><br>
+                            {% elseif type == 'breadsoup' %}
+                                <strong>{% trans %}sheet.daily.meal.breadsoup{% endtrans %} {% if meal.details is defined %}<span>{{meal.details}}</span></strong>{% endif %} {% trans %}sheet.daily.meal.at{% endtrans %} <strong>{{meal.hour|date('H:i')}}</strong><br>
+                            {% elseif type == 'menuofday' %}
+                                <strong>{% trans %}sheet.daily.meal.menuofday{% endtrans %}</strong> {% trans %}sheet.daily.meal.at{% endtrans %} <strong>{{meal.hour|date('H:i')}}</strong><br>
+                                {% trans %}sheet.daily.meal.menuofday.entrance{% endtrans %}: <span>{{ ('sheet.daily.modal.meal-eat-' ~ meal.entrance)|trans() }}</span><br>
+                                {% trans %}sheet.daily.meal.menuofday.dish{% endtrans %}: <span>{{ ('sheet.daily.modal.meal-eat-' ~ meal.dish)|trans() }}</span><br>
+                                {% trans %}sheet.daily.meal.menuofday.dessert{% endtrans %}: <span>{{ ('sheet.daily.modal.meal-eat-' ~ meal.dessert)|trans() }}</span><br>
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
