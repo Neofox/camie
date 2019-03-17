@@ -127,27 +127,28 @@
             {% endfor %}
         {% endif %}
 
-        <div class="box-1">
-            <p class="box-1__title">Repas</p>
-            <div class="box-1__content">
-                {% if sheet.data.meal is defined %}
-                    {% for timestamp,meals in sheet.data.meal %}
-                        {% for type,meal in meals %}
-                            {% if type == 'babybottle' %}
-                                <strong>{% trans %}sheet.daily.meal.babybottle{% endtrans %}</strong> {% if meal.details is defined %}<strong>{{ meal.details }} ml</strong>{% endif %} {% trans %}sheet.daily.meal.at{% endtrans %} <strong>{{meal.hour|date('H:i')}}</strong><br>
-                            {% elseif type == 'breadsoup' %}
-                                <strong>{% trans %}sheet.daily.meal.breadsoup{% endtrans %} {% if meal.details is defined %}<span>{{meal.details}}</span></strong>{% endif %} {% trans %}sheet.daily.meal.at{% endtrans %} <strong>{{meal.hour|date('H:i')}}</strong><br>
-                            {% elseif type == 'menuofday' %}
-                                <strong>{% trans %}sheet.daily.meal.menuofday{% endtrans %}</strong> {% trans %}sheet.daily.meal.at{% endtrans %} <strong>{{meal.hour|date('H:i')}}</strong><br>
-                                {% trans %}sheet.daily.meal.menuofday.entrance{% endtrans %}: <span>{{ ('sheet.daily.modal.meal-eat-' ~ meal.entrance)|trans() }}</span><br>
-                                {% trans %}sheet.daily.meal.menuofday.dish{% endtrans %}: <span>{{ ('sheet.daily.modal.meal-eat-' ~ meal.dish)|trans() }}</span><br>
-                                {% trans %}sheet.daily.meal.menuofday.dessert{% endtrans %}: <span>{{ ('sheet.daily.modal.meal-eat-' ~ meal.dessert)|trans() }}</span><br>
-                            {% endif %}
+        {% if sheet.data.meal is defined %}
+            <div class="box-1">
+                <p class="box-1__title">Repas</p>
+                <div class="box-1__content">
+                        {% for timestamp,meals in sheet.data.meal %}
+                            {% for type,meal in meals %}
+                                {% if type == 'babybottle' %}
+                                    <strong>{% trans %}sheet.daily.meal.babybottle{% endtrans %}</strong> {% if meal.details is defined %}<strong>{{ meal.details }} ml</strong>{% endif %} {% trans %}sheet.daily.meal.at{% endtrans %} <strong>{{meal.hour|date('H:i')}}</strong><br>
+                                {% elseif type == 'breadsoup' %}
+                                    <strong>{% trans %}sheet.daily.meal.breadsoup{% endtrans %} {% if meal.details is defined %}<span>{{meal.details}}</span></strong>{% endif %} {% trans %}sheet.daily.meal.at{% endtrans %} <strong>{{meal.hour|date('H:i')}}</strong><br>
+                                {% elseif type == 'menuofday' %}
+                                    <strong>{% trans %}sheet.daily.meal.menuofday{% endtrans %}</strong> {% trans %}sheet.daily.meal.at{% endtrans %} <strong>{{meal.hour|date('H:i')}}</strong><br>
+                                    {% trans %}sheet.daily.meal.menuofday.entrance{% endtrans %}: <span>{{ ('sheet.daily.modal.meal-eat-' ~ meal.entrance)|trans() }}</span><br>
+                                    {% trans %}sheet.daily.meal.menuofday.dish{% endtrans %}: <span>{{ ('sheet.daily.modal.meal-eat-' ~ meal.dish)|trans() }}</span><br>
+                                    {% trans %}sheet.daily.meal.menuofday.dessert{% endtrans %}: <span>{{ ('sheet.daily.modal.meal-eat-' ~ meal.dessert)|trans() }}</span><br>
+                                {% endif %}
+                            {% endfor %}
                         {% endfor %}
-                    {% endfor %}
-                {% endif %}
+                </div>
             </div>
-        </div>
+        {% endif %}
+
     </div>
 </div>
 </body>

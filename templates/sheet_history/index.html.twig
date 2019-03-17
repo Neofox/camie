@@ -4,6 +4,7 @@
 {% block description %}{% trans %}title.sheet-history{% endtrans %}{% endblock %}
 
 {% block main %}
+    {% set successText = 'default' %}
     <main class="bg-pink-light">
         <section class="pb-5">
             <div class="page-wrapper">
@@ -23,7 +24,11 @@
                         <small>{{ ('sheet.history.sheet-name-' ~ sheet.type|sheetTypeToString|lower )|trans() }}</small>
                     </div>
                     <div class="box-history__right">
-                        <a href="{{ path('sheet_download', {childId: child.id, sheetId: sheet.id}) }}"><button type="button" class="btn-icon"><i class="fas fa-download"></i></button></a>
+                        <a href="{{ path('sheet_download', {childId: child.id, sheetId: sheet.id}) }}">
+                            <button onclick="{% set successText = 'sheet.history.download' %}" type="button" data-modal="success_modal" class="btn-icon">
+                                <i class="fas fa-download"></i>
+                            </button>
+                        </a>
                         <button type="button" class="btn-icon"><i class="fas fa-paper-plane"></i></button>
                     </div>
                 </div>
@@ -31,4 +36,6 @@
             </div>
         </section>
     </main>
+    {% include 'utils/success-modal.html.twig' with { success_message: successText|trans(), removeJS: true} %}
+
 {% endblock %}

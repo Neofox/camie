@@ -179,8 +179,10 @@
                     </button>
                     {% endif %}
 
+                    {% if not readonly %}
                     <hr><br>
                     <button type="button" name="addSheet" id="addSheet" data-modal="success_modal" class="btn bg-green d-block mb-2">{% trans %}sheet.daily.add{% endtrans %}</button>
+                    {% endif %}
                 </div>
             </div>
         </div>
