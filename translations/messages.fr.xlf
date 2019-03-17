@@ -493,6 +493,10 @@
         <source>sheet.daily.modal.stool-time</source>
         <target>Heure d'arrivée</target>
       </trans-unit>
+      <trans-unit id="yJl23xsl" resname="sheet.history.download">
+        <source>sheet.history.download</source>
+        <target>La fiche est en cours de génération, Veuillez patienter...</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

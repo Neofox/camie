@@ -493,6 +493,10 @@
         <source>sheet.daily.modal.stool-time</source>
         <target>When it happened</target>
       </trans-unit>
+      <trans-unit id="yJl23xsl" resname="sheet.history.download">
+        <source>sheet.history.download</source>
+        <target>Sheet successfully downloading! Please wait...</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
