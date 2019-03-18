@@ -497,6 +497,10 @@
         <source>sheet.history.download</source>
         <target>La fiche est en cours de génération, Veuillez patienter...</target>
       </trans-unit>
+      <trans-unit id="ycF223sl" resname="sheet.history.email">
+        <source>sheet.history.email</source>
+        <target>La fiche va être envoyé par email aux tuteurs.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

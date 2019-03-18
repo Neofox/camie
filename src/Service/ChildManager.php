@@ -69,6 +69,7 @@ class ChildManager
      * @param Nursery $nursery
      *
      * @return Child
+     * @throws \Exception
      */
     public function createChild(array $data, Nursery $nursery): Child
     {
@@ -103,5 +104,13 @@ class ChildManager
         $validatedData['sexe'] = $data['sexe'] ?? 'F';
 
         return $validatedData;
+    }
+
+    /**
+     * @return Child[]
+     */
+    public function getAll(): array
+    {
+        return $this->childRepository->findAll();
     }
 }
