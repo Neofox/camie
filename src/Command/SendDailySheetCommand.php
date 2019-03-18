@@ -16,7 +16,7 @@ use Twig\Environment;
 
 class SendDailySheetCommand extends Command
 {
-    protected static $defaultName = 'mail:daily-sheet';
+    protected static $defaultName = 'mail:daily:sheet';
 
     /** @var ChildManager */
     protected $childManager;
