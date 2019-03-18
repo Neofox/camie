@@ -6,7 +6,12 @@ use App\Entity\Sheet;
 use App\Service\ChildManager;
 use Knp\Bundle\SnappyBundle\Snappy\Response\PdfResponse;
 use Knp\Snappy\Pdf;
+use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Console\Input\ArrayInput;
+use Symfony\Component\Console\Output\NullOutput;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 class SheetHistoryController extends AbstractController
@@ -75,6 +80,35 @@ class SheetHistoryController extends AbstractController
             $this->stripAccents($filename)
         );
     }
+
+
+    /**
+     * @Route("/child/{childId}/sheet/{sheetId}/send", name="sheet_email")
+     *
+     * @param string          $childId
+     * @param string          $sheetId
+     * @param KernelInterface $kernel
+     *
+     * @return Response
+     * @throws \Exception
+     */
+    public function sendEmail(string $childId, string $sheetId, KernelInterface $kernel)
+    {
+        $application = new Application($kernel);
+        $application->setAutoExit(false);
+
+        $input = new ArrayInput([
+            'command' => 'mail:sheet',
+            'child' => $childId,
+            'sheet' => $sheetId,
+        ]);
+
+        $application->run($input, new NullOutput());
+
+        return new Response('', 204);
+    }
+
+
 
     private function stripAccents(string $str): string {
         return strtr(utf8_decode($str), utf8_decode('àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ'), 'aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY');

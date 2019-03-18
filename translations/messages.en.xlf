@@ -497,6 +497,10 @@
         <source>sheet.history.download</source>
         <target>Sheet successfully downloading! Please wait...</target>
       </trans-unit>
+      <trans-unit id="ycF223sl" resname="sheet.history.email">
+        <source>sheet.history.email</source>
+        <target>The sheet will be sent to the guardians.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
