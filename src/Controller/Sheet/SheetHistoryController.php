@@ -3,7 +3,9 @@
 namespace App\Controller\Sheet;
 
 use App\Entity\Sheet;
+use App\Entity\User;
 use App\Service\ChildManager;
+use App\Service\EmailManager;
 use Knp\Bundle\SnappyBundle\Snappy\Response\PdfResponse;
 use Knp\Snappy\Pdf;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
@@ -85,27 +87,34 @@ class SheetHistoryController extends AbstractController
     /**
      * @Route("/child/{childId}/sheet/{sheetId}/send", name="sheet_email")
      *
-     * @param string          $childId
-     * @param string          $sheetId
-     * @param KernelInterface $kernel
+     * @param string       $childId
+     * @param string       $sheetId
+     * @param ChildManager $childManager
      *
      * @return Response
      * @throws \Exception
      */
-    public function sendEmail(string $childId, string $sheetId, KernelInterface $kernel)
+    public function sendEmail(string $childId, string $sheetId, ChildManager $childManager, EmailManager $emailManager)
     {
-        $application = new Application($kernel);
-        $application->setAutoExit(false);
 
-        $input = new ArrayInput([
-            'command' => 'mail:sheet',
-            'child' => $childId,
-            'sheet' => $sheetId,
-        ]);
+        $child = $childManager->getChildById($childId);
+        /** @var Sheet $sheet */
+        $sheet = $child->getSheets()->filter(function (Sheet $sheet) use($sheetId) {return $sheet->getId() == $sheetId; })->first();
 
-        $application->run($input, new NullOutput());
+        $emails = $child->getUsers()
+                        ->filter(function (User $user) {return in_array('ROLE_GUARDIAN', $user->getRoles()); })
+                        ->map(function (User $user) {return $user->getEmail();})
+        ;
 
-        return new Response('', 204);
+        if ($emails->isEmpty()) {
+            return new Response(sprintf('Child "%s" has no Guardians with an email. No mails sent.', $childId), 400);
+        }
+
+        $failedEmails = [];
+        $mailsSent = $emailManager->sendMail($sheet, $child, $emails->toArray(), $failedEmails);
+        $failedEmailsString = implode(", ", $failedEmails);
+
+        return new Response("mail sent: $mailsSent \n failed email: {$failedEmailsString} \n", 204);
     }
 
 
