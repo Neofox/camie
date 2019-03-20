@@ -493,13 +493,17 @@
         <source>sheet.daily.modal.stool-time</source>
         <target>Heure d'arrivée</target>
       </trans-unit>
-      <trans-unit id="yJl23xsl" resname="sheet.history.download">
+      <trans-unit id="uFQv_5C" resname="sheet.history.download">
         <source>sheet.history.download</source>
         <target>La fiche est en cours de génération, Veuillez patienter...</target>
       </trans-unit>
-      <trans-unit id="ycF223sl" resname="sheet.history.email">
+      <trans-unit id="tbZXrqC" resname="sheet.history.email">
         <source>sheet.history.email</source>
         <target>La fiche va être envoyé par email aux tuteurs.</target>
+      </trans-unit>
+      <trans-unit id="qKOfBfT" resname="child.list.search-placeholder">
+        <source>child.list.search-placeholder</source>
+        <target>Chercher un enfant</target>
       </trans-unit>
     </body>
   </file>

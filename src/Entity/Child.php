@@ -5,6 +5,8 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Serializer\Annotation\MaxDepth;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ChildRepository")
@@ -12,43 +14,56 @@ use Doctrine\ORM\Mapping as ORM;
 class Child
 {
     /**
+     * @var int
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"child_list"})
      */
     private $id;
 
     /**
+     * @var string
      * @ORM\Column(type="string", length=100)
+     * @Groups({"child_list"})
      */
     private $firstname;
 
     /**
+     * @var string
      * @ORM\Column(type="string", length=100)
+     * @Groups({"child_list"})
      */
     private $lastname;
 
     /**
+     * @var string
      * @ORM\Column(type="string", length=1)
+     * @Groups({"child_list"})
      */
     private $sexe;
 
     /**
+     * @var \DateTime
      * @ORM\Column(type="date")
+     * @Groups({"child_list"})
      */
     private $birthdate;
 
     /**
+     * @var User[] | ArrayCollection
      * @ORM\ManyToMany(targetEntity="App\Entity\User", mappedBy="children")
      */
     private $users;
 
     /**
+     * @var Sheet[] | ArrayCollection
      * @ORM\ManyToMany(targetEntity="App\Entity\Sheet", mappedBy="child")
      */
     private $sheets;
 
     /**
+     * @var Nursery
      * @ORM\ManyToOne(targetEntity="App\Entity\Nursery", inversedBy="children")
      * @ORM\JoinColumn(nullable=false)
      */

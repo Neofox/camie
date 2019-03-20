@@ -9,24 +9,71 @@
         <div class="page-wrapper">
             <p class="title-1 text-center">{% trans %}child.list.list-children{% endtrans %}</p>
 
-            {% for child in children %}
-                <div class="box-user-2">
-                    <div class="box-user-2__left" onclick="location.href='{{ path('sheet_view', {'childId': child.id}) }}';">
-                        {% if child.sexe == 'F' %}
-                            <img alt="icon-girl" src="{{ asset('images/icon-fiche-fille.svg')}}" >
-                        {% else %}
-                            <img alt="icon-boy" src="{{ asset('images/icon-fiche-garcon.svg')}}" >
-                        {% endif %}
-                        <div class="left__name">{{child.firstname}} <br> {{child.lastname}} <br> <span>{% trans %}sheet.history.sheet-name-daily{% endtrans %}</span></div>
-                    </div>
-                    <div class="box-user-2__right">
-                        <a href="{{ path('child_profile', {'id': child.id}) }}"><button id="profile{{ child.id }}" type="button" class="btn-icon"><i class="fas fa-user-circle" aria-label="hidden"></i></button></a>
-                        <div class="right_info">Profil</div>
-                    </div>
-                </div>
-            {% endfor %}
+            <!-- Ajouter les class mt-XX (XX entre 1 et 10) ou mb-XX pour avoir des margin-bottom ou margin-top -->
+            <div class="input-search">
+                <input type="text" id="searchInput" placeholder="{% trans %}child.list.search-placeholder{% endtrans %}"/>
+                <button type="button" id="resetSearch" class=""><i class="fas fa-times-circle"></i></button>
+            </div>
 
+            <div id="childrens"></div>
         </div>
     </section>
 </main>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="application/javascript">
+        $('#searchInput').on('keyup', function (e) {
+            if ($(this).val() !== ''){
+                $('.input-search').removeClass('input-search--searching').addClass('input-search--searching');
+            } else {
+                $('.input-search').removeClass('input-search--searching');
+            }
+        });
+        $('#resetSearch').on('click', function () {
+            $('#searchInput').val('');
+            $('.input-search').removeClass('input-search--searching');
+            $('#childrens').html(generateChildList(children));
+
+        });
+
+        let children = {{ children|raw }};
+
+        $('#searchInput').on('keyup', function (e) {
+            if ($('#searchInput').val() !== '') {
+                let searchTerm = $('#searchInput').val();
+                let filteredChildren = $.grep(children, function (child) {
+                    return child.firstname.includes(searchTerm) || child.lastname.includes(searchTerm);
+                });
+                $('#childrens').html(generateChildList(filteredChildren));
+            } else {
+                $('#childrens').html(generateChildList(children));
+            }
+        });
+
+
+        $('#childrens').html(generateChildList(children));
+
+
+        function generateChildList(children) {
+            return children.map((child) => {
+                let pathSheet = `/sheet/${child.id}/daily`;
+                let pathProfile = `/child/${child.id}/profile`;
+                let icon = child.sexe == 'F' ? `<img alt="icon-girl" src="{{ asset('images/icon-fiche-fille.svg')}}" >` : `<img alt="icon-boy" src="{{ asset('images/icon-fiche-garcon.svg')}}" >`;
+                return (`
+            <div class="box-user-2">
+                    <div class="box-user-2__left" onclick="location.href='${pathSheet}';">
+                        ${icon}
+                        <div class="left__name">${child.firstname} <br> ${child.lastname} <br> <span>{% trans %}sheet.history.sheet-name-daily{% endtrans %}</span></div>
+                    </div>
+                    <div class="box-user-2__right">
+                        <a href="${pathProfile}"><button id="profile${ child.id }" type="button" class="btn-icon"><i class="fas fa-user-circle" aria-label="hidden"></i></button></a>
+                        <div class="right_info">Profil</div>
+                    </div>
+                </div>
+            `)
+            })
+        }
+    </script>
 {% endblock %}
