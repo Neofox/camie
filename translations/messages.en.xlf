@@ -493,13 +493,17 @@
         <source>sheet.daily.modal.stool-time</source>
         <target>When it happened</target>
       </trans-unit>
-      <trans-unit id="yJl23xsl" resname="sheet.history.download">
+      <trans-unit id="uFQv_5C" resname="sheet.history.download">
         <source>sheet.history.download</source>
         <target>Sheet successfully downloading! Please wait...</target>
       </trans-unit>
-      <trans-unit id="ycF223sl" resname="sheet.history.email">
+      <trans-unit id="tbZXrqC" resname="sheet.history.email">
         <source>sheet.history.email</source>
         <target>The sheet will be sent to the guardians.</target>
+      </trans-unit>
+      <trans-unit id="qKOfBfT" resname="child.list.search-placeholder">
+        <source>child.list.search-placeholder</source>
+        <target>Search a child</target>
       </trans-unit>
     </body>
   </file>

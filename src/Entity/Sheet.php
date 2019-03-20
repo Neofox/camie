@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use phpDocumentor\Reflection\Types\Integer;
+use Symfony\Component\Serializer\Annotation\MaxDepth;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\SheetRepository")
@@ -15,6 +16,7 @@ class Sheet
     public const TYPE_DAILY = 1;
 
     /**
+     * @var int
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
@@ -22,21 +24,25 @@ class Sheet
     private $id;
 
     /**
+     * @var array
      * @ORM\Column(type="json", nullable=true)
      */
     private $data = [];
 
     /**
+     * @var Child[] | ArrayCollection
      * @ORM\ManyToMany(targetEntity="App\Entity\Child", inversedBy="sheets")
      */
     private $child;
 
     /**
+     * @var int
      * @ORM\Column(type="integer", nullable=false)
      */
     private $type;
 
     /**
+     * @var \DateTime
      * @ORM\Column(type="date", nullable=false)
      */
     private $createdAt;

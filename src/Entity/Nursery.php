@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\MaxDepth;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\NurseryRepository")
@@ -12,6 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Nursery
 {
     /**
+     * @var int
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
@@ -19,31 +21,37 @@ class Nursery
     private $id;
 
     /**
+     * @var string
      * @ORM\Column(type="string", length=255)
      */
     private $name;
 
     /**
+     * @var User[] | ArrayCollection
      * @ORM\OneToMany(targetEntity="App\Entity\User", mappedBy="nursery")
      */
     private $users;
 
     /**
+     * @var Child[] | ArrayCollection
      * @ORM\OneToMany(targetEntity="App\Entity\Child", mappedBy="nursery")
      */
     private $children;
 
     /**
+     * @var string
      * @ORM\Column(type="string", length=20, nullable=true)
      */
     private $phone;
 
     /**
+     * @var string
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $email;
 
     /**
+     * @var string
      * @ORM\Column(type="text", nullable=true)
      */
     private $hometext;
