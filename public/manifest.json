@@ -3,12 +3,12 @@
   "name": "Camie",
   "icons": [
     {
-      "src": "/images/camie_icon.png",
+      "src": "build//images/camie_icon.png",
       "type": "image/png",
       "sizes": "512x512"
     }
   ],
-  "start_url": "/home",
+  "start_url": "/",
   "background_color": "#FFFFFF",
   "display": "standalone",
   "theme_color": "#ff9fa0"

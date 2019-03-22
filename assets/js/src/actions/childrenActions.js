@@ -1,10 +1,10 @@
 import Constants from "../constants/childrenConstants";
 
 const Actions = {
-    fetchChildren: baseUrl => dispatch => {
-        dispatch({ type: Constants.CHILD_FETCHING });
+    fetchChildren: (nurseryId, baseUrl) => dispatch => {
+        dispatch({ type: Constants.CHILDREN_FETCHING });
 
-        fetch(baseUrl + "/api/children")
+        fetch(baseUrl + "/api/nursery/" + nurseryId + '/children')
             .then(response => response.json())
             .then(data => {
                 dispatch({

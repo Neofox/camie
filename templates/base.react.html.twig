@@ -1,55 +1,81 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ app.request.locale }}">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no">
+    <meta name="Description" content="{% block description %}Base description page{% endblock %}">
+    <meta name="theme-color" content="#ff9fa0">
     <link rel="icon" href="{{asset('favicon.ico')}}">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <link rel="manifest" href="build/manifest.json">
 
-    {% block title %}<title>Symfony React</title>{% endblock title %}
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link href="{{ asset('build/images/splashscreens/iphone5_splash.png') }}" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+    <link href="{{ asset('build/images/splashscreens/iphone6_splash.png') }}" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+    <link href="{{ asset('build/images/splashscreens/iphoneplus_splash.png') }}" media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image" />
+    <link href="{{ asset('build/images/splashscreens/iphonex_splash.png') }}" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image" />
+    <link href="{{ asset('build/images/splashscreens/iphonexr_splash.png') }}" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+    <link href="{{ asset('build/images/splashscreens/iphonexsmax_splash.png') }}" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image" />
+    <link href="{{ asset('build/images/splashscreens/ipad_splash.png') }}" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+    <link href="{{ asset('build/images/splashscreens/ipadpro1_splash.png') }}" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+    <link href="{{ asset('build/images/splashscreens/ipadpro3_splash.png') }}" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+    <link href="{{ asset('build/images/splashscreens/ipadpro2_splash.png') }}" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+
+    <title>{% block title %}{{ app.user.nursery.name }}{% endblock %}</title>
     {% block stylesheets %}
         {{ encore_entry_link_tags('app') }}
     {% endblock %}
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
 </head>
 
-<body>
 
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">Symfony React Example</a>
-        </div>
-        <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li><a href="{{path('index')}}">React example</a></li>
-                <li><a href="{{path('react')}}">React+Redux example</a></li>
-            </ul>
-            <ul class="nav navbar-nav pull-right">
-                <li><a href="https://github.com/Limenius/symfony-react-sandbox">See this project on GitHub</a></li>
-            </ul>
+<body class="overlay--open">
+{% block header %}
+    <div class="page-header" style="z-index: 10">
+        <div class="page-wrapper">
+            {% if app.request.get('_route') == 'index' %}
+                <button type="button" disabled style="pointer-events: none;" class="btn-icon disabled"><i class="fas fa-fw" aria-label="hidden"></i></button>
+            {% elseif app.request.get('_route') == 'sheet_view' %}
+                <a href="{{ path('child_list') }}"><button type="button" class="btn-icon"><i class="fas fa-chevron-left" aria-label="hidden"></i></button></a>
+            {% elseif app.request.get('_route') == 'child_list' %}
+                <a href="{{ path('index') }}"><button type="button" class="btn-icon"><i class="fas fa-chevron-left" aria-label="hidden"></i></button></a>
+            {% else %}
+                <button type="button" class="btn-icon" onclick="history.back()"><i class="fas fa-chevron-left" aria-label="hidden"></i></button>
+            {% endif %}
+            <span><a style="color: #607f9c" href="{{ path('child_list') }}">{{ app.user.nursery.name }}</a></span>
+            <button type="button" data-modal="modalNav" class="btn-icon"><i class="fas fa-bars" aria-label="hidden"></i></button>
         </div>
     </div>
-</nav>
+
+    <section class="overlay overlay--nav overlay--scale" data-modal="modalNav">
+        <button type="button" data-modal="modalNav" class="btn-icon"><i class="fas fa-times" aria-label="hidden"></i></button>
+        <nav class="nav-primary">
+            <ul>
+                <li><a href="{{ path('home') }}">{% trans %}page.home{% endtrans %}</a></li>
+                <li><a href="{{ path('child_list') }}">{% trans %}page.child_list{% endtrans %}</a></li>
+                <li><a href="{{ path('user_profile') }}">{% trans %}page.profile{% endtrans %}</a></li>
+            </ul>
+        </nav>
+        <a href="{% if app.user %}
+                            {{ path('app_logout') }}" class="link-nav-primary">{% trans %}login.logout{% endtrans %}
+            {% else %}
+                {{ path('app_login') }}" class="link-nav-primary">{% trans %}login.login{% endtrans %}
+            {% endif %}
+        </a>
+    </section>
+{% endblock %}
 
 <div class="main-container">
     <div class="container">
-
-        <div id="react-container">{% spaceless %}{% block body %}{% endblock %}{% endspaceless%}</div>
+        <div id="react-container">{% spaceless %}{% block main %}{% endblock %}{% endspaceless%}</div>
     </div>
 
-</div><!-- /.container -->
-
+</div>
 
 {% block javascripts %}
     {{ encore_entry_script_tags('app') }}
+    {{ encore_entry_script_tags('buddy') }}
 {% endblock %}
 </body>
 </html>

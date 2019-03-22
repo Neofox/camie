@@ -60,19 +60,19 @@
 {% endblock %}
 
 {% block javascripts %}
-    <script src="{{ asset('js/jquery-3.3.1.min.js') }}" ref="preload" as="script"></script>
-    <script async>
-        $('input').on('input', function() {
-            if ($('#user').val() !== '' && $('#password').val() !== '') {
-                $('.box-user').removeClass('box-user--activated').addClass('box-user--activated');
-                $('#submitBtn').prop('disabled', false);
-                $('#submitBtn').removeClass('disabled')
-            } else {
-                $('.box-user').removeClass('box-user--activated');
+    {#<script src="{{ asset('js/jquery-3.3.1.min.js') }}" ref="preload" as="script"></script>#}
+    {#<script async>#}
+        {#$('input').on('input', function() {#}
+            {#if ($('#user').val() !== '' && $('#password').val() !== '') {#}
+                {#$('.box-user').removeClass('box-user--activated').addClass('box-user--activated');#}
+                {#$('#submitBtn').prop('disabled', false);#}
+                {#$('#submitBtn').removeClass('disabled')#}
+            {#} else {#}
+                {#$('.box-user').removeClass('box-user--activated');#}
 
-                $('#submitBtn').prop('disabled', true);
-                $('#submitBtn').removeClass('disabled').addClass('disabled')
-            }
-        });
-    </script>
+                {#$('#submitBtn').prop('disabled', true);#}
+                {#$('#submitBtn').removeClass('disabled').addClass('disabled')#}
+            {#}#}
+        {#});#}
+    {#</script>#}
 {% endblock %}

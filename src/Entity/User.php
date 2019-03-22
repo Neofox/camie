@@ -19,14 +19,14 @@ class User implements UserInterface
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"child"})
+     * @Groups({"child", "user"})
      */
     private $id;
 
     /**
      * @var array
      * @ORM\Column(type="json")
-     * @Groups({"child"})
+     * @Groups({"child", "user"})
      */
     private $roles = [];
 
@@ -41,34 +41,35 @@ class User implements UserInterface
      * @var Nursery
      * @ORM\ManyToOne(targetEntity="App\Entity\Nursery", inversedBy="users")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"user"})
      */
     private $nursery;
 
     /**
      * @var string
      * @ORM\Column(type="string", length=255, unique=true)
-     * @Groups({"child"})
+     * @Groups({"child", "user"})
      */
     private $email;
 
     /**
      * @var string
      * @ORM\Column(type="string", length=50)
-     * @Groups({"child"})
+     * @Groups({"child", "user"})
      */
     private $firstname;
 
     /**
      * @var string
      * @ORM\Column(type="string", length=50)
-     * @Groups({"child"})
+     * @Groups({"child", "user"})
      */
     private $lastname;
 
     /**
      * @var string
      * @ORM\Column(type="string", length=20)
-     * @Groups({"child"})
+     * @Groups({"child", "user"})
      */
     private $phone;
 

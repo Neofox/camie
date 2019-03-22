@@ -16,7 +16,14 @@ Encore
     .enableSourceMaps(!Encore.isProduction())
     // will output as web/build/app.js
     .addEntry("app", "./assets/js/clientSideEntryPoint.js")
+    .addEntry("buddy", "./assets/js/buddy.js")
+    .copyFiles({
+        from: './assets/images',
+        to: 'images/[path][name].[hash:8].[ext]'
+    })
 ;
 
 // export the final configuration
-module.exports = Encore.getWebpackConfig();
+var config = Encore.getWebpackConfig();
+config.output.globalObject = "this";
+module.exports = config;

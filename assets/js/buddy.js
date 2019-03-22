@@ -1,11 +1,11 @@
 "use strict";
 'use strict';
 
-document.addEventListener('DOMContentLoaded', function () {
+window.document.addEventListener('DOMContentLoaded', function () {
 
   /********** component form / input animation **********/
-  var inputs = document.querySelectorAll('.input-animation input, .input-animation textarea'),
-      textarea = document.querySelectorAll('.input-animation textarea');
+  var inputs = window.document.querySelectorAll('.input-animation input, .input-animation textarea'),
+      textarea = window.document.querySelectorAll('.input-animation textarea');
 
   var focusInAnimation = function focusInAnimation(event) {
     event.currentTarget.parentNode.classList.add('active');
@@ -39,11 +39,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /********** component form / input animation **********/
 
-  var target = document.querySelectorAll('.btn-icon[data-modal], .box-user-2__left[data-modal], button[data-modal]');
-  var sections = document.querySelectorAll('section');
-  var closeModal = document.querySelectorAll('[data-close="close"]');
-  var body = document.getElementsByTagName('body')[0];
-  var overlayClose = document.querySelectorAll('.overlay .overlay__close');
+  var target = window.document.querySelectorAll('.btn-icon[data-modal], .box-user-2__left[data-modal], button[data-modal]');
+  var sections = window.document.querySelectorAll('section');
+  var closeModal = window.document.querySelectorAll('[data-close="close"]');
+  var body = window.document.getElementsByTagName('body')[0];
+  var overlayClose = window.document.querySelectorAll('.overlay .overlay__close');
 
   for (var _i2 = 0; _i2 < target.length; _i2++) {
     target[_i2].addEventListener('click', function () {

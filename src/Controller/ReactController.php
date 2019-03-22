@@ -25,7 +25,7 @@ class ReactController extends AbstractController
         return $this->render('react/index.html.twig', [
             // We pass an array as props
             'initialState' => $serializer->serialize(
-                ['children' => $children, 'user' => $user], 'json', ['groups' => ['child_list']])
+                ['children' => $children, 'user' => $user], 'json', ['groups' => ['child_list', 'user']])
         ]);
     }
 
@@ -50,7 +50,7 @@ class ReactController extends AbstractController
         return $this->render('react/child.html.twig', [
             // A JSON string also works
             'initialState' => $serializer->serialize(
-                ['child' => $child, 'user' => $user], 'json', ['groups' => ['child']])
+                ['child' => $child, 'user' => $user], 'json', ['groups' => ['child', 'user']])
         ]);
     }
 }

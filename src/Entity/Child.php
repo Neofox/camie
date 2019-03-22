@@ -18,7 +18,7 @@ class Child
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"child_list", "child"})
+     * @Groups({"child_list", "child", "user"})
      */
     private $id;
 
