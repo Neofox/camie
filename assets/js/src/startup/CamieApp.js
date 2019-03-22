@@ -16,20 +16,18 @@ const mainNode = (_initialProps, context) => {
     if (serverSide) {
         Router = props => (
             <StaticRouter basename={base + '/react'} location={location} context={{}}>
-        {props.children}
-    </StaticRouter>
-    );
+                {props.children}
+            </StaticRouter>
+        );
     } else {
-        Router = props => (
-            <BrowserRouter basename={base + '/react'}>{props.children}</BrowserRouter>
-    );
+        Router = props => (<BrowserRouter basename={base + '/react'}>{props.children}</BrowserRouter>);
     }
 
     const reactComponent = (
         <Provider store={store}>
-        <Router>
-        <Root />
-        </Router>
+            <Router>
+                <Root />
+            </Router>
         </Provider>
 );
     return reactComponent;

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Sheet;
 use App\Service\ChildManager;
 use App\Service\NurseryManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -48,6 +49,24 @@ class ChildrenApiController extends AbstractController
     {
         $child = $childManager->getChildById($childId);
         return new Response($serializer->serialize($child, 'json', ['groups' => ['child']]),
+            Response::HTTP_OK, ['Content-type' => 'application/json']
+        );
+    }
+    /**
+     * @Route("/api/children/{childId}/sheets", name="api_child_sheets")
+     *
+     * Needed for client-side navigation after initial page load
+     *
+     * @param string              $childId
+     * @param SerializerInterface $serializer
+     * @param ChildManager        $childManager
+     *
+     * @return Response
+     */
+    public function apiChildSheetsAction(string $childId, SerializerInterface $serializer, ChildManager $childManager)
+    {
+        $child = $childManager->getChildById($childId);
+        return new Response($serializer->serialize($child->getSheets(), 'json', ['groups' => ['history']]),
             Response::HTTP_OK, ['Content-type' => 'application/json']
         );
     }

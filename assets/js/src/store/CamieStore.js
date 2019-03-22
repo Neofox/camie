@@ -9,13 +9,15 @@ import { initialStates } from "../reducers";
 
 export default function configureStore(props, context) {
     // This is how we get initial props from Symfony into redux.
-    const { children, child, user } = props;
+    const { children, child, sheets, user } = props;
     const { base, location } = context;
-    const { camieState } = initialStates;
+    const { appState, childrenState, sheetsState } = initialStates;
 
     // Redux expects to initialize the store using an Object
     const initialState = {
-        camieState: { ...camieState, child, children, user, baseUrl: base, location }
+        appState: { ...appState, user, sheets, baseUrl: base, location },
+        childrenState: { ...childrenState, child, children },
+        sheetsState: { ...sheetsState, sheets }
     };
 
     // use devtools if we are in a browser and the extension is enabled

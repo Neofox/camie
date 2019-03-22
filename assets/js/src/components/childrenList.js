@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import SheetGirl from "../../../images/icon-fiche-fille.svg";
 import SheetBoy from "../../../images/icon-fiche-garcon.svg";
 
-const ChildrenList = props => (
+const ChildrenList = ({children}) => (
     <div>
-            {props.children.map((child, index) => (
+            {children.map((child, index) => (
                     <div key={index} className="box-user-2">
                             <Link to={"/sheet/"+ child.id +"/daily"} className="box-user-2__left">
                                     {child.sexe === 'F' ? <img alt="icon-girl" src={SheetGirl} /> : <img alt="icon-boy" src={SheetBoy} />}

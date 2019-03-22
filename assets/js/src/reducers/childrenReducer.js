@@ -2,11 +2,9 @@ import Constants from "../constants/childrenConstants";
 
 export const initialState = {
     fetching: false,
-    baseUrl: "/",
-    location: "/"
 };
 
-export default function recipesReducer(state = initialState, action) {
+export default function childrenReducer(state = initialState, action) {
     switch (action.type) {
         case Constants.CHILDREN_FETCHING:
             return { ...state, fetching: true };

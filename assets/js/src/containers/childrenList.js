@@ -24,10 +24,10 @@ class ChildrenList extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    children: state.camieState.children,
-    nursery: state.camieState.user.nursery,
-    fetching: state.camieState.fetching,
-    baseUrl: state.camieState.baseUrl
+    children: state.childrenState.children,
+    fetching: state.childrenState.fetching,
+    nursery: state.appState.user.nursery,
+    baseUrl: state.appState.baseUrl
 });
 
 export default connect(mapStateToProps)(ChildrenList);

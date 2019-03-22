@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use phpDocumentor\Reflection\Types\Integer;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Serializer\Annotation\MaxDepth;
 
 /**
@@ -20,6 +21,7 @@ class Sheet
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"history"})
      */
     private $id;
 
@@ -38,12 +40,14 @@ class Sheet
     /**
      * @var int
      * @ORM\Column(type="integer", nullable=false)
+     * @Groups({"history"})
      */
     private $type;
 
     /**
      * @var \DateTime
      * @ORM\Column(type="date", nullable=false)
+     * @Groups({"history"})
      */
     private $createdAt;
 

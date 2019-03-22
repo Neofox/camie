@@ -36,9 +36,9 @@ class Child extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    child: state.camieState.child,
-    fetching: state.camieState.fetching,
-    baseUrl: state.camieState.baseUrl
+    child: state.childrenState.child,
+    fetching: state.childrenState.fetching,
+    baseUrl: state.appState.baseUrl
 });
 
 export default connect(mapStateToProps)(Child);

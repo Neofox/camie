@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Sheet;
 use App\Entity\User;
 use App\Service\ChildManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -23,7 +24,6 @@ class ReactController extends AbstractController
         $children = $user->getChildren();
 
         return $this->render('react/index.html.twig', [
-            // We pass an array as props
             'initialState' => $serializer->serialize(
                 ['children' => $children, 'user' => $user], 'json', ['groups' => ['child_list', 'user']])
         ]);
@@ -48,9 +48,28 @@ class ReactController extends AbstractController
             throw $this->createNotFoundException('The child does not exist');
         }
         return $this->render('react/child.html.twig', [
-            // A JSON string also works
             'initialState' => $serializer->serialize(
                 ['child' => $child, 'user' => $user], 'json', ['groups' => ['child', 'user']])
+        ]);
+    }
+    /**
+     * @Route("/react/child/{childId}/history", name="react_child_history")
+     * @param string              $childId
+     *
+     * @param ChildManager        $childManager
+     * @param SerializerInterface $serializer
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function historyAction(string $childId, ChildManager $childManager, SerializerInterface $serializer)
+    {
+        /** @var User $user */
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        $child = $childManager->getChildById($childId);
+
+        return $this->render('react/child.html.twig', [
+            'initialState' => $serializer->serialize(
+                ['child' => $child, 'user' => $user, 'sheets' => $child->getSheets()], 'json', ['groups' => ['child', 'user', 'history']])
         ]);
     }
 }
