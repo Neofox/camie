@@ -7,7 +7,7 @@ import ReactOnRails from "react-on-rails";
 // See documentation for https://github.com/reactjs/react-redux.
 // This code here binds your smart component to the redux store.
 const mainNode = (_initialProps, context) => {
-    const store = ReactOnRails.getStore("childrenStore");
+    const store = ReactOnRails.getStore("CamieStore");
     const { location, base, serverSide } = context;
 
     // We render a different router depending on whether we are rendering server side

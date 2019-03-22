@@ -14,7 +14,7 @@
     "license": "UNLICENSED",
     "private": true,
     "scripts": {
-        "webpack-client": "encore dev-server",
+        "webpack-client": "encore dev --watch",
         "webpack-serverside": "encore dev --config webpack.config.serverside.js --watch",
         "build": "encore production --progress"
     },

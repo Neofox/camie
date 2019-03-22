@@ -1,12 +1,12 @@
 import childrenReducer from "./childrenReducer";
-import { initialState as childrenState } from "./childrenReducer";
+import { initialState as camieState } from "./childrenReducer";
 import { combineReducers } from "redux";
 
 // Combine all reducers you may have here
 export default combineReducers({
-    childrenState: childrenReducer
+    camieState: childrenReducer
 });
 
 export const initialStates = {
-    childrenState
+    camieState
 };

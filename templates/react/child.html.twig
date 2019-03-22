@@ -1,0 +1,6 @@
+{% extends 'base.react.html.twig' %}
+
+{% block body %}
+    {{ redux_store('CamieStore', initialState) }}
+    {{ react_component('CamieApp') }}
+{% endblock %}

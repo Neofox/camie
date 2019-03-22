@@ -1,17 +1,17 @@
 import React from "react";
 import Actions from "../actions/childrenActions";
 import { connect } from "react-redux";
-import Child from "../components/child";
+import ChildComponent from "../components/child";
 
-class Recipe extends React.Component {
+class Child extends React.Component {
     componentDidMount() {
-        if (!this.props.recipe || this.props.recipe.id.toString() !== this.props.match.params.id) {
+        if (!this.props.child || this.props.child.id.toString() !== this.props.match.params.id) {
             const { dispatch } = this.props;
             dispatch(Actions.fetchChild(this.props.match.params.id, this.props.baseUrl));
         }
     }
 
-    getRecipe() {
+    getChild() {
         // if we know that we are loading thata
         if (
             this.props.fetching ||
@@ -24,21 +24,21 @@ class Recipe extends React.Component {
         } else {
             return (
                 <div>
-                    <Child child={this.props.child} />
+                    <ChildComponent child={this.props.child} />
                 </div>
             );
         }
     }
 
     render() {
-        return this.getRecipe();
+        return this.getChild();
     }
 }
 
 const mapStateToProps = state => ({
-    child: state.childrenState.child,
-    fetching: state.childrenState.fetching,
-    baseUrl: state.childrenState.baseUrl
+    child: state.camieState.child,
+    fetching: state.camieState.fetching,
+    baseUrl: state.camieState.baseUrl
 });
 
-export default connect(mapStateToProps)(Recipe);
+export default connect(mapStateToProps)(Child);

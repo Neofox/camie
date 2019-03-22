@@ -7,15 +7,16 @@ Encore
     .setPublicPath("/build")
     // empty the outputPath dir before each build
     .cleanupOutputBeforeBuild()
-    // will output as web/build/app.js
-    .addEntry("app", "./assets/js/clientSideEntryPoint.js")
     // enable react in babel
     .enableReactPreset()
     // Since Encore 4
     .enableSingleRuntimeChunk()
     // create hashed filenames (e.g. app.abc123.css)
     .enableVersioning(Encore.isProduction())
-    .enableSourceMaps(!Encore.isProduction());
+    .enableSourceMaps(!Encore.isProduction())
+    // will output as web/build/app.js
+    .addEntry("app", "./assets/js/clientSideEntryPoint.js")
+;
 
 // export the final configuration
 module.exports = Encore.getWebpackConfig();

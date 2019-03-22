@@ -18,41 +18,42 @@ class Child
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"child_list"})
+     * @Groups({"child_list", "child"})
      */
     private $id;
 
     /**
      * @var string
      * @ORM\Column(type="string", length=100)
-     * @Groups({"child_list"})
+     * @Groups({"child_list", "child"})
      */
     private $firstname;
 
     /**
      * @var string
      * @ORM\Column(type="string", length=100)
-     * @Groups({"child_list"})
+     * @Groups({"child_list", "child"})
      */
     private $lastname;
 
     /**
      * @var string
      * @ORM\Column(type="string", length=1)
-     * @Groups({"child_list"})
+     * @Groups({"child_list", "child"})
      */
     private $sexe;
 
     /**
      * @var \DateTime
      * @ORM\Column(type="date")
-     * @Groups({"child_list"})
+     * @Groups({"child_list", "child"})
      */
     private $birthdate;
 
     /**
      * @var User[] | ArrayCollection
      * @ORM\ManyToMany(targetEntity="App\Entity\User", mappedBy="children")
+     * @Groups({"child"})
      */
     private $users;
 

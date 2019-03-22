@@ -6,7 +6,7 @@ import Child from "../containers/child";
 const Root = () => {
     return (
         <div>
-            <Route path={"/children/list"} exact component={ChildrenList} />
+            <Route path={"/"} exact component={ChildrenList} />
             <Route path={"/child/:id"} component={Child} />
         </div>
     );

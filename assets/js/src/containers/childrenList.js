@@ -1,9 +1,9 @@
 import React from "react";
 import Actions from "../actions/childrenActions";
 import { connect } from "react-redux";
-import ChildrenList from "../components/childrenList";
+import ChildrenListComponent from "../components/childrenList";
 
-class Recipes extends React.Component {
+class ChildrenList extends React.Component {
     componentDidMount() {
         if (!this.props.children) {
             const { dispatch } = this.props;
@@ -16,7 +16,7 @@ class Recipes extends React.Component {
         } else {
             return (
                 <div>
-                    <ChildrenList children={this.props.children} routePrefix={""} />
+                    <ChildrenListComponent children={this.props.children} routePrefix={""} />
                 </div>
             );
         }
@@ -24,9 +24,9 @@ class Recipes extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    children: state.childrenState.children,
-    fetching: state.childrenState.fetching,
-    baseUrl: state.childrenState.baseUrl
+    children: state.camieState.children,
+    fetching: state.camieState.fetching,
+    baseUrl: state.camieState.baseUrl
 });
 
-export default connect(mapStateToProps)(Recipes);
+export default connect(mapStateToProps)(ChildrenList);

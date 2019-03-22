@@ -1,9 +1,9 @@
 
 import ReactOnRails from "react-on-rails";
 import CamieApp from "./CamieApp";
-import configureStore from "../store/ChildrenStore";
+import configureStore from "../store/CamieStore";
 
-const childrenStore = configureStore;
+const CamieStore = configureStore;
 
-ReactOnRails.registerStore({ childrenStore });
+ReactOnRails.registerStore({ CamieStore });
 ReactOnRails.register({ CamieApp });
