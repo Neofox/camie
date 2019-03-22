@@ -42,9 +42,11 @@
 
         $('#searchInput').on('keyup', function (e) {
             if ($('#searchInput').val() !== '') {
-                let searchTerm = $('#searchInput').val();
+                let searchTerm = $('#searchInput').val().toLowerCase();
                 let filteredChildren = $.grep(children, function (child) {
-                    return child.firstname.includes(searchTerm) || child.lastname.includes(searchTerm);
+                    const name = (child.firstname + ' ' + child.lastname).toLowerCase();
+                    const normalizedname = name.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+                    return name.includes(searchTerm) || normalizedname.includes(searchTerm);
                 });
                 $('#childrens').html(generateChildList(filteredChildren));
             } else {
@@ -52,9 +54,7 @@
             }
         });
 
-
         $('#childrens').html(generateChildList(children));
-
 
         function generateChildList(children) {
             return children.map((child) => {
