@@ -25,6 +25,19 @@ const Actions = {
                     sheet: data
                 });
             });
+    },
+
+    fetchDailySheet: (childId, baseUrl) => dispatch => {
+        dispatch({ type: Constants.SHEET_FETCHING });
+
+        fetch(baseUrl + "/api/children/" + childId + '/sheet/daily')
+            .then(response => response.json())
+            .then(data => {
+                dispatch({
+                    type: Constants.SHEET_RECEIVED,
+                    sheet: data
+                });
+            });
     }
 };
 

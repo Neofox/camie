@@ -10,19 +10,20 @@ class DailySheet extends React.Component {
             const { dispatch } = this.props;
             dispatch(ChildrenActions.fetchChild(this.props.match.params.id, this.props.baseUrl));
         }
-        if (!this.props.sheet || this.props.sheet.id.toString() !== this.props.match.params.sheetId) {
+        if (!('sheetId' in this.props.match.params)) {
+            const { dispatch } = this.props;
+            dispatch(SheetsActions.fetchDailySheet(this.props.match.params.id, this.props.baseUrl));
+        } else {
             const { dispatch } = this.props;
             dispatch(SheetsActions.fetchSheet(this.props.match.params.id, this.props.match.params.sheetId, this.props.baseUrl));
         }
     }
 
     getChild() {
-        if (
-            this.props.fetching ||
-            !this.props.child || this.props.child.id.toString() !== this.props.match.params.id ||
-            !this.props.sheet || this.props.sheet.id.toString() !== this.props.match.params.sheetId
-        ) {
-            return <div>Loading...</div>;
+        if (this.props.childFetching || !this.props.child || this.props.child.id.toString() !== this.props.match.params.id) {
+            return <div>Loading child...</div>;
+        } else if (this.props.sheetFetching || !this.props.sheet || ('id' in this.props.sheet && this.props.sheet.id != this.props.match.params.sheetId)) {
+            return <div>Loading sheet...</div>;
         } else {
             return (
                 <div>
@@ -39,8 +40,9 @@ class DailySheet extends React.Component {
 
 const mapStateToProps = state => ({
     child: state.childrenState.child,
+    childFetching: state.childrenState.fetching,
+    sheetFetching: state.sheetsState.fetching,
     sheet: state.sheetsState.sheet,
-    fetching: state.childrenState.fetching,
     baseUrl: state.appState.baseUrl
 });
 

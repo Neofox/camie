@@ -16,6 +16,7 @@ const Root = () => {
                             <Switch location={location}>
                                 <Route path={"/"} exact component={ChildrenList} />
                                 <Route path={"/child/:id/history"} exact component={SheetsList} />
+                                <Route path={"/child/:id/sheet/daily"} exact render={(props) => <DailySheet {...props} readonly={false} />} />
                                 <Route path={"/child/:id/sheet/:sheetId/history"} exact render={(props) => <DailySheet {...props} readonly={true} />} />
                                 <Route path={"/child/:id"} exact component={Child} />
                             </Switch>

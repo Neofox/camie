@@ -11,7 +11,7 @@ class SheetsList extends React.Component {
         }
     }
     render() {
-        if (this.props.fetching || !this.props.sheets) {
+        if (this.props.fetching || !this.props.sheets || !this.props.child) {
             return <div>Loading...</div>;
         } else {
             return (

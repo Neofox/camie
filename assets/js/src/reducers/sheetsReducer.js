@@ -13,6 +13,7 @@ export default function sheetsReducer(state = initialState, action) {
             return {
                 ...state,
                 sheets: action.sheets,
+                sheet: null,
                 fetching: false
             };
 
@@ -23,6 +24,7 @@ export default function sheetsReducer(state = initialState, action) {
             return {
                 ...state,
                 sheet: action.sheet,
+                sheets: null,
                 fetching: false
             };
 

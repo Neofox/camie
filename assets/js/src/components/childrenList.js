@@ -7,7 +7,7 @@ const ChildrenList = ({children}) => (
     <div>
             {children.map((child, index) => (
                     <div key={index} className="box-user-2">
-                            <Link to={"/sheet/"+ child.id +"/daily"} className="box-user-2__left">
+                            <Link to={"/child/" + child.id + "/sheet/daily" } className="box-user-2__left">
                                     {child.sexe === 'F' ? <img alt="icon-girl" src={SheetGirl} /> : <img alt="icon-boy" src={SheetBoy} />}
                                     <div className="left__name">{child.firstname} <br/> {child.lastname} <br/>
                                             <span>sheet.history.sheet-name-daily</span>

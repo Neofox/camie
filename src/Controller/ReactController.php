@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Sheet;
 use App\Entity\User;
 use App\Service\ChildManager;
+use App\Service\SheetManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
@@ -84,12 +85,37 @@ class ReactController extends AbstractController
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function dailySheetAction(string $childId, string $sheetId, ChildManager $childManager, SerializerInterface $serializer)
+    public function historySheetAction(string $childId, string $sheetId, ChildManager $childManager, SerializerInterface $serializer)
     {
         /** @var User $user */
         $user = $this->get('security.token_storage')->getToken()->getUser();
         $child = $childManager->getChildById($childId);
         $sheet = $child->getSheets()->filter(function (Sheet $sheet) use($sheetId) {return $sheet->getId() == $sheetId; })->first();
+
+        return $this->render('react/child.html.twig', [
+            'initialState' => $serializer->serialize(
+                ['child' => $child, 'user' => $user, 'sheet' => $sheet], 'json', ['groups' => ['child', 'user', 'sheet']])
+        ]);
+    }
+
+    /**
+     * @Route("/react/child/{childId}/sheet/daily", name="react_child_sheet_daily")
+     *
+     * @param string              $childId
+     * @param ChildManager        $childManager
+     * @param SerializerInterface $serializer
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function dailySheetAction(string $childId, ChildManager $childManager, SerializerInterface $serializer, SheetManager $sheetManager)
+    {
+        /** @var User $user */
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        $defaultSheet = (new Sheet(Sheet::TYPE_DAILY))->setData(
+            ['arrival_time' =>'' , 'departure_time' => '', 'communication' => '', 'activities' => '', 'nurse_comment' => '']
+        );
+        $child = $childManager->getChildById($childId);
+        $sheet = $sheetManager->getDailySheet($child) ?? $defaultSheet;
 
         return $this->render('react/child.html.twig', [
             'initialState' => $serializer->serialize(

@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Sheet;
 use App\Service\ChildManager;
 use App\Service\NurseryManager;
+use App\Service\SheetManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -89,6 +90,30 @@ class ChildrenApiController extends AbstractController
         $child = $childManager->getChildById($childId);
         $sheet = $child->getSheets()->filter(function (Sheet $sheet) use($sheetId) {return $sheet->getId() == $sheetId; })->first();
 
+        return new Response($serializer->serialize($sheet, 'json', ['groups' => ['sheet']]),
+            Response::HTTP_OK, ['Content-type' => 'application/json']
+        );
+    }
+
+    /**
+     * @Route("/api/children/{childId}/sheet/daily", name="api_child_sheet_daily")
+     *
+     * Needed for client-side navigation after initial page load
+     *
+     * @param string              $childId
+     * @param SerializerInterface $serializer
+     * @param ChildManager        $childManager
+     * @param SheetManager        $sheetManager
+     *
+     * @return Response
+     */
+    public function apiChildSheetDailyAction(string $childId, SerializerInterface $serializer, ChildManager $childManager, SheetManager $sheetManager)
+    {
+        $defaultSheet = (new Sheet(Sheet::TYPE_DAILY))->setData(
+            ['arrival_time' =>'' , 'departure_time' => '', 'communication' => '', 'activities' => '', 'nurse_comment' => '']
+        );
+        $child = $childManager->getChildById($childId);
+        $sheet = $sheetManager->getDailySheet($child) ?? $defaultSheet;
         return new Response($serializer->serialize($sheet, 'json', ['groups' => ['sheet']]),
             Response::HTTP_OK, ['Content-type' => 'application/json']
         );
