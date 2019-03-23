@@ -21,13 +21,14 @@ class Sheet
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"history"})
+     * @Groups({"history", "sheet"})
      */
     private $id;
 
     /**
      * @var array
      * @ORM\Column(type="json", nullable=true)
+     * @Groups({"sheet"})
      */
     private $data = [];
 
@@ -40,14 +41,14 @@ class Sheet
     /**
      * @var int
      * @ORM\Column(type="integer", nullable=false)
-     * @Groups({"history"})
+     * @Groups({"history", "sheet"})
      */
     private $type;
 
     /**
      * @var \DateTime
      * @ORM\Column(type="date", nullable=false)
-     * @Groups({"history"})
+     * @Groups({"history", "sheet"})
      */
     private $createdAt;
 

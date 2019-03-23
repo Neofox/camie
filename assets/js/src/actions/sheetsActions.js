@@ -12,6 +12,19 @@ const Actions = {
                     sheets: data
                 });
             });
+    },
+
+    fetchSheet: (childId, sheetId, baseUrl) => dispatch => {
+        dispatch({ type: Constants.SHEET_FETCHING });
+
+        fetch(baseUrl + "/api/children/" + childId + '/sheets/' + sheetId)
+            .then(response => response.json())
+            .then(data => {
+                dispatch({
+                    type: Constants.SHEET_RECEIVED,
+                    sheet: data
+                });
+            });
     }
 };
 

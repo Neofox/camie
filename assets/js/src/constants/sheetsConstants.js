@@ -1,6 +1,8 @@
 const Constants = {
     SHEETS_FETCHING: "SHEETS_FETCHING",
     SHEETS_RECEIVED: "SHEETS_RECEIVED",
+    SHEET_FETCHING: "SHEET_FETCHING",
+    SHEET_RECEIVED: "SHEET_RECEIVED",
 };
 
 export default Constants;

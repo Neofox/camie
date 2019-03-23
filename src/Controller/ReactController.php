@@ -52,6 +52,7 @@ class ReactController extends AbstractController
                 ['child' => $child, 'user' => $user], 'json', ['groups' => ['child', 'user']])
         ]);
     }
+
     /**
      * @Route("/react/child/{childId}/history", name="react_child_history")
      * @param string              $childId
@@ -70,6 +71,29 @@ class ReactController extends AbstractController
         return $this->render('react/child.html.twig', [
             'initialState' => $serializer->serialize(
                 ['child' => $child, 'user' => $user, 'sheets' => $child->getSheets()], 'json', ['groups' => ['child', 'user', 'history']])
+        ]);
+    }
+
+    /**
+     * @Route("/react/child/{childId}/sheet/{sheetId}/history", name="react_child_sheet_history")
+     *
+     * @param string              $childId
+     * @param string              $sheetId
+     * @param ChildManager        $childManager
+     * @param SerializerInterface $serializer
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function dailySheetAction(string $childId, string $sheetId, ChildManager $childManager, SerializerInterface $serializer)
+    {
+        /** @var User $user */
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        $child = $childManager->getChildById($childId);
+        $sheet = $child->getSheets()->filter(function (Sheet $sheet) use($sheetId) {return $sheet->getId() == $sheetId; })->first();
+
+        return $this->render('react/child.html.twig', [
+            'initialState' => $serializer->serialize(
+                ['child' => $child, 'user' => $user, 'sheet' => $sheet], 'json', ['groups' => ['child', 'user', 'sheet']])
         ]);
     }
 }

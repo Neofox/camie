@@ -52,6 +52,7 @@ class ChildrenApiController extends AbstractController
             Response::HTTP_OK, ['Content-type' => 'application/json']
         );
     }
+
     /**
      * @Route("/api/children/{childId}/sheets", name="api_child_sheets")
      *
@@ -67,6 +68,28 @@ class ChildrenApiController extends AbstractController
     {
         $child = $childManager->getChildById($childId);
         return new Response($serializer->serialize($child->getSheets(), 'json', ['groups' => ['history']]),
+            Response::HTTP_OK, ['Content-type' => 'application/json']
+        );
+    }
+
+    /**
+     * @Route("/api/children/{childId}/sheets/{sheetId}", name="api_child_sheet")
+     *
+     * Needed for client-side navigation after initial page load
+     *
+     * @param string              $childId
+     * @param string              $sheetId
+     * @param SerializerInterface $serializer
+     * @param ChildManager        $childManager
+     *
+     * @return Response
+     */
+    public function apiChildSheetAction(string $childId, string $sheetId, SerializerInterface $serializer, ChildManager $childManager)
+    {
+        $child = $childManager->getChildById($childId);
+        $sheet = $child->getSheets()->filter(function (Sheet $sheet) use($sheetId) {return $sheet->getId() == $sheetId; })->first();
+
+        return new Response($serializer->serialize($sheet, 'json', ['groups' => ['sheet']]),
             Response::HTTP_OK, ['Content-type' => 'application/json']
         );
     }

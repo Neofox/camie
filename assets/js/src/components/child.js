@@ -6,7 +6,7 @@ const Child = ({child}) => (
         <section className="pb-5">
             <div className="page-wrapper">
                 <div className={`box-user ${child.sexe == 'F' ? 'box-user--girl' : ''}`}>
-                    <div className="box-letters">{`${child.firstname.charAt(0).toUpperCase()} ${child.lastname.charAt(0).toUpperCase()}`}</div>
+                    <div className="box-letters">{`${child.firstname.charAt(0).toUpperCase()}${child.lastname.charAt(0).toUpperCase()}`}</div>
 
                     <div className="box-user__content">
                         <form className="grid-flex mb-3">
