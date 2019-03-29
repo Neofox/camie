@@ -75,9 +75,9 @@
             $('#selectInput').html(`
 <div class="column w-100">
   <div class="input-animation">
-    <label for="entrance">{% trans %}sheet.daily.modal.meal-entrance{% endtrans %}</label>
-    <select id="entrance" required>
-      <option value="" hidden>{% trans %}sheet.daily.modal.entrance-option{% endtrans %}</option>
+    <label for="dish">{% trans %}sheet.daily.modal.meal-dish{% endtrans %}</label>
+    <select id="dish" required>
+      <option value="" hidden>{% trans %}sheet.daily.modal.meal-dish-option{% endtrans %}</option>
       <option value="nothing">{% trans %}sheet.daily.modal.meal-eat-nothing{% endtrans %}</option>
       <option value="half">{% trans %}sheet.daily.modal.meal-eat-half{% endtrans %}</option>
       <option value="all">{% trans %}sheet.daily.modal.meal-eat-all{% endtrans %}</option>
@@ -87,9 +87,9 @@
 </div>
 <div class="column w-100">
   <div class="input-animation">
-    <label for="dish">{% trans %}sheet.daily.modal.meal-dish{% endtrans %}</label>
-    <select id="dish" required>
-      <option value="" hidden>{% trans %}sheet.daily.modal.meal-dish-option{% endtrans %}</option>
+    <label for="cheese">{% trans %}sheet.daily.modal.meal-cheese{% endtrans %}</label>
+    <select id="cheese" required>
+      <option value="" hidden>{% trans %}sheet.daily.modal.cheese-option{% endtrans %}</option>
       <option value="nothing">{% trans %}sheet.daily.modal.meal-eat-nothing{% endtrans %}</option>
       <option value="half">{% trans %}sheet.daily.modal.meal-eat-half{% endtrans %}</option>
       <option value="all">{% trans %}sheet.daily.modal.meal-eat-all{% endtrans %}</option>
@@ -145,7 +145,7 @@
                 data = {...data, ...{details: $('#breadsoup_details').val()}};
                 break;
             case 'menuofday':
-                data = {...data, ...{entrance: $("option:selected", $('#entrance')).val()}};
+                data = {...data, ...{cheese: $("option:selected", $('#cheese')).val()}};
                 data = {...data, ...{dish: $("option:selected", $('#dish')).val()}};
                 data = {...data, ...{dessert: $("option:selected", $('#dessert')).val()}};
                 break;

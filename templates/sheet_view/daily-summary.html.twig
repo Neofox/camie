@@ -139,8 +139,8 @@
                                     <strong>{% trans %}sheet.daily.meal.breadsoup{% endtrans %} {% if meal.details is defined %}<span>{{meal.details}}</span></strong>{% endif %} {% trans %}sheet.daily.meal.at{% endtrans %} <strong>{{meal.hour|date('H:i')}}</strong><br>
                                 {% elseif type == 'menuofday' %}
                                     <strong>{% trans %}sheet.daily.meal.menuofday{% endtrans %}</strong> {% trans %}sheet.daily.meal.at{% endtrans %} <strong>{{meal.hour|date('H:i')}}</strong><br>
-                                    {% trans %}sheet.daily.meal.menuofday.entrance{% endtrans %}: <span>{{ ('sheet.daily.modal.meal-eat-' ~ meal.entrance)|trans() }}</span><br>
                                     {% trans %}sheet.daily.meal.menuofday.dish{% endtrans %}: <span>{{ ('sheet.daily.modal.meal-eat-' ~ meal.dish)|trans() }}</span><br>
+                                    {% trans %}sheet.daily.meal.menuofday.cheese{% endtrans %}: <span>{{ ('sheet.daily.modal.meal-eat-' ~ meal.cheese)|trans() }}</span><br>
                                     {% trans %}sheet.daily.meal.menuofday.dessert{% endtrans %}: <span>{{ ('sheet.daily.modal.meal-eat-' ~ meal.dessert)|trans() }}</span><br>
                                 {% endif %}
                             {% endfor %}

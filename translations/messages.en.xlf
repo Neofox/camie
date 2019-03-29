@@ -317,13 +317,13 @@
         <source>sheet.daily.modal.meal-breadsoup-type-placeholder</source>
         <target>Sweet</target>
       </trans-unit>
-      <trans-unit id="TfvCWF6" resname="sheet.daily.modal.meal-entrance">
-        <source>sheet.daily.modal.meal-entrance</source>
-        <target>Entrance</target>
+      <trans-unit id="TfvCWF6" resname="sheet.daily.modal.meal-cheese">
+        <source>sheet.daily.modal.meal-cheese</source>
+        <target>Cheese</target>
       </trans-unit>
-      <trans-unit id="1zSPbnw" resname="sheet.daily.modal.entrance-option">
-        <source>sheet.daily.modal.entrance-option</source>
-        <target>Select the state of the entrance</target>
+      <trans-unit id="1zSPbnw" resname="sheet.daily.modal.cheese-option">
+        <source>sheet.daily.modal.cheese-option</source>
+        <target>Select the state of the cheese</target>
       </trans-unit>
       <trans-unit id="jYL1cYY" resname="sheet.daily.modal.meal-eat-nothing">
         <source>sheet.daily.modal.meal-eat-nothing</source>
@@ -445,9 +445,9 @@
         <source>sheet.daily.meal.menuofday</source>
         <target>Menu of the day</target>
       </trans-unit>
-      <trans-unit id="YO7rqty" resname="sheet.daily.meal.menuofday.entrance">
-        <source>sheet.daily.meal.menuofday.entrance</source>
-        <target>Entrance</target>
+      <trans-unit id="YO7rqty" resname="sheet.daily.meal.menuofday.cheese">
+        <source>sheet.daily.meal.menuofday.cheese</source>
+        <target>Cheese</target>
       </trans-unit>
       <trans-unit id="s9fxZCQ" resname="sheet.daily.meal.menuofday.dish">
         <source>sheet.daily.meal.menuofday.dish</source>
